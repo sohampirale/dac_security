@@ -3,12 +3,12 @@
 import { useState } from 'react';
 
 const navItems = [
-  { name: 'Who We Are', href: '#who-we-are' },
-  { name: 'Services', href: '#services' },
-  { name: 'Products', href: '#products' },
-  { name: 'Our Clients', href: '#clients' },
-  { name: 'Resources', href: '#resources' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Who We Are', href: '/#who-we-are' },
+  { name: 'Services', href: '/services' },
+  { name: 'Products', href: '/#products' },
+  { name: 'Our Clients', href: '/#clients' },
+  { name: 'Resources', href: '/#resources' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 export default function Header() {
