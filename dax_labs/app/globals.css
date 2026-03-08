@@ -7,6 +7,9 @@
      Modify these values to change entire theme
      ============================================= */
   
+  /* Force light mode - disables browser/system dark mode */
+  color-scheme: light only;
+
   /* Background Colors */
   --color-bg-primary: #ffffff;      /* Main page background - Pure White */
   --color-bg-secondary: #f8f9fa;    /* Section backgrounds - Very Light Grey */
