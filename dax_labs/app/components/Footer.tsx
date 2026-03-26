@@ -7,12 +7,19 @@ const footerLinks = {
     { name: 'Contact Us', href: '/#contact' },
   ],
   products: [
-    { name: 'IT Security Products', href: '/products' },
-    { name: 'Partner Solutions', href: '/products' },
-    { name: 'Forensic Hardware', href: '/products' },
-    { name: 'Forensic Software', href: '/products' },
+    { name: 'IT Security Products', href: '/products/it-security' },
+    { name: 'Digital Forensic Products', href: '/products/digital-forensic' },
+    { name: 'Forensic Software Tools', href: '/products/forensic-software' },
+    { name: 'Partner Solutions', href: '/products#partners' },
     { name: 'Request Demo', href: '/#contact' },
     { name: 'Get a Quote', href: '/#contact' },
+  ],
+  itSecurityProducts: [
+    { name: 'Web Application Firewall', href: '/products/it-security/web-application-firewall' },
+    { name: 'DDoS Mitigation', href: '/products/it-security/ddos-mitigation' },
+    { name: 'SIEM', href: '/products/it-security/siem' },
+    { name: 'Email Security', href: '/products/it-security/email-security' },
+    { name: 'Endpoint Detection (EDR)', href: '/products/it-security/edr-xdr' },
   ],
   services: [
     { name: 'Application Security Assessment', href: '/services' },
@@ -46,7 +53,7 @@ export default function Footer() {
     <footer id="resources" className="bg-[var(--color-bg-primary)] border-t border-[var(--color-border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-16 gap-8">
           {/* Company Info - Full width on mobile, 4 cols on desktop */}
           <div className="lg:col-span-4">
             <a href="#" className="inline-block">
@@ -131,10 +138,29 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* IT Security Products Links */}
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold text-[var(--color-text-primary)] tracking-wider uppercase">
+              IT Security
+            </h3>
+            <ul className="mt-4 space-y-3">
+              {footerLinks.itSecurityProducts.map((link) => (
+                <li key={link.name}>
+                  <a
+                    href={link.href}
+                    className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors duration-200"
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Services Links */}
           <div className="lg:col-span-2">
             <h3 className="text-sm font-semibold text-[var(--color-text-primary)] tracking-wider uppercase">
-              Our Services
+              Services
             </h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.services.map((link) => (

@@ -5,7 +5,7 @@ import { useState } from 'react';
 const navItems = [
   { name: 'Who We Are', href: '/#who-we-are' },
   { name: 'Services', href: '/services', hasDropdown: true },
-  { name: 'Products', href: '/products' },
+  { name: 'Products', href: '/products', hasDropdown: true },
   { name: 'Our Clients', href: '/#clients' },
   { name: 'Resources', href: '/#resources' },
   { name: 'Contact', href: '/#contact' },
@@ -145,9 +145,87 @@ const servicesDropdown = [
   },
 ];
 
+const productsDropdown = [
+  {
+    category: 'IT Security Products',
+    href: '/products/it-security',
+    icon: (
+      <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
+    products: [
+      'Web Application Firewall (WAF)',
+      'DDoS Mitigation Solution',
+      'SIEM',
+      'Email Security',
+      'Data Loss Prevention (DLP)',
+      'Endpoint Detection & Response (EDR/XDR)',
+      'SSL VPN',
+      'DNS Firewall',
+      '+8 more products',
+    ],
+  },
+  {
+    category: 'Our Partners',
+    href: '/products#partners',
+    icon: (
+      <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+    products: [
+      'Haltdos',
+      'Port Swigger',
+      'Tenable',
+      'Manage Engine',
+      'Rapid7',
+      'Checkpoint',
+      'Maltego',
+      'Zoho',
+      '+4 more partners',
+    ],
+  },
+  {
+    category: 'Digital Forensic Products',
+    href: '/products/digital-forensic',
+    icon: (
+      <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    products: [
+      'Forensic Workstation',
+      'Password Cracking Machine',
+      'RF Shielding Bag',
+    ],
+  },
+  {
+    category: 'Forensic Software Tools',
+    href: '/products/forensic-software',
+    icon: (
+      <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+    products: [
+      'Mobile Forensic Tools',
+      'Computer Forensic Tools',
+      'Data Recovery Tools',
+      'Password Cracking Tools',
+      'OSINT & Social Media Forensics',
+      'Cloud Forensic Tools',
+      'Audio/Video Forensics',
+      'JTAG & Chip-off Forensics',
+      '+7 more categories',
+    ],
+  },
+];
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border)]">
@@ -168,8 +246,14 @@ export default function Header() {
               <div
                 key={item.name}
                 className="relative"
-                onMouseEnter={() => item.hasDropdown && setIsServicesDropdownOpen(true)}
-                onMouseLeave={() => item.hasDropdown && setIsServicesDropdownOpen(false)}
+                onMouseEnter={() => {
+                  if (item.name === 'Services') setIsServicesDropdownOpen(true);
+                  if (item.name === 'Products') setIsProductsDropdownOpen(true);
+                }}
+                onMouseLeave={() => {
+                  if (item.name === 'Services') setIsServicesDropdownOpen(false);
+                  if (item.name === 'Products') setIsProductsDropdownOpen(false);
+                }}
               >
                 <a
                   href={item.href}
@@ -178,7 +262,10 @@ export default function Header() {
                   {item.name}
                   {item.hasDropdown && (
                     <svg
-                      className={`ml-1 w-4 h-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`}
+                      className={`ml-1 w-4 h-4 transition-transform duration-200 ${
+                        item.name === 'Services' ? (isServicesDropdownOpen ? 'rotate-180' : '') :
+                        item.name === 'Products' ? (isProductsDropdownOpen ? 'rotate-180' : '') : ''
+                      }`}
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -190,7 +277,7 @@ export default function Header() {
                 </a>
 
                 {/* Services Dropdown Mega Menu */}
-                {item.hasDropdown && (
+                {item.name === 'Services' && (
                   <div
                     className={`absolute left-1/2 -translate-x-1/2 top-full w-[900px] transition-all duration-200 ${
                       isServicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
@@ -239,6 +326,65 @@ export default function Header() {
                           className="text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors inline-flex items-center group/link"
                         >
                           View All Services
+                          <svg className="ml-1.5 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Products Dropdown Mega Menu */}
+                {item.name === 'Products' && (
+                  <div
+                    className={`absolute left-1/2 -translate-x-1/2 top-full w-[900px] transition-all duration-200 ${
+                      isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
+                    }`}
+                  >
+                    <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg shadow-2xl overflow-hidden">
+                      <div className="grid grid-cols-2 gap-4 p-5 max-h-[560px] overflow-y-auto scrollbar-thin">
+                        {productsDropdown.map((product) => (
+                          <a
+                            key={product.category}
+                            href={product.href}
+                            className="group flex flex-col p-4 rounded-md hover:bg-[var(--color-bg-secondary)] transition-all duration-200"
+                          >
+                            <div className="flex items-start space-x-3">
+                              <div className="text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors">
+                                {product.icon}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h4 className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-tight">
+                                  {product.category}
+                                </h4>
+                                <ul className="mt-2.5 space-y-1.5">
+                                  {product.products.slice(0, 4).map((subProduct) => (
+                                    <li
+                                      key={subProduct}
+                                      className="text-xs text-[var(--color-text-muted)] truncate leading-relaxed"
+                                    >
+                                      • {subProduct}
+                                    </li>
+                                  ))}
+                                  {product.products.length > 4 && (
+                                    <li className="text-xs text-[var(--color-text-secondary)] font-medium pt-0.5">
+                                      {product.products[4]}
+                                    </li>
+                                  )}
+                                </ul>
+                              </div>
+                            </div>
+                          </a>
+                        ))}
+                      </div>
+                      {/* View All Link */}
+                      <div className="px-5 py-3.5 bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
+                        <a
+                          href="/products"
+                          className="text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors inline-flex items-center group/link"
+                        >
+                          View All Products
                           <svg className="ml-1.5 w-4 h-4 transform group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                           </svg>
