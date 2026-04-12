@@ -8,7 +8,7 @@ const navItems = [
   { name: 'Products', href: '/products', hasDropdown: true },
   { name: 'Our Clients', href: '/#clients' },
   { name: 'Resources', href: '/#resources' },
-  { name: 'Contact', href: '/#contact' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 const servicesDropdown = [

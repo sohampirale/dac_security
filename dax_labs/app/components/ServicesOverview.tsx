@@ -55,6 +55,37 @@ const services = [
   },
 ];
 
+const frameworkItems = [
+  {
+    title: 'DETECT',
+    description: 'We identify risks across your systems, infrastructure, and processes.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'ANALYZE',
+    description: 'We understand how these risks behave and how they affect your systems together.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'KINETIC',
+    description: 'We take disciplined action to secure and strengthen your systems as one integrated environment.',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+  },
+];
+
 export default function ServicesOverview() {
   return (
     <section id="services" className="py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
@@ -65,8 +96,39 @@ export default function ServicesOverview() {
             OUR COMPREHENSIVE SECURITY ECOSYSTEM
           </h2>
           <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
-            Explore our range of specialized IT security services designed to safeguard every aspect of your digital presence.
+            A structured approach to identifying, understanding, and securing your whole systems.
           </p>
+        </div>
+
+        {/* Framework Section */}
+        <div className="mb-16">
+          <h3 className="text-xl font-semibold text-[var(--color-text-primary)] mb-8 text-center">
+            Framework
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {frameworkItems.map((item, index) => (
+              <div
+                key={item.title}
+                className="group flex flex-col items-center text-center"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--color-accent)] rounded-full text-[var(--color-text-light)] mb-4">
+                  {item.icon}
+                </div>
+
+                {/* Title */}
+                <h4 className="text-xl font-bold text-[var(--color-text-primary)] tracking-wide">
+                  {item.title}
+                </h4>
+
+                {/* Description */}
+                <p className="mt-3 text-[var(--color-text-secondary)] leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Services Grid */}
