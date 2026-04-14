@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useTheme } from './ThemeProvider';
 
 const navItems = [
   { name: 'Who We Are', href: '/#who-we-are' },
   { name: 'Services', href: '/services', hasDropdown: true },
   { name: 'Products', href: '/products', hasDropdown: true },
-  { name: 'Our Clients', href: '/#clients' },
-  { name: 'Resources', href: '/#resources' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -226,9 +225,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border)]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border)] transition-colors duration-300">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -279,47 +279,43 @@ export default function Header() {
                 {/* Services Dropdown Mega Menu */}
                 {item.name === 'Services' && (
                   <div
-                    className={`absolute left-1/2 -translate-x-1/2 top-full w-[900px] transition-all duration-200 ${
-                      isServicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
+                    className={`absolute left-1/2 -translate-x-1/2 top-full w-[1250px] transition-all duration-300 ${
+                      isServicesDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                     }`}
                   >
-                    <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg shadow-2xl overflow-hidden">
-                      <div className="grid grid-cols-2 gap-4 p-5 max-h-[560px] overflow-y-auto scrollbar-thin">
+                    <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden">
+                      <div className="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-indigo-500" />
+                      <div className="grid grid-cols-2 gap-3 p-8 max-h-[750px] overflow-y-auto scrollbar-thin">
                         {servicesDropdown.map((service) => (
                           <a
                             key={service.category}
                             href={service.href}
-                            className="group flex flex-col p-4 rounded-md hover:bg-[var(--color-bg-secondary)] transition-all duration-200"
+                            className="group flex flex-col p-6 rounded-lg hover:bg-gradient-to-br hover:from-blue-50/50 hover:to-purple-50/30 dark:hover:from-blue-900/20 dark:hover:to-purple-900/20 border border-transparent hover:border-[var(--color-border)] hover:shadow-lg transition-all duration-200"
                           >
-                            <div className="flex items-start space-x-3">
-                              <div className="text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors">
+                            <div className="flex items-start space-x-4">
+                              <div className="text-[var(--color-accent)] group-hover:text-blue-600 transition-all duration-200 group-hover:scale-110 p-2 rounded-lg bg-[var(--color-bg-secondary)] group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30">
                                 {service.icon}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h4 className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-tight">
+                                <h4 className="text-base font-bold text-[var(--color-text-primary)] group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors leading-tight mb-3">
                                   {service.category}
                                 </h4>
-                                <ul className="mt-2.5 space-y-1.5">
-                                  {service.services.slice(0, 4).map((subService) => (
+                                <ul className="space-y-2">
+                                  {service.services.map((subService) => (
                                     <li
                                       key={subService}
-                                      className="text-xs text-[var(--color-text-muted)] truncate leading-relaxed"
+                                      className="text-sm text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)] transition-colors leading-relaxed flex items-start"
                                     >
-                                      • {subService}
+                                      <span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-border)] group-hover:bg-blue-400 flex-shrink-0 transition-colors" />
+                                      {subService}
                                     </li>
                                   ))}
-                                  {service.services.length > 4 && (
-                                    <li className="text-xs text-[var(--color-text-secondary)] font-medium pt-0.5">
-                                      +{service.services.length - 4} more
-                                    </li>
-                                  )}
                                 </ul>
                               </div>
                             </div>
                           </a>
                         ))}
                       </div>
-                      {/* View All Link */}
                       <div className="px-5 py-3.5 bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
                         <a
                           href="/services"
@@ -338,47 +334,43 @@ export default function Header() {
                 {/* Products Dropdown Mega Menu */}
                 {item.name === 'Products' && (
                   <div
-                    className={`absolute left-1/2 -translate-x-1/2 top-full w-[900px] transition-all duration-200 ${
-                      isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-1'
+                    className={`absolute left-1/2 -translate-x-1/2 top-full w-[1250px] transition-all duration-300 ${
+                      isProductsDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                     }`}
                   >
-                    <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg shadow-2xl overflow-hidden">
-                      <div className="grid grid-cols-2 gap-4 p-5 max-h-[560px] overflow-y-auto scrollbar-thin">
+                    <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-xl shadow-2xl overflow-hidden">
+                      <div className="h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500" />
+                      <div className="grid grid-cols-2 gap-3 p-8 max-h-[750px] overflow-y-auto scrollbar-thin">
                         {productsDropdown.map((product) => (
                           <a
                             key={product.category}
                             href={product.href}
-                            className="group flex flex-col p-4 rounded-md hover:bg-[var(--color-bg-secondary)] transition-all duration-200"
+                            className="group flex flex-col p-6 rounded-lg hover:bg-gradient-to-br hover:from-emerald-50/50 hover:to-teal-50/30 dark:hover:from-emerald-900/20 dark:hover:to-teal-900/20 border border-transparent hover:border-[var(--color-border)] hover:shadow-lg transition-all duration-200"
                           >
-                            <div className="flex items-start space-x-3">
-                              <div className="text-[var(--color-accent)] group-hover:text-[var(--color-accent-hover)] transition-colors">
+                            <div className="flex items-start space-x-4">
+                              <div className="text-[var(--color-accent)] group-hover:text-emerald-600 transition-all duration-200 group-hover:scale-110 p-2 rounded-lg bg-[var(--color-bg-secondary)] group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30">
                                 {product.icon}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <h4 className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-tight">
+                                <h4 className="text-base font-bold text-[var(--color-text-primary)] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors leading-tight mb-3">
                                   {product.category}
                                 </h4>
-                                <ul className="mt-2.5 space-y-1.5">
-                                  {product.products.slice(0, 4).map((subProduct) => (
+                                <ul className="space-y-2">
+                                  {product.products.map((subProduct) => (
                                     <li
                                       key={subProduct}
-                                      className="text-xs text-[var(--color-text-muted)] truncate leading-relaxed"
+                                      className="text-sm text-[var(--color-text-muted)] group-hover:text-[var(--color-text-secondary)] transition-colors leading-relaxed flex items-start"
                                     >
-                                      • {subProduct}
+                                      <span className="mr-2 mt-1.5 w-1.5 h-1.5 rounded-full bg-[var(--color-border)] group-hover:bg-emerald-400 flex-shrink-0 transition-colors" />
+                                      {subProduct}
                                     </li>
                                   ))}
-                                  {product.products.length > 4 && (
-                                    <li className="text-xs text-[var(--color-text-secondary)] font-medium pt-0.5">
-                                      {product.products[4]}
-                                    </li>
-                                  )}
                                 </ul>
                               </div>
                             </div>
                           </a>
                         ))}
                       </div>
-                      {/* View All Link */}
                       <div className="px-5 py-3.5 bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)]">
                         <a
                           href="/products"
@@ -395,10 +387,45 @@ export default function Header() {
                 )}
               </div>
             ))}
+
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="relative w-10 h-10 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] hover:border-[var(--color-border-hover)] transition-all duration-300"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
+          {/* Mobile menu button + theme toggle */}
+          <div className="lg:hidden flex items-center space-x-2">
+            {/* Mobile theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="w-10 h-10 rounded-lg bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-all duration-300"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Mobile hamburger */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-colors"

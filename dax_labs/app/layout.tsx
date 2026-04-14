@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "./components/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,12 +15,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "DAK Security | Advanced Cybersecurity Solutions",
-  description: "Your trusted partner in Cyber Security Services and Solutions. DAK Security empowers your digital future with advanced cybersecurity solutions, building a safer environment for mankind.",
+  description: "Your trusted partner in Cyber Security services and Solutions. DAK Security empowers your digital future with advanced cybersecurity solutions, building a safer environment for mankind.",
   keywords: ["cybersecurity", "security services", "managed security", "vulnerability assessment", "cloud security", "compliance", "DAK Security"],
   authors: [{ name: "DAK Security" }],
   openGraph: {
     title: "DAK Security | Advanced Cybersecurity Solutions",
-    description: "Your trusted partner in Cyber Security Services and Solutions.",
+    description: "Your trusted partner in Cyber Security services and Solutions.",
     type: "website",
   },
 };
@@ -30,12 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ colorScheme: 'light' as any }}>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        style={{ colorScheme: 'light' as any }}
       >
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

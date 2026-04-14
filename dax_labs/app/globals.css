@@ -6,36 +6,36 @@
      Perfect for Government & Enterprise clients
      Modify these values to change entire theme
      ============================================= */
-  
-  /* Force light mode - disables browser/system dark mode */
-  color-scheme: light only;
 
-  /* Background Colors */
-  --color-bg-primary: #ffffff;      /* Main page background - Pure White */
-  --color-bg-secondary: #f8f9fa;    /* Section backgrounds - Very Light Grey */
-  --color-bg-tertiary: #f1f3f4;     /* Card backgrounds - Light Grey */
+  /* Allow both color schemes */
+  color-scheme: light dark;
+
+  /* Background Colors - Light */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f8f9fa;
+  --color-bg-tertiary: #f1f3f4;
   --color-bg-gradient-start: #ffffff;
   --color-bg-gradient-end: #f8f9fa;
 
-  /* Text Colors */
-  --color-text-primary: #1a1a1a;    /* Main text - Near Black */
-  --color-text-secondary: #4a4a4a;  /* Secondary text - Dark Grey */
-  --color-text-muted: #717171;      /* Muted text - Medium Grey */
-  --color-text-light: #ffffff;      /* Light text for dark backgrounds */
-  --color-text-inverse: #ffffff;    /* Inverse text color */
+  /* Text Colors - Light */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #717171;
+  --color-text-light: #ffffff;
+  --color-text-inverse: #ffffff;
 
-  /* Accent Colors */
-  --color-accent: #1a1a1a;          /* Primary accent - Black */
-  --color-accent-hover: #000000;    /* Hover state - Pure Black */
-  --color-accent-light: #4a4a4a;    /* Light accent - Dark Grey */
-  --color-accent-subtle: #e5e5e5;   /* Subtle accent - Light Grey */
+  /* Accent Colors - Light */
+  --color-accent: #1a1a1a;
+  --color-accent-hover: #000000;
+  --color-accent-light: #4a4a4a;
+  --color-accent-subtle: #e5e5e5;
 
-  /* Border Colors */
-  --color-border: #e5e5e5;          /* Default borders - Light Grey */
-  --color-border-hover: #1a1a1a;    /* Hover borders - Black */
-  --color-border-subtle: #f0f0f0;   /* Subtle borders - Very Light Grey */
+  /* Border Colors - Light */
+  --color-border: #e5e5e5;
+  --color-border-hover: #1a1a1a;
+  --color-border-subtle: #f0f0f0;
 
-  /* Shadow Colors */
+  /* Shadow Colors - Light */
   --shadow-color: rgba(0, 0, 0, 0.08);
   --shadow-color-hover: rgba(0, 0, 0, 0.15);
 
@@ -45,24 +45,60 @@
   --transition-slow: 0.5s ease;
 }
 
+/* =============================================
+   DARK THEME - Cybersecurity Shade
+   Deep navy/charcoal tones (not pure black)
+   Suitable for cybersecurity business
+   ============================================= */
+[data-theme="dark"] {
+  /* Background Colors - Dark (deep navy/charcoal) */
+  --color-bg-primary: #0f1923;        /* Deep dark navy - main background */
+  --color-bg-secondary: #152232;      /* Slightly lighter navy - sections */
+  --color-bg-tertiary: #1a2d42;       /* Card backgrounds - muted blue-gray */
+  --color-bg-gradient-start: #0f1923;
+  --color-bg-gradient-end: #152232;
+
+  /* Text Colors - Dark */
+  --color-text-primary: #e8edf2;      /* Off-white for readability */
+  --color-text-secondary: #a8b5c4;    /* Muted blue-gray */
+  --color-text-muted: #6b7f94;        /* Darker muted blue */
+  --color-text-light: #0f1923;        /* Dark text for light backgrounds */
+  --color-text-inverse: #0f1923;
+
+  /* Accent Colors - Dark (teal/cyan accent for cyber feel) */
+  --color-accent: #00d4aa;            /* Cyber teal accent */
+  --color-accent-hover: #00eabb;      /* Brighter teal on hover */
+  --color-accent-light: #4db8d4;      /* Light blue accent */
+  --color-accent-subtle: #1a3a4a;     /* Subtle dark teal */
+
+  /* Border Colors - Dark */
+  --color-border: #1e3a4f;            /* Dark blue border */
+  --color-border-hover: #00d4aa;      /* Teal on hover */
+  --color-border-subtle: #152a3a;
+
+  /* Shadow Colors - Dark */
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color-hover: rgba(0, 0, 0, 0.5);
+}
+
 @theme inline {
   --color-background: var(--color-bg-primary);
   --color-foreground: var(--color-text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
+
   /* Custom color mappings for Tailwind */
   --color-bg-primary: var(--color-bg-primary);
   --color-bg-secondary: var(--color-bg-secondary);
   --color-bg-tertiary: var(--color-bg-tertiary);
-  
+
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
   --color-text-muted: var(--color-text-muted);
-  
+
   --color-accent: var(--color-accent);
   --color-accent-hover: var(--color-accent-hover);
-  
+
   --color-border: var(--color-border);
   --color-border-hover: var(--color-border-hover);
 }
@@ -72,6 +108,7 @@ body {
   color: var(--color-text-primary);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   line-height: 1.6;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 /* Smooth scrolling */
@@ -79,7 +116,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - adapts to theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -97,7 +134,7 @@ html {
   background: var(--color-text-secondary);
 }
 
-/* Scrollbar for dropdown mega menu - thinner and more subtle */
+/* Scrollbar for dropdown mega menu */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }
@@ -230,5 +267,5 @@ html {
 
 .hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
 }
