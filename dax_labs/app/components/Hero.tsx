@@ -116,14 +116,10 @@ export default function Hero() {
           >
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />
-              <span className="text-sm text-[var(--color-text-muted)]">17+ Years Experience</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" style={{ animationDelay: '0.5s' }} />
               <span className="text-sm text-[var(--color-text-muted)]">ISO 27001 Certified</span>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" style={{ animationDelay: '1s' }} />
+              <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" style={{ animationDelay: '0.5s' }} />
               <span className="text-sm text-[var(--color-text-muted)]">Government Trusted</span>
             </div>
           </div>
