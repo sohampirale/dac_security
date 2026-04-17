@@ -1,105 +1,141 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
 const methodologySteps = [
   {
     number: '01',
-    title: 'Discovery & Planning',
-    description: 'Understand business requirements, define scope and objectives, and create customized testing plan.',
+    title: 'DISCOVER',
+    description: 'We identify risks across your systems, infrastructure, and processes through comprehensive assessment.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
       </svg>
     ),
   },
   {
     number: '02',
-    title: 'Assessment & Testing',
-    description: 'Execute security assessments using automated and manual techniques, and document findings.',
+    title: 'ANALYZE',
+    description: 'We understand how these risks behave and how they affect your systems together as one integrated environment.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
   },
   {
     number: '03',
-    title: 'Analysis & Reporting',
-    description: 'Analyze vulnerabilities and risks, prioritize findings based on impact, and create detailed reports with remediation guidance.',
+    title: 'SECURE',
+    description: 'We take disciplined action to secure and strengthen your systems with military-grade practices.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
       </svg>
     ),
   },
   {
     number: '04',
-    title: 'Remediation Support',
-    description: 'Provide technical guidance, assist with fix implementation, and validate remediation.',
+    title: 'MONITOR',
+    description: 'Continuous surveillance and real-time threat detection to maintain your security posture.',
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
-  },
-  {
-    number: '05',
-    title: 'Continuous Improvement',
-    description: 'Regular follow-ups, periodic reassessments, and stay updated with emerging threats.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
       </svg>
     ),
   },
 ];
 
 export default function ServicesMethodology() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('methodology');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
+    <section id="methodology" className="py-24 lg:py-32 bg-[var(--color-bg-secondary)] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
-            SERVICE DELIVERY METHODOLOGY
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <p
+            className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            HOW WE WORK
+          </p>
+          <h2
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '0.1s' }}
+          >
+            Our Proven Methodology
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
-            Our structured approach ensures comprehensive security assessments with actionable insights and continuous improvement.
+          <p
+            className={`mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '0.2s' }}
+          >
+            A systematic approach to protecting your digital assets.
           </p>
         </div>
 
         {/* Methodology Steps */}
         <div className="relative">
           {/* Connection Line (Desktop) */}
-          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--color-bg-tertiary)] via-[var(--color-accent-subtle)] to-[var(--color-bg-tertiary)]" />
+          <div className="hidden lg:block absolute top-24 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent" />
 
           {/* Steps Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {methodologySteps.map((step, index) => (
               <div
                 key={step.number}
-                className="relative group"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`relative group ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${0.3 + index * 0.15}s`, transition: 'all 0.7s ease-out' }}
               >
                 {/* Step Number Circle */}
-                <div className="relative z-10 w-16 h-16 mx-auto bg-[var(--color-bg-primary)] border-2 border-[var(--color-border)] rounded-full flex items-center justify-center group-hover:border-[var(--color-accent)] group-hover:bg-[var(--color-accent)] transition-colors duration-300">
-                  <span className="text-lg font-bold text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-light)] transition-colors">
+                <div className="relative z-10 w-16 h-16 mx-auto bg-[var(--color-bg-primary)] border-2 border-[var(--color-accent)] rounded-full flex items-center justify-center group-hover:bg-[var(--color-accent)] group-hover:scale-110 transition-all duration-300">
+                  <span className="text-lg font-bold text-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors">
                     {step.number}
                   </span>
                 </div>
 
                 {/* Icon */}
                 <div className="mt-6 flex justify-center">
-                  <div className="w-14 h-14 bg-[var(--color-bg-tertiary)] rounded-lg flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors duration-300">
+                  <div className="w-14 h-14 bg-[var(--color-bg-tertiary)] rounded-lg flex items-center justify-center text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
                     {step.icon}
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="mt-6 text-lg font-bold text-[var(--color-text-primary)] text-center">
+                <h3 className="mt-6 text-xl font-bold text-[var(--color-text-primary)] text-center group-hover:text-[var(--color-accent)] transition-colors">
                   {step.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 text-sm text-[var(--color-text-muted)] text-center leading-relaxed">
+                <p className="mt-3 text-sm text-[var(--color-text-secondary)] text-center leading-relaxed">
                   {step.description}
                 </p>
               </div>
