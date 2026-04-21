@@ -172,21 +172,24 @@ export default function Header() {
               <div
                 key={item.name}
                 className="relative h-full flex items-center"
-                onPointerEnter={() => {
+                onMouseEnter={() => {
                   if (item.name === 'Services') openDropdown('services');
                   if (item.name === 'Products') openDropdown('products');
                 }}
               >
-                <a
-                  href={item.href}
-                  onFocus={() => {
-                    if (item.name === 'Services') openDropdown('services');
-                    if (item.name === 'Products') openDropdown('products');
-                  }}
-                  className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
-                >
-                  {item.name}
-                  {item.hasDropdown && (
+                {item.hasDropdown ? (
+                  <button
+                    type="button"
+                    onFocus={() => openDropdown(item.name === 'Services' ? 'services' : 'products')}
+                    onClick={() => {
+                      const menu = item.name === 'Services' ? 'services' : 'products';
+                      setActiveDropdown((current) => (current === menu ? null : menu));
+                    }}
+                    className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
+                    aria-expanded={activeDropdown === (item.name === 'Services' ? 'services' : 'products')}
+                    aria-haspopup="true"
+                  >
+                    {item.name}
                     <svg
                       className={`ml-1 w-4 h-4 transition-transform duration-200 ${
                         item.name === 'Services' ? (activeDropdown === 'services' ? 'rotate-180' : '') :
@@ -198,9 +201,17 @@ export default function Header() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
-                  )}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
-                </a>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
+                  </button>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
+                  >
+                    {item.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
+                  </a>
+                )}
               </div>
             ))}
 
@@ -300,11 +311,11 @@ export default function Header() {
       </nav>
 
       <div
-        onPointerEnter={() => {
+        onMouseEnter={() => {
           if (activeDropdown) openDropdown(activeDropdown);
         }}
-        onPointerLeave={closeDropdowns}
-        className={`hidden lg:block fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
+        onMouseLeave={closeDropdowns}
+        className={`hidden lg:block fixed left-0 right-0 top-16 lg:top-20 bottom-0 z-[60] transition-all duration-300 ${
           activeDropdown ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
         }`}
       >
