@@ -18,9 +18,7 @@ export default function CTASection() {
           {/* Content - Center aligned */}
           <div className="relative z-10 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight leading-tight">
-              Do You Need Our Help in
-              <br />
-              <span className="text-[var(--color-accent)]">Securing Your Systems?</span>
+              Do You Need Our Help in <span className="text-[var(--color-accent)]">Securing Your Systems?</span>
             </h2>
 
             <div className="mt-10">
