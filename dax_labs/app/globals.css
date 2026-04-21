@@ -269,3 +269,30 @@ html {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px var(--shadow-color);
 }
+
+/* Overrides from design spec: remove icons, shadows, cards and simplify layout */
+/* Hide inline/icon elements rendered as SVG or with "icon" in class names */
+[class*="icon"], svg[class*="icon"], .icon, svg.icon {
+  display: none !important;
+}
+
+/* Remove all shadows coming from utility classes */
+[class*="shadow"], [class*="shadow-"] {
+  box-shadow: none !important;
+}
+
+/* Remove rounded/card appearance from elements using rounded utilities */
+[class*="rounded"], [class*="rounded-"] {
+  border-radius: 0 !important;
+}
+
+/* Make card backgrounds neutral and remove borders when used for card-like UI */
+.bg-[var(--color-bg-primary)], .card, [class*="card"], [class*="border-"] {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* Ensure clickable contact links remain visible and usable (no visual change) */
+  color: inherit;
+  text-decoration: underline;
+}
