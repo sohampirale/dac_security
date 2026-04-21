@@ -293,6 +293,8 @@ html {
 }
 
 /* Ensure clickable contact links remain visible and usable (no visual change) */
+a[href^="mailto"],
+a[href^="tel"] {
   color: inherit;
   text-decoration: underline;
 }
