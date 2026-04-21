@@ -74,45 +74,10 @@ export default function Hero() {
             Secured with discipline, integrity, and military-grade cybersecurity practices that you can trust.
           </p>
 
-          {/* CTA Buttons */}
-          <div
-            className="mt-12 flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-            style={{ animationDelay: '0.3s' }}
-          >
-            <a
-              href="/contact"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-light)] bg-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent-hover)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg hover:shadow-[var(--color-accent)]/20"
-            >
-              Get Started
-              <svg
-                className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </a>
-            <a
-              href="/services"
-              className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-border)] rounded-md hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
-            >
-              Learn More
-              <svg
-                className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-
           {/* Quick stats / trust indicators */}
           <div
-            className="mt-16 flex flex-wrap gap-8 animate-fade-in-up"
-            style={{ animationDelay: '0.4s' }}
+            className="mt-12 flex flex-wrap gap-8 animate-fade-in-up"
+            style={{ animationDelay: '0.3s' }}
           >
             <div className="flex items-center space-x-3">
               <div className="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" />

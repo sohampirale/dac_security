@@ -1,6 +1,5 @@
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Statistics from './components/Statistics';
 import Commitment from './components/Commitment';
 import ServicesOverview from './components/ServicesOverview';
 import ServicesMethodology from './components/ServicesMethodology';
@@ -16,7 +15,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <Statistics />
         <Commitment />
         <ServicesOverview />
         <ServicesMethodology />
