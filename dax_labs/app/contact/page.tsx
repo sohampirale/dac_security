@@ -49,12 +49,11 @@ export default function ContactPage() {
       <div className="min-h-screen bg-[var(--color-bg-primary)] pt-24 pb-16 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Page Header */}
-          <div className="mb-12">
+          <div className="mb-12 border-b border-[var(--color-border)] pb-10">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight">
               Contact Us
             </h1>
-            <div className="mt-4 h-0.5 w-24 bg-[var(--color-accent)]" />
-            <p className="mt-6 text-lg text-[var(--color-text-secondary)] leading-relaxed max-w-3xl">
+            <p className="mt-6 max-w-4xl text-lg font-semibold leading-relaxed text-[var(--color-text-primary)]">
               All communication is handled with confidentiality and professional discretion.
               The more accurate information you provide, the faster we can understand and assist your requirement.
             </p>
@@ -63,7 +62,7 @@ export default function ContactPage() {
           {/* Two Column Layout */}
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Left Column - Contact Details */}
-            <div>
+            <div className="border-b border-[var(--color-border)] pb-10 lg:border-b-0 lg:pb-0">
               <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
                 Contact Details
               </h2>
@@ -121,7 +120,7 @@ export default function ContactPage() {
 
             {/* Right Column - Form */}
             <div>
-              <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
+              <h2 className="mb-6 border-b border-[var(--color-border)] pb-8 text-2xl font-bold text-[var(--color-text-primary)]">
                 Let&apos;s Discuss
               </h2>
 
