@@ -15,6 +15,8 @@ const tabs = [
   { id: 'secure', label: 'SECURE', description: 'Take disciplined action to secure and strengthen your systems' },
 ];
 
+type TabId = 'discover' | 'analyze' | 'secure';
+
 const discoverServices = [
   {
     category: 'Application Security Assessment',
@@ -113,7 +115,7 @@ const secureProducts = [
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<'services' | 'products' | null>(null);
-  const [activeTab, setActiveTab] = useState<'discover' | 'analyze' | 'secure'>('discover');
+  const [activeTab, setActiveTab] = useState<TabId>('discover');
   const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearCloseTimeout = () => {
@@ -150,6 +152,51 @@ export default function Header() {
       case 'secure': return secureProducts;
     }
   };
+
+  const renderTabRail = () => (
+    <div className="border-b border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(10,26,40,0.92),rgba(16,42,62,0.3))] px-8 py-6">
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+        <div className="lg:w-[420px] lg:flex-shrink-0">
+          <p className="mb-4 text-xs font-semibold tracking-[0.34em] text-[var(--color-text-muted)]">
+            NAVIGATION FLOW
+          </p>
+          <div className="flex flex-wrap gap-2 lg:flex-nowrap">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id as TabId)}
+                  onMouseEnter={() => setActiveTab(tab.id as TabId)}
+                  onFocus={() => setActiveTab(tab.id as TabId)}
+                  className={`group relative min-w-[150px] rounded-xl border px-6 py-4 text-left transition-all duration-200 ${
+                    isActive
+                      ? 'border-[var(--color-accent)] bg-[rgba(0,215,184,0.09)] text-[var(--color-text-primary)] shadow-[0_0_0_1px_rgba(0,215,184,0.18),0_18px_40px_rgba(0,0,0,0.18)]'
+                      : 'border-[var(--color-border)] bg-[rgba(21,34,50,0.9)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/60 hover:text-[var(--color-text-secondary)]'
+                  }`}
+                >
+                  <span className="block text-xs font-semibold tracking-[0.34em]">
+                    {tab.label}
+                  </span>
+                  <span className={`mt-3.5 block h-0.5 rounded-full transition-all duration-200 ${
+                    isActive ? 'w-full bg-[var(--color-accent)]' : 'w-10 bg-[var(--color-border)] group-hover:w-14'
+                  }`} />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="min-w-0 flex-1 lg:max-w-[470px] lg:pt-1">
+          <p className="text-base leading-relaxed text-[var(--color-text-secondary)] lg:text-right">
+            {tabs.find((t) => t.id === activeTab)?.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border)] transition-colors duration-300">
@@ -213,53 +260,31 @@ export default function Header() {
 
                 {item.name === 'Services' && activeDropdown === 'services' && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[920px] max-w-[90vw] z-[80] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] shadow-2xl shadow-black/30 overflow-hidden"
+                    className="absolute top-full right-0 mt-4 z-[80] max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-y-auto overflow-x-hidden rounded-[24px] border border-[var(--color-border)] bg-[rgba(15,25,35,0.96)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl scrollbar-thin"
                     onMouseEnter={() => openDropdown('services')}
                     onMouseLeave={closeDropdowns}
                   >
-                    <div className="border-b border-[var(--color-border)] px-6 py-4">
-                      <div className="flex items-center space-x-1">
-                        {tabs.map((tab) => (
-                          <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                            className={`relative px-4 py-3 text-xs font-semibold tracking-[0.25em] transition-all duration-200 ${
-                              activeTab === tab.id
-                                ? 'text-[var(--color-accent)]'
-                                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
-                            }`}
-                          >
-                            {tab.label}
-                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
-                              activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'
-                            }`} />
-                          </button>
-                        ))}
-                      </div>
-                      <p className="pt-3 text-sm text-[var(--color-text-muted)]">
-                        {tabs.find((t) => t.id === activeTab)?.description}
-                      </p>
-                    </div>
+                    {renderTabRail()}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 p-6">
+                    <div className="grid grid-cols-1 gap-5 p-8 md:grid-cols-2 xl:grid-cols-3">
                       {getServicesForTab().map((service) => (
                         <a
                           key={service.category}
                           href={service.href}
-                          className="group p-5 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300"
+                          className="group min-h-[270px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-300"
                         >
                           <div className="flex items-start space-x-4">
-                            <div className="p-3 rounded-lg bg-[var(--color-bg-tertiary)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
+                            <div className="p-3 rounded-xl bg-[var(--color-bg-tertiary)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
                               {service.icon}
                             </div>
                             <div className="flex-1">
-                              <h4 className="text-base font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+                              <h4 className="text-[1.65rem] leading-tight font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
                                 {service.category}
                               </h4>
-                              <ul className="mt-3 space-y-2">
+                              <ul className="mt-5 space-y-2.5">
                                 {service.items.map((subItem) => (
-                                  <li key={subItem} className="flex items-center text-sm text-[var(--color-text-secondary)]">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-60" />
+                                  <li key={subItem} className="flex items-center text-[15px] text-[var(--color-text-secondary)]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-70" />
                                     {subItem}
                                   </li>
                                 ))}
@@ -270,10 +295,10 @@ export default function Header() {
                       ))}
                     </div>
 
-                    <div className="border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-6 py-4">
+                    <div className="border-t border-[var(--color-border)] bg-[rgba(21,34,50,0.88)] px-8 py-5">
                       <a
                         href="/services"
-                        className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                        className="inline-flex items-center text-base font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
                       >
                         View All Services
                         <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,47 +311,25 @@ export default function Header() {
 
                 {item.name === 'Products' && activeDropdown === 'products' && (
                   <div
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[920px] max-w-[90vw] z-[80] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] shadow-2xl shadow-black/30 overflow-hidden"
+                    className="absolute top-full right-0 mt-4 z-[80] max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-y-auto overflow-x-hidden rounded-[24px] border border-[var(--color-border)] bg-[rgba(15,25,35,0.96)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl scrollbar-thin"
                     onMouseEnter={() => openDropdown('products')}
                     onMouseLeave={closeDropdowns}
                   >
-                    <div className="border-b border-[var(--color-border)] px-6 py-4">
-                      <div className="flex items-center space-x-1">
-                        {tabs.map((tab) => (
-                          <button
-                            key={tab.id}
-                            onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                            className={`relative px-4 py-3 text-xs font-semibold tracking-[0.25em] transition-all duration-200 ${
-                              activeTab === tab.id
-                                ? 'text-[var(--color-accent)]'
-                                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
-                            }`}
-                          >
-                            {tab.label}
-                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
-                              activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'
-                            }`} />
-                          </button>
-                        ))}
-                      </div>
-                      <p className="pt-3 text-sm text-[var(--color-text-muted)]">
-                        {tabs.find((t) => t.id === activeTab)?.description}
-                      </p>
-                    </div>
+                    {renderTabRail()}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 p-6">
+                    <div className="grid grid-cols-1 gap-5 p-8 md:grid-cols-2 xl:grid-cols-3">
                       {getProductsForTab().map((category) => (
                         <div
                           key={category.name}
-                          className="p-5 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)]"
+                          className="min-h-[230px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)]"
                         >
-                          <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-4">
+                          <h4 className="text-[1.45rem] leading-tight font-bold text-[var(--color-text-primary)] mb-5">
                             {category.name}
                           </h4>
-                          <ul className="space-y-2">
+                          <ul className="space-y-3">
                             {category.items.map((subItem) => (
-                              <li key={subItem} className="flex items-center text-sm text-[var(--color-text-secondary)]">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-60" />
+                              <li key={subItem} className="flex items-center text-[15px] text-[var(--color-text-secondary)]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-70" />
                                 {subItem}
                               </li>
                             ))}
@@ -336,11 +339,11 @@ export default function Header() {
                     </div>
 
                     {activeTab === 'secure' && (
-                      <div className="px-6 pb-6">
-                        <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">IT Security Products</h3>
+                      <div className="px-8 pb-8">
+                        <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-5">IT Security Products</h3>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                           {['Web Application Firewall', 'DDoS Mitigation', 'SIEM', 'Email Security', 'DLP', 'EDR/XDR', 'SSL VPN', 'DNS Firewall'].map((product) => (
-                            <div key={product} className="p-4 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)] text-center">
+                            <div key={product} className="p-4 bg-[rgba(21,34,50,0.9)] rounded-xl border border-[var(--color-border)] text-center">
                               <span className="text-sm font-medium text-[var(--color-text-secondary)]">{product}</span>
                             </div>
                           ))}
@@ -348,10 +351,10 @@ export default function Header() {
                       </div>
                     )}
 
-                    <div className="border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-6 py-4">
+                    <div className="border-t border-[var(--color-border)] bg-[rgba(21,34,50,0.88)] px-8 py-5">
                       <a
                         href="/products"
-                        className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                        className="inline-flex items-center text-base font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
                       >
                         View All Products
                         <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
