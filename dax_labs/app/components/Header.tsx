@@ -97,19 +97,19 @@ const secureServices = [
 ];
 
 const discoverProducts = [
-  { name: 'Vulnerability Scanners', items: ['Tenable Nessus', 'Rapid7 InsightVM'] },
-  { name: 'Penetration Testing Tools', items: ['Burp Suite', 'Metasploit'] },
-  { name: 'Network Discovery', items: ['Nmap', 'Manage Engine'] },
+  { name: 'Vulnerability Scanners', href: '/products/it-security', items: ['Tenable Nessus', 'Rapid7 InsightVM'] },
+  { name: 'Penetration Testing Tools', href: '/products/it-security', items: ['Burp Suite', 'Metasploit'] },
+  { name: 'Network Discovery', href: '/products/it-security', items: ['Nmap', 'Manage Engine'] },
 ];
 
 const analyzeProducts = [
-  { name: 'SIEM Solutions', items: ['Motadata SIEM', 'Manage Engine'] },
-  { name: 'Threat Intelligence', items: ['Maltego', 'ThreatFeeds'] },
+  { name: 'SIEM Solutions', href: '/products/it-security', items: ['Motadata SIEM', 'Manage Engine'] },
+  { name: 'Threat Intelligence', href: '/products/it-security', items: ['Maltego', 'ThreatFeeds'] },
 ];
 
 const secureProducts = [
-  { name: 'Security Solutions', items: ['WAF (Haltdos)', 'DDoS Mitigation', 'SSL VPN', 'DNS Firewall', 'Email Security', 'DLP', 'EDR/XDR'] },
-  { name: 'Forensic Tools', items: ['Forensic Workstation', 'Password Cracking Machine', 'RF Shielding Bag', 'Mobile Forensic Tools'] },
+  { name: 'Security Solutions', href: '/products/it-security', items: ['WAF (Haltdos)', 'DDoS Mitigation', 'SSL VPN', 'DNS Firewall', 'Email Security', 'DLP', 'EDR/XDR'] },
+  { name: 'Forensic Tools', href: '/products/forensic-software', items: ['Forensic Workstation', 'Password Cracking Machine', 'RF Shielding Bag', 'Mobile Forensic Tools'] },
 ];
 
 export default function Header() {
@@ -319,11 +319,12 @@ export default function Header() {
 
                     <div className="grid grid-cols-1 gap-5 p-8 md:grid-cols-2 xl:grid-cols-3">
                       {getProductsForTab().map((category) => (
-                        <div
+                        <a
                           key={category.name}
-                          className="min-h-[230px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)]"
+                          href={category.href}
+                          className="group min-h-[230px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-300"
                         >
-                          <h4 className="text-[1.45rem] leading-tight font-bold text-[var(--color-text-primary)] mb-5">
+                          <h4 className="text-[1.45rem] leading-tight font-bold text-[var(--color-text-primary)] mb-5 group-hover:text-[var(--color-accent)] transition-colors">
                             {category.name}
                           </h4>
                           <ul className="space-y-3">
@@ -334,7 +335,7 @@ export default function Header() {
                               </li>
                             ))}
                           </ul>
-                        </div>
+                        </a>
                       ))}
                     </div>
 
