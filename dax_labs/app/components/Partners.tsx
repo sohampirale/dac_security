@@ -71,9 +71,8 @@ export default function Partners() {
   }, []);
 
   return (
-    <section id="partners" className="py-24 lg:py-32 bg-[var(--color-bg-primary)]">
+    <section id="partners" className="bg-[var(--color-bg-primary)] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
@@ -100,7 +99,6 @@ export default function Partners() {
           </p>
         </div>
 
-        {/* Partnership Benefits */}
         <div className="mb-12 flex flex-wrap justify-center gap-4">
           {[
             'Authorized Reseller',
@@ -110,9 +108,9 @@ export default function Partners() {
           ].map((benefit, index) => (
             <div
               key={benefit}
-              className={`px-4 py-2 bg-[var(--color-bg-secondary)] rounded-full text-sm font-medium text-[var(--color-text-secondary)] border border-[var(--color-border)] transition-all duration-700 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
+                className={`rounded-full border border-[var(--color-border)] bg-[rgba(17,35,53,0.9)] px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-all duration-700 ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
             >
               <span className="text-[var(--color-accent)] mr-2">✓</span>
@@ -121,22 +119,19 @@ export default function Partners() {
           ))}
         </div>
 
-        {/* Partners Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {partners.map((partner, index) => (
             <div
               key={partner.name}
-              className={`group p-6 bg-[var(--color-bg-secondary)] rounded-xl border-2 border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 hover-lift ${
+              className={`group rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${0.4 + index * 0.1}s` }}
             >
-              {/* Partner Name */}
               <h3 className="text-xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
                 {partner.name}
               </h3>
 
-              {/* Specialization */}
               <div className="mt-4">
                 <p className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-1">
                   Specialization
@@ -146,7 +141,6 @@ export default function Partners() {
                 </p>
               </div>
 
-              {/* Key Products */}
               <div className="mt-4 pt-4 border-t border-[var(--color-border)]">
                 <p className="text-xs font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-1">
                   Key Products
@@ -159,11 +153,10 @@ export default function Partners() {
           ))}
         </div>
 
-        {/* View More */}
         <div className="mt-12 text-center">
           <a
             href="/products"
-            className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-border)] rounded-md hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
+            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             View All Partners
             <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

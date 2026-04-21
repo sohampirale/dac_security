@@ -70,10 +70,10 @@ export default function Certifications() {
   }, []);
 
   return (
-    <section id="certifications" className="py-24 lg:py-32 bg-[var(--color-bg-secondary)]">
+    <section id="certifications" className="bg-[var(--color-bg-secondary)] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`mx-auto mb-16 max-w-6xl rounded-[2rem] border border-[var(--color-border)] bg-[var(--color-bg-primary)] px-6 py-10 shadow-[0_24px_80px_rgba(15,23,42,0.06)] transition-all duration-700 sm:px-10 ${
+          className={`mx-auto mb-16 max-w-6xl rounded-[2rem] border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(16,33,49,0.95),rgba(11,25,37,0.95))] px-6 py-10 shadow-[0_24px_80px_rgba(0,0,0,0.18)] transition-all duration-700 sm:px-10 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
@@ -90,12 +90,12 @@ export default function Certifications() {
             {trustBadges.map((badge, index) => (
               <div
                 key={badge.title}
-                className={`flex min-h-[164px] flex-col items-center rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 py-6 text-center transition-all duration-700 ${
+                className={`flex min-h-[164px] flex-col items-center rounded-2xl border border-[var(--color-border)] bg-[rgba(10,21,32,0.84)] px-4 py-6 text-center transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
                 style={{ transitionDelay: `${0.1 + index * 0.06}s` }}
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--color-border)] bg-[rgba(22,41,61,0.9)] text-[var(--color-text-primary)]">
                   <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
@@ -129,11 +129,9 @@ export default function Certifications() {
           </p>
         </div>
 
-        {/* Two Column Layout */}
         <div className="grid max-w-5xl gap-8 mx-auto md:grid-cols-2 items-stretch">
-          {/* Block 1: Certified Expertise */}
           <div
-            className={`flex h-full flex-col bg-[var(--color-bg-primary)] rounded-2xl border-2 border-[var(--color-border)] p-8 lg:p-10 transition-all duration-700 ${
+            className={`flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '0.2s' }}
@@ -160,9 +158,8 @@ export default function Certifications() {
             </ul>
           </div>
 
-          {/* Block 2: Applicable Across Critical Sectors */}
           <div
-            className={`flex h-full flex-col bg-[var(--color-bg-primary)] rounded-2xl border-2 border-[var(--color-border)] p-8 lg:p-10 transition-all duration-700 ${
+            className={`flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
             style={{ transitionDelay: '0.3s' }}

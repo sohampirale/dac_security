@@ -85,9 +85,8 @@ export default function ServiceIndustries() {
   }, []);
 
   return (
-    <section id="industries" className="py-24 lg:py-32 bg-[var(--color-bg-primary)] transition-colors duration-300">
+    <section id="industries" className="bg-[var(--color-bg-primary)] py-24 transition-colors duration-300 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
@@ -114,32 +113,27 @@ export default function ServiceIndustries() {
           </p>
         </div>
 
-        {/* Industries Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {industries.map((industry, index) => (
             <div
               key={industry.name}
-              className={`group relative p-8 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-500 ${
+              className={`group relative rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent)] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
             >
-              {/* Icon */}
               <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
                 {industry.icon}
               </div>
 
-              {/* Title */}
               <h3 className="mt-6 text-xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
                 {industry.name}
               </h3>
 
-              {/* Description */}
               <p className="mt-4 text-sm text-[var(--color-text-secondary)] leading-relaxed">
                 {industry.description}
               </p>
 
-              {/* Bottom accent */}
               <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-[var(--color-accent)] to-transparent rounded-b-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           ))}

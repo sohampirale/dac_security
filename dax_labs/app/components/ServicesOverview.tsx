@@ -91,9 +91,8 @@ export default function ServicesOverview() {
   }, []);
 
   return (
-    <section id="services" className="py-24 lg:py-32 bg-[var(--color-bg-secondary)] transition-colors duration-300">
+    <section id="services" className="bg-[var(--color-bg-secondary)] py-24 transition-colors duration-300 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
@@ -120,35 +119,29 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative p-8 bg-[var(--color-bg-primary)] rounded-xl border-2 border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-500 hover-lift ${
+              className={`group relative rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(13,28,42,0.96))] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent)] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
             >
-              {/* Gradient accent on hover */}
               <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--color-accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              {/* Icon */}
               <div className="relative inline-flex items-center justify-center w-14 h-14 bg-[var(--color-bg-secondary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
                 {service.icon}
               </div>
 
-              {/* Title */}
               <h3 className="relative mt-6 text-xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
                 {service.title}
               </h3>
 
-              {/* Description */}
               <p className="relative mt-4 text-sm text-[var(--color-text-secondary)] leading-relaxed">
                 {service.description}
               </p>
 
-              {/* Items List */}
               <ul className="relative mt-6 space-y-2">
                 {service.items.map((item) => (
                   <li key={item} className="flex items-center text-sm text-[var(--color-text-muted)]">
@@ -158,7 +151,6 @@ export default function ServicesOverview() {
                 ))}
               </ul>
 
-              {/* Arrow indicator */}
               <div className="relative mt-6 flex items-center text-[var(--color-accent)] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                 Learn more
                 <svg className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,11 +161,10 @@ export default function ServicesOverview() {
           ))}
         </div>
 
-        {/* View All Link */}
         <div className="mt-16 text-center">
           <a
             href="/services"
-            className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-border)] rounded-md hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
+            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             View All Services
             <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

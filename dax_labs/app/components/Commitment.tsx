@@ -67,9 +67,12 @@ export default function Commitment() {
   }, []);
 
   return (
-    <section id="who-we-are" className="py-24 lg:py-32 bg-[var(--color-bg-primary)] transition-colors duration-300">
+    <section id="who-we-are" className="relative overflow-hidden bg-[var(--color-bg-primary)] py-24 transition-colors duration-300 lg:py-32">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-[8%] top-20 h-56 w-56 rounded-full bg-[rgba(32,215,181,0.1)] blur-3xl" />
+        <div className="absolute bottom-6 right-[10%] h-64 w-64 rounded-full bg-[rgba(47,144,255,0.09)] blur-3xl" />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
@@ -96,36 +99,30 @@ export default function Commitment() {
           </p>
         </div>
 
-        {/* Four Pillars Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {commitments.map((item, index) => (
             <div
               key={item.title}
-              className={`group relative p-8 lg:p-10 bg-[var(--color-bg-secondary)] rounded-2xl border-2 border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-500 hover-lift ${
+              className={`group relative rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent)] lg:p-10 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
             >
-              {/* Cyber corner accent */}
               <div className="absolute top-0 right-0 w-12 h-12 border-r-2 border-t-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-tr-2xl" />
               <div className="absolute bottom-0 left-0 w-12 h-12 border-l-2 border-b-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-bl-2xl" />
 
-              {/* Icon */}
               <div className="inline-flex items-center justify-center w-16 h-16 bg-[var(--color-bg-tertiary)] rounded-xl text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300 group-hover:scale-110">
                 {item.icon}
               </div>
 
-              {/* Title */}
               <h3 className="mt-8 text-xl lg:text-2xl font-bold text-[var(--color-text-primary)] tracking-wide group-hover:text-[var(--color-accent)] transition-colors">
                 {item.title}
               </h3>
 
-              {/* Description */}
               <p className="mt-4 text-sm lg:text-base text-[var(--color-text-secondary)] leading-relaxed">
                 {item.description}
               </p>
 
-              {/* Bottom accent line */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-1 bg-[var(--color-accent)] group-hover:w-full transition-all duration-500 rounded-full" />
             </div>
           ))}

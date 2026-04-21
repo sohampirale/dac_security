@@ -1,82 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  /* =============================================
-     COLOR SYSTEM - Light Theme (Black on White)
-     Perfect for Government & Enterprise clients
-     Modify these values to change entire theme
-     ============================================= */
+  color-scheme: dark;
 
-  /* Allow both color schemes */
-  color-scheme: light dark;
+  --color-bg-primary: #0b141f;
+  --color-bg-secondary: #101c2a;
+  --color-bg-tertiary: #142436;
+  --color-bg-gradient-start: #0b141f;
+  --color-bg-gradient-end: #101f31;
 
-  /* Background Colors - Light */
-  --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8f9fa;
-  --color-bg-tertiary: #f1f3f4;
-  --color-bg-gradient-start: #ffffff;
-  --color-bg-gradient-end: #f8f9fa;
+  --color-text-primary: #e7f1fb;
+  --color-text-secondary: #b4c6d8;
+  --color-text-muted: #7f95ab;
+  --color-text-light: #061018;
+  --color-text-inverse: #08131c;
 
-  /* Text Colors - Light */
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #4a4a4a;
-  --color-text-muted: #717171;
-  --color-text-light: #ffffff;
-  --color-text-inverse: #ffffff;
+  --color-accent: #20d7b5;
+  --color-accent-hover: #3be7c7;
+  --color-accent-light: #86e8d7;
+  --color-accent-subtle: #173940;
 
-  /* Accent Colors - Light */
-  --color-accent: #1a1a1a;
-  --color-accent-hover: #000000;
-  --color-accent-light: #4a4a4a;
-  --color-accent-subtle: #e5e5e5;
+  --color-border: #20384d;
+  --color-border-hover: #2b5679;
+  --color-border-subtle: #1a2d3f;
 
-  /* Border Colors - Light */
-  --color-border: #e5e5e5;
-  --color-border-hover: #1a1a1a;
-  --color-border-subtle: #f0f0f0;
+  --shadow-color: rgba(3, 7, 12, 0.4);
+  --shadow-color-hover: rgba(3, 7, 12, 0.6);
 
-  /* Shadow Colors - Light */
-  --shadow-color: rgba(0, 0, 0, 0.08);
-  --shadow-color-hover: rgba(0, 0, 0, 0.15);
-
-  /* Animation timings */
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
   --transition-slow: 0.5s ease;
 }
 
-/* =============================================
-   DARK THEME - Cybersecurity Shade
-   Deep navy/charcoal tones (not pure black)
-   Suitable for cybersecurity business
-   ============================================= */
 [data-theme="dark"] {
-  /* Background Colors - Dark (deep navy/charcoal) */
-  --color-bg-primary: #0f1923;        /* Deep dark navy - main background */
-  --color-bg-secondary: #152232;      /* Slightly lighter navy - sections */
-  --color-bg-tertiary: #1a2d42;       /* Card backgrounds - muted blue-gray */
+  --color-bg-primary: #0b141f;
+  --color-bg-secondary: #101c2a;
+  --color-bg-tertiary: #142436;
   --color-bg-gradient-start: #0f1923;
-  --color-bg-gradient-end: #152232;
+  --color-bg-gradient-end: #101f31;
 
-  /* Text Colors - Dark */
-  --color-text-primary: #e8edf2;      /* Off-white for readability */
-  --color-text-secondary: #a8b5c4;    /* Muted blue-gray */
-  --color-text-muted: #6b7f94;        /* Darker muted blue */
-  --color-text-light: #0f1923;        /* Dark text for light backgrounds */
+  --color-text-primary: #e7f1fb;
+  --color-text-secondary: #b4c6d8;
+  --color-text-muted: #7f95ab;
+  --color-text-light: #061018;
   --color-text-inverse: #0f1923;
 
-  /* Accent Colors - Dark (teal/cyan accent for cyber feel) */
-  --color-accent: #00d4aa;            /* Cyber teal accent */
-  --color-accent-hover: #00eabb;      /* Brighter teal on hover */
-  --color-accent-light: #4db8d4;      /* Light blue accent */
-  --color-accent-subtle: #1a3a4a;     /* Subtle dark teal */
+  --color-accent: #20d7b5;
+  --color-accent-hover: #3be7c7;
+  --color-accent-light: #86e8d7;
+  --color-accent-subtle: #173940;
 
-  /* Border Colors - Dark */
-  --color-border: #1e3a4f;            /* Dark blue border */
-  --color-border-hover: #00d4aa;      /* Teal on hover */
+  --color-border: #20384d;
+  --color-border-hover: #2b5679;
   --color-border-subtle: #152a3a;
 
-  /* Shadow Colors - Dark */
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow-color-hover: rgba(0, 0, 0, 0.5);
 }
@@ -84,10 +61,8 @@
 @theme inline {
   --color-background: var(--color-bg-primary);
   --color-foreground: var(--color-text-primary);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
 
-  /* Custom color mappings for Tailwind */
   --color-bg-primary: var(--color-bg-primary);
   --color-bg-secondary: var(--color-bg-secondary);
   --color-bg-tertiary: var(--color-bg-tertiary);
@@ -104,19 +79,26 @@
 }
 
 body {
-  background: var(--color-bg-primary);
+  background:
+    radial-gradient(circle at 18% -8%, rgba(32, 215, 181, 0.16), transparent 44%),
+    radial-gradient(circle at 88% 10%, rgba(39, 148, 255, 0.15), transparent 34%),
+    linear-gradient(180deg, #0b141f 0%, #0f1d2d 40%, #0d1a28 100%);
   color: var(--color-text-primary);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
   line-height: 1.6;
   transition: background-color var(--transition-normal), color var(--transition-normal);
+  min-height: 100vh;
 }
 
-/* Smooth scrolling */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), "Trebuchet MS", sans-serif;
+  letter-spacing: -0.02em;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar - adapts to theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -134,7 +116,6 @@ html {
   background: var(--color-text-secondary);
 }
 
-/* Scrollbar for dropdown mega menu */
 .scrollbar-thin::-webkit-scrollbar {
   width: 6px;
 }
@@ -152,7 +133,6 @@ html {
   background: var(--color-text-muted);
 }
 
-/* Utility classes for animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -239,7 +219,6 @@ html {
   animation: counterUp 0.8s ease forwards;
 }
 
-/* Staggered animation delays */
 .delay-100 {
   animation-delay: 0.1s;
 }
@@ -260,7 +239,6 @@ html {
   animation-delay: 0.5s;
 }
 
-/* Hover lift effect utility */
 .hover-lift {
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
@@ -268,33 +246,4 @@ html {
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 30px var(--shadow-color);
-}
-
-/* Overrides from design spec: remove icons, shadows, cards and simplify layout */
-/* Hide inline/icon elements rendered as SVG or with "icon" in class names */
-[class*="icon"], svg[class*="icon"], .icon, svg.icon {
-  display: none !important;
-}
-
-/* Remove all shadows coming from utility classes */
-[class*="shadow"], [class*="shadow-"] {
-  box-shadow: none !important;
-}
-
-/* Remove rounded/card appearance from elements using rounded utilities */
-[class*="rounded"], [class*="rounded-"] {
-  border-radius: 0 !important;
-}
-
-/* Make card backgrounds neutral and remove borders when used for card-like UI */
-.bg-[var(--color-bg-primary)], .card, [class*="card"], [class*="border-"] {
-  background: transparent !important;
-  border: none !important;
-}
-
-/* Ensure clickable contact links remain visible and usable (no visual change) */
-a[href^="mailto"],
-a[href^="tel"] {
-  color: inherit;
-  text-decoration: underline;
 }

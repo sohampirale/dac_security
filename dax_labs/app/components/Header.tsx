@@ -199,19 +199,17 @@ export default function Header() {
   );
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/95 backdrop-blur-sm border-b border-[var(--color-border)] transition-colors duration-300">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(8,18,28,0.86)] backdrop-blur-xl transition-colors duration-300">
       <nav className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
           <div className="flex-shrink-0">
             <a href="#" className="flex items-center space-x-2">
-              <span className="text-xl lg:text-2xl font-bold tracking-tight text-[var(--color-text-primary)]">
-                DAK SECURITY
+              <span className="text-xl font-bold tracking-[0.08em] text-[var(--color-text-primary)] lg:text-2xl">
+                DAK <span className="text-[var(--color-accent)]">SECURITY</span>
               </span>
             </a>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8 h-full">
             {navItems.map((item) => (
               <div
@@ -230,7 +228,7 @@ export default function Header() {
                       const menu = item.name === 'Services' ? 'services' : 'products';
                       setActiveDropdown((current) => (current === menu ? null : menu));
                     }}
-                    className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
+                    className="group relative inline-flex items-center py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-text-primary)]"
                     aria-expanded={activeDropdown === (item.name === 'Services' ? 'services' : 'products')}
                     aria-haspopup="true"
                   >
@@ -246,21 +244,21 @@ export default function Header() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
-                  </button>
+                     <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
+                   </button>
                 ) : (
                   <a
                     href={item.href}
-                    className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
+                    className="group relative inline-flex items-center py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-text-primary)]"
                   >
                     {item.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
+                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
                   </a>
                 )}
 
                 {item.name === 'Services' && activeDropdown === 'services' && (
                   <div
-                    className="absolute top-full right-0 mt-4 z-[80] max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-y-auto overflow-x-hidden rounded-[24px] border border-[var(--color-border)] bg-[rgba(15,25,35,0.96)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl scrollbar-thin"
+                    className="scrollbar-thin absolute right-0 top-full z-[80] mt-4 max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-x-hidden overflow-y-auto rounded-[24px] border border-[var(--color-border)] bg-[rgba(10,20,31,0.97)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl"
                     onMouseEnter={() => openDropdown('services')}
                     onMouseLeave={closeDropdowns}
                   >
@@ -271,7 +269,7 @@ export default function Header() {
                         <a
                           key={service.category}
                           href={service.href}
-                          className="group min-h-[270px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-300"
+                           className="group min-h-[270px] rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
                         >
                           <div className="flex items-start space-x-4">
                             <div className="p-3 rounded-xl bg-[var(--color-bg-tertiary)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
@@ -311,7 +309,7 @@ export default function Header() {
 
                 {item.name === 'Products' && activeDropdown === 'products' && (
                   <div
-                    className="absolute top-full right-0 mt-4 z-[80] max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-y-auto overflow-x-hidden rounded-[24px] border border-[var(--color-border)] bg-[rgba(15,25,35,0.96)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl scrollbar-thin"
+                    className="scrollbar-thin absolute right-0 top-full z-[80] mt-4 max-h-[calc(100vh-6rem)] w-[min(1160px,calc(100vw-2.5rem))] overflow-x-hidden overflow-y-auto rounded-[24px] border border-[var(--color-border)] bg-[rgba(10,20,31,0.97)] shadow-[0_30px_80px_rgba(0,0,0,0.42)] backdrop-blur-xl"
                     onMouseEnter={() => openDropdown('products')}
                     onMouseLeave={closeDropdowns}
                   >
@@ -322,7 +320,7 @@ export default function Header() {
                         <a
                           key={category.name}
                           href={category.href}
-                          className="group min-h-[230px] p-6 bg-[linear-gradient(180deg,rgba(26,45,66,0.95),rgba(21,34,50,0.95))] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-300"
+                          className="group min-h-[230px] rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)]"
                         >
                           <h4 className="text-[1.45rem] leading-tight font-bold text-[var(--color-text-primary)] mb-5 group-hover:text-[var(--color-accent)] transition-colors">
                             {category.name}
@@ -370,11 +368,10 @@ export default function Header() {
 
           </div>
 
-          {/* Mobile menu button */}
           <div className="lg:hidden flex items-center space-x-2">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] transition-colors"
+              className="rounded-md border border-[var(--color-border)] bg-[rgba(11,24,37,0.62)] p-2 text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)]"
             >
               {isMenuOpen ? (
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -389,19 +386,18 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <div
           className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
             isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
-          <div className="py-4 space-y-2">
+          <div className="space-y-2 py-4">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-4 py-2 text-base font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)] rounded-md transition-colors"
+                className="block rounded-md border border-transparent px-4 py-2 text-base font-medium text-[var(--color-text-secondary)] transition-colors hover:border-[var(--color-border)] hover:text-[var(--color-text-primary)]"
               >
                 {item.name}
               </a>
