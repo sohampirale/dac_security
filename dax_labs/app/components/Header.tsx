@@ -212,6 +212,157 @@ export default function Header() {
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[var(--color-accent)] group-hover:w-full transition-all duration-300" />
                   </a>
                 )}
+
+                {item.name === 'Services' && activeDropdown === 'services' && (
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[920px] max-w-[90vw] z-[80] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] shadow-2xl shadow-black/30 overflow-hidden"
+                    onMouseEnter={() => openDropdown('services')}
+                    onMouseLeave={closeDropdowns}
+                  >
+                    <div className="border-b border-[var(--color-border)] px-6 py-4">
+                      <div className="flex items-center space-x-1">
+                        {tabs.map((tab) => (
+                          <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                            className={`relative px-4 py-3 text-xs font-semibold tracking-[0.25em] transition-all duration-200 ${
+                              activeTab === tab.id
+                                ? 'text-[var(--color-accent)]'
+                                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
+                            }`}
+                          >
+                            {tab.label}
+                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
+                              activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'
+                            }`} />
+                          </button>
+                        ))}
+                      </div>
+                      <p className="pt-3 text-sm text-[var(--color-text-muted)]">
+                        {tabs.find((t) => t.id === activeTab)?.description}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 p-6">
+                      {getServicesForTab().map((service) => (
+                        <a
+                          key={service.category}
+                          href={service.href}
+                          className="group p-5 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300"
+                        >
+                          <div className="flex items-start space-x-4">
+                            <div className="p-3 rounded-lg bg-[var(--color-bg-tertiary)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
+                              {service.icon}
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-base font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
+                                {service.category}
+                              </h4>
+                              <ul className="mt-3 space-y-2">
+                                {service.items.map((subItem) => (
+                                  <li key={subItem} className="flex items-center text-sm text-[var(--color-text-secondary)]">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-60" />
+                                    {subItem}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </a>
+                      ))}
+                    </div>
+
+                    <div className="border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-6 py-4">
+                      <a
+                        href="/services"
+                        className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                      >
+                        View All Services
+                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                )}
+
+                {item.name === 'Products' && activeDropdown === 'products' && (
+                  <div
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[920px] max-w-[90vw] z-[80] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] shadow-2xl shadow-black/30 overflow-hidden"
+                    onMouseEnter={() => openDropdown('products')}
+                    onMouseLeave={closeDropdowns}
+                  >
+                    <div className="border-b border-[var(--color-border)] px-6 py-4">
+                      <div className="flex items-center space-x-1">
+                        {tabs.map((tab) => (
+                          <button
+                            key={tab.id}
+                            onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                            className={`relative px-4 py-3 text-xs font-semibold tracking-[0.25em] transition-all duration-200 ${
+                              activeTab === tab.id
+                                ? 'text-[var(--color-accent)]'
+                                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
+                            }`}
+                          >
+                            {tab.label}
+                            <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
+                              activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'
+                            }`} />
+                          </button>
+                        ))}
+                      </div>
+                      <p className="pt-3 text-sm text-[var(--color-text-muted)]">
+                        {tabs.find((t) => t.id === activeTab)?.description}
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 p-6">
+                      {getProductsForTab().map((category) => (
+                        <div
+                          key={category.name}
+                          className="p-5 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)]"
+                        >
+                          <h4 className="text-base font-bold text-[var(--color-text-primary)] mb-4">
+                            {category.name}
+                          </h4>
+                          <ul className="space-y-2">
+                            {category.items.map((subItem) => (
+                              <li key={subItem} className="flex items-center text-sm text-[var(--color-text-secondary)]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-60" />
+                                {subItem}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+
+                    {activeTab === 'secure' && (
+                      <div className="px-6 pb-6">
+                        <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">IT Security Products</h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                          {['Web Application Firewall', 'DDoS Mitigation', 'SIEM', 'Email Security', 'DLP', 'EDR/XDR', 'SSL VPN', 'DNS Firewall'].map((product) => (
+                            <div key={product} className="p-4 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)] text-center">
+                              <span className="text-sm font-medium text-[var(--color-text-secondary)]">{product}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-6 py-4">
+                      <a
+                        href="/products"
+                        className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
+                      >
+                        View All Products
+                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
 
@@ -310,140 +461,6 @@ export default function Header() {
         </div>
       </nav>
 
-      <div
-        onMouseEnter={() => {
-          if (activeDropdown) openDropdown(activeDropdown);
-        }}
-        onMouseLeave={closeDropdowns}
-        className={`hidden lg:block fixed left-0 right-0 top-16 lg:top-20 bottom-0 z-[60] transition-all duration-300 ${
-          activeDropdown ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
-        }`}
-      >
-        <div className="absolute inset-0 bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] overflow-hidden flex flex-col">
-          <div className="border-b border-[var(--color-border)] px-6 lg:px-12 xl:px-20">
-            <div className="flex items-center space-x-1">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                  className={`relative px-6 py-5 text-sm font-semibold tracking-wider transition-all duration-200 ${
-                    activeTab === tab.id
-                      ? 'text-[var(--color-accent)]'
-                      : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)]'
-                  }`}
-                >
-                  {tab.label}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
-                    activeTab === tab.id ? 'scale-x-100' : 'scale-x-0'
-                  }`} />
-                </button>
-              ))}
-            </div>
-            <p className="text-sm text-[var(--color-text-muted)] pb-4">
-              {tabs.find((t) => t.id === activeTab)?.description}
-            </p>
-          </div>
-
-          {activeDropdown === 'services' && (
-            <>
-              <div className="flex-1 overflow-y-auto px-6 lg:px-12 xl:px-20 py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1600px]">
-                  {getServicesForTab().map((service) => (
-                    <a
-                      key={service.category}
-                      href={service.href}
-                      className="group p-6 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-accent)]/5"
-                    >
-                      <div className="flex items-start space-x-4">
-                        <div className="p-3 rounded-lg bg-[var(--color-bg-tertiary)] text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-all duration-300">
-                          {service.icon}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="text-lg font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-                            {service.category}
-                          </h4>
-                          <ul className="mt-3 space-y-2">
-                            {service.items.map((item) => (
-                              <li key={item} className="flex items-center text-sm text-[var(--color-text-secondary)]">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-50 group-hover:opacity-100 transition-opacity" />
-                                {item}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              <div className="px-6 lg:px-12 xl:px-20 py-4 border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-                <a
-                  href="/services"
-                  className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-                >
-                  View All Services
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
-            </>
-          )}
-
-          {activeDropdown === 'products' && (
-            <>
-              <div className="flex-1 overflow-y-auto px-6 lg:px-12 xl:px-20 py-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1600px]">
-                  {getProductsForTab().map((category) => (
-                    <div
-                      key={category.name}
-                      className="p-6 bg-[var(--color-bg-secondary)] rounded-xl border border-[var(--color-border)]"
-                    >
-                      <h4 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
-                        {category.name}
-                      </h4>
-                      <ul className="space-y-3">
-                        {category.items.map((item) => (
-                          <li key={item} className="flex items-center text-sm text-[var(--color-text-secondary)]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mr-3 opacity-50" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-
-                {activeTab === 'secure' && (
-                  <div className="mt-8">
-                    <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">IT Security Products</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                      {['Web Application Firewall', 'DDoS Mitigation', 'SIEM', 'Email Security', 'DLP', 'EDR/XDR', 'SSL VPN', 'DNS Firewall'].map((product) => (
-                        <div key={product} className="p-4 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)] text-center hover:border-[var(--color-accent)] transition-all duration-300 cursor-pointer">
-                          <span className="text-sm font-medium text-[var(--color-text-secondary)]">{product}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              <div className="px-6 lg:px-12 xl:px-20 py-4 border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
-                <a
-                  href="/products"
-                  className="inline-flex items-center text-sm font-semibold text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors"
-                >
-                  View All Products
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
     </header>
   );
 }
