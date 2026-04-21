@@ -26,7 +26,7 @@ export default function CTASection() {
                 href="/contact"
                 className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-light)] bg-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent-hover)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
               >
-                Yes, We Do
+                Yes, We do
               </a>
             </div>
           </div>

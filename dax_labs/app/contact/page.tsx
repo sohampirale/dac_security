@@ -47,84 +47,67 @@ export default function ContactPage() {
     <>
       <Header />
       <div className="min-h-screen bg-[var(--color-bg-primary)] pt-24 pb-16 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Page Header */}
-          <div className="mb-12 border-b border-[var(--color-border)] pb-10">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight">
+        <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
+          <div className="border-b border-[var(--color-border)] pb-8 sm:pb-10">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-text-primary)]">
               Contact Us
             </h1>
-            <p className="mt-6 max-w-4xl text-lg font-semibold leading-relaxed text-[var(--color-text-primary)]">
-              All communication is handled with confidentiality and professional discretion.
-              The more accurate information you provide, the faster we can understand and assist your requirement.
-            </p>
           </div>
 
-          {/* Two Column Layout */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-            {/* Left Column - Contact Details */}
-            <div className="border-b border-[var(--color-border)] pb-10 lg:border-b-0 lg:pb-0">
-              <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-6">
-                Contact Details
-              </h2>
+          <section className="border-b border-[var(--color-border)] py-10 sm:py-12">
+            <p className="max-w-4xl text-lg font-semibold leading-relaxed text-[var(--color-text-primary)]">
+              All communication is handled with confidentiality and professional discretion.
+              <br className="hidden sm:block" />
+              The more accurate information you provide, the faster we can understand and assist your requirement.
+            </p>
+          </section>
 
-              <div className="space-y-6">
-                {/* Email */}
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-bg-secondary)] rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-semibold text-[var(--color-text-primary)]">Email</p>
-                    <a href="mailto:info@daksecurity.com" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors">
-                      info@daksecurity.com
-                    </a>
-                  </div>
-                </div>
+          <section className="border-b border-[var(--color-border)] py-10 sm:py-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
+              Contact Details
+            </h2>
 
-                {/* Phone */}
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-bg-secondary)] rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-semibold text-[var(--color-text-primary)]">Phone</p>
-                    <a href="tel:+919604551338" className="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors">
-                      +91 9604551338
-                    </a>
-                  </div>
-                </div>
+            <div className="mt-8 space-y-8 text-[var(--color-text-primary)]">
+              <div>
+                <p className="text-2xl font-semibold">Email</p>
+                <a
+                  href="mailto:info@daksecurity.com"
+                  className="mt-2 inline-block text-xl sm:text-2xl font-semibold text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors"
+                >
+                  info@daksecurity.com
+                </a>
+              </div>
 
-                {/* Address */}
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-10 h-10 bg-[var(--color-bg-secondary)] rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-sm font-semibold text-[var(--color-text-primary)]">Address</p>
-                    <p className="text-[var(--color-text-secondary)]">
-                      20, H-1/A, Sector 63<br />
-                      Noida - 201301<br />
-                      Uttar Pradesh, India
-                    </p>
-                  </div>
-                </div>
+              <div>
+                <p className="text-2xl font-semibold">Phone</p>
+                <a
+                  href="tel:+919604551338"
+                  className="mt-2 inline-block text-xl sm:text-2xl font-semibold text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors"
+                >
+                  +91 9604551338
+                </a>
+              </div>
+
+              <div>
+                <p className="text-2xl font-semibold">Address</p>
+                <address className="mt-2 not-italic text-xl sm:text-2xl font-semibold leading-relaxed text-[var(--color-text-primary)]">
+                  20, H-1/A, Sector 63
+                  <br />
+                  Noida - 201301
+                  <br />
+                  Uttar Pradesh, India
+                </address>
               </div>
             </div>
+          </section>
 
-            {/* Right Column - Form */}
-            <div>
-              <h2 className="mb-6 border-b border-[var(--color-border)] pb-8 text-2xl font-bold text-[var(--color-text-primary)]">
+          <section className="py-10 sm:py-12">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
                 Let&apos;s Discuss
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="mt-10 space-y-5">
                 {/* Name / Organisation */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">
@@ -260,7 +243,7 @@ export default function ContactPage() {
                 </button>
               </form>
             </div>
-          </div>
+          </section>
         </div>
       </div>
       <Footer />
