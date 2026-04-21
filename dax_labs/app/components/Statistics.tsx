@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 
 const stats = [
-  { value: 17, suffix: ' Years', label: 'Years of Excellence' },
-  { value: 14000, suffix: '+', label: 'Applications Secured' },
-  { value: 4000, suffix: '+', label: 'Clients Trusted' },
-  { value: 200, suffix: '+', label: 'Security Professionals' },
+  { value: 10, suffix: '+', label: 'Years of Excellence' },
+  { value: 8500, suffix: '+', label: 'Applications Secured' },
+  { value: 2500, suffix: '+', label: 'Clients Protected' },
+  { value: 125, suffix: '+', label: 'Security Experts' },
 ];
 
 function AnimatedCounter({ value, isVisible }: { value: number; isVisible: boolean }) {
@@ -79,7 +79,7 @@ export default function Statistics() {
             }`}
             style={{ transitionDelay: '0.1s' }}
           >
-            Our Competitive Edge
+            Why Choose DAK Security
           </h2>
           <p
             className={`mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${

@@ -148,11 +148,11 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8 h-full">
             {navItems.map((item) => (
               <div
                 key={item.name}
-                className="relative"
+                className="relative h-full flex items-center"
                 onMouseEnter={() => {
                   if (item.name === 'Services') setIsServicesDropdownOpen(true);
                   if (item.name === 'Products') setIsProductsDropdownOpen(true);
@@ -164,7 +164,7 @@ export default function Header() {
               >
                 <a
                   href={item.href}
-                  className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center"
+                  className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
                 >
                   {item.name}
                   {item.hasDropdown && (
@@ -186,7 +186,7 @@ export default function Header() {
                 {/* Services Mega Menu - Full Screen */}
                 {item.name === 'Services' && (
                   <div
-                    className={`fixed left-0 right-0 top-16 bottom-0 transition-all duration-300 ${
+                    className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
                       isServicesDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                     }`}
                     style={{ marginTop: '0' }}
@@ -273,7 +273,7 @@ export default function Header() {
                 {/* Products Mega Menu - Full Screen */}
                 {item.name === 'Products' && (
                   <div
-                    className={`fixed left-0 right-0 top-16 bottom-0 transition-all duration-300 ${
+                    className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
                       isProductsDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
                     }`}
                   >
