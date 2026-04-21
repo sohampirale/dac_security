@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 
 const navItems = [
@@ -117,27 +117,15 @@ export default function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'discover' | 'analyze' | 'secure'>('discover');
   const { theme, toggleTheme } = useTheme();
-  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const clearCloseTimeout = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-  };
 
   const openDropdown = (menu: 'services' | 'products') => {
-    clearCloseTimeout();
     setIsServicesDropdownOpen(menu === 'services');
     setIsProductsDropdownOpen(menu === 'products');
   };
 
   const closeDropdowns = () => {
-    clearCloseTimeout();
-    closeTimeoutRef.current = setTimeout(() => {
-      setIsServicesDropdownOpen(false);
-      setIsProductsDropdownOpen(false);
-    }, 120);
+    setIsServicesDropdownOpen(false);
+    setIsProductsDropdownOpen(false);
   };
 
   const getServicesForTab = () => {
@@ -179,12 +167,13 @@ export default function Header() {
                   if (item.name === 'Services') openDropdown('services');
                   if (item.name === 'Products') openDropdown('products');
                 }}
-                onMouseLeave={() => {
-                  if (item.name === 'Services' || item.name === 'Products') closeDropdowns();
-                }}
               >
                 <a
                   href={item.href}
+                  onFocus={() => {
+                    if (item.name === 'Services') openDropdown('services');
+                    if (item.name === 'Products') openDropdown('products');
+                  }}
                   className="relative text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors duration-200 group inline-flex items-center py-2"
                 >
                   {item.name}
@@ -207,6 +196,7 @@ export default function Header() {
                 {/* Services Mega Menu - Full Screen */}
                 {item.name === 'Services' && (
                   <div
+                    onMouseLeave={closeDropdowns}
                     className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
                       isServicesDropdownOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
                     }`}
@@ -215,7 +205,6 @@ export default function Header() {
                     <div 
                       className="absolute inset-0 bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] overflow-hidden flex flex-col"
                       onMouseEnter={() => openDropdown('services')}
-                      onMouseLeave={closeDropdowns}
                     >
                       {/* Tabs Header */}
                       <div className="border-b border-[var(--color-border)] px-6 lg:px-12 xl:px-20">
@@ -294,6 +283,7 @@ export default function Header() {
                 {/* Products Mega Menu - Full Screen */}
                 {item.name === 'Products' && (
                   <div
+                    onMouseLeave={closeDropdowns}
                     className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
                       isProductsDropdownOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
                     }`}
@@ -301,7 +291,6 @@ export default function Header() {
                     <div 
                       className="absolute inset-0 bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] overflow-hidden flex flex-col"
                       onMouseEnter={() => openDropdown('products')}
-                      onMouseLeave={closeDropdowns}
                     >
                       {/* Tabs Header */}
                       <div className="border-b border-[var(--color-border)] px-6 lg:px-12 xl:px-20">
