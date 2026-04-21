@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTheme } from './ThemeProvider';
 
 const navItems = [
@@ -117,6 +117,28 @@ export default function Header() {
   const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'discover' | 'analyze' | 'secure'>('discover');
   const { theme, toggleTheme } = useTheme();
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const openDropdown = (menu: 'services' | 'products') => {
+    clearCloseTimeout();
+    setIsServicesDropdownOpen(menu === 'services');
+    setIsProductsDropdownOpen(menu === 'products');
+  };
+
+  const closeDropdowns = () => {
+    clearCloseTimeout();
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsServicesDropdownOpen(false);
+      setIsProductsDropdownOpen(false);
+    }, 120);
+  };
 
   const getServicesForTab = () => {
     switch (activeTab) {
@@ -154,12 +176,11 @@ export default function Header() {
                 key={item.name}
                 className="relative h-full flex items-center"
                 onMouseEnter={() => {
-                  if (item.name === 'Services') setIsServicesDropdownOpen(true);
-                  if (item.name === 'Products') setIsProductsDropdownOpen(true);
+                  if (item.name === 'Services') openDropdown('services');
+                  if (item.name === 'Products') openDropdown('products');
                 }}
                 onMouseLeave={() => {
-                  if (item.name === 'Services') setIsServicesDropdownOpen(false);
-                  if (item.name === 'Products') setIsProductsDropdownOpen(false);
+                  if (item.name === 'Services' || item.name === 'Products') closeDropdowns();
                 }}
               >
                 <a
@@ -187,14 +208,14 @@ export default function Header() {
                 {item.name === 'Services' && (
                   <div
                     className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
-                      isServicesDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                      isServicesDropdownOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
                     }`}
                     style={{ marginTop: '0' }}
                   >
                     <div 
                       className="absolute inset-0 bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] overflow-hidden flex flex-col"
-                      onMouseEnter={() => setIsServicesDropdownOpen(true)}
-                      onMouseLeave={() => setIsServicesDropdownOpen(false)}
+                      onMouseEnter={() => openDropdown('services')}
+                      onMouseLeave={closeDropdowns}
                     >
                       {/* Tabs Header */}
                       <div className="border-b border-[var(--color-border)] px-6 lg:px-12 xl:px-20">
@@ -274,13 +295,13 @@ export default function Header() {
                 {item.name === 'Products' && (
                   <div
                     className={`fixed left-0 right-0 top-16 lg:top-20 bottom-0 transition-all duration-300 ${
-                      isProductsDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+                      isProductsDropdownOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'
                     }`}
                   >
                     <div 
                       className="absolute inset-0 bg-[var(--color-bg-primary)] border-t border-[var(--color-border)] overflow-hidden flex flex-col"
-                      onMouseEnter={() => setIsProductsDropdownOpen(true)}
-                      onMouseLeave={() => setIsProductsDropdownOpen(false)}
+                      onMouseEnter={() => openDropdown('products')}
+                      onMouseLeave={closeDropdowns}
                     >
                       {/* Tabs Header */}
                       <div className="border-b border-[var(--color-border)] px-6 lg:px-12 xl:px-20">
