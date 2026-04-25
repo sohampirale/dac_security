@@ -219,6 +219,9 @@ export default function Header() {
                   if (item.name === 'Services') openDropdown('services');
                   if (item.name === 'Products') openDropdown('products');
                 }}
+                onMouseLeave={() => {
+                  if (item.name === 'Services' || item.name === 'Products') closeDropdowns();
+                }}
               >
                 {item.hasDropdown ? (
                   <a

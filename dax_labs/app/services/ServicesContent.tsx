@@ -6,7 +6,7 @@ type SectionKey = 'detect' | 'analyze' | 'kinetic';
 
 export default function ServicesContent() {
   const [active, setActive] = useState<SectionKey>('detect');
-  const sectionRefs = useRef<Record<SectionKey, HTMLDivElement | null>>({
+  const sectionRefs = useRef<Record<SectionKey, HTMLElement | null>>({
     detect: null,
     analyze: null,
     kinetic: null,
