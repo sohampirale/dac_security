@@ -110,7 +110,7 @@ export default function Certifications() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
                   </svg>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-300] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'300ms'}}>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-150] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'0ms'}}>
                   Certified Expertise
                 </h3>
               </div>
@@ -144,7 +144,7 @@ export default function Certifications() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" />
                   </svg>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-300] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'300ms'}}>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-150] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'0ms'}}>
                   Applicable Across Critical Sectors
                 </h3>
               </div>
