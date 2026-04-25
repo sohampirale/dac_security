@@ -1,6 +1,6 @@
 export default function CTASection() {
   return (
-    <section id="contact" className="bg-[var(--color-bg-secondary)] py-20 transition-colors duration-300 lg:py-28">
+    <section id="contact" className="bg-[var(--color-bg-secondary)] py-24 transition-colors duration-300 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(125deg,rgba(20,39,58,0.98),rgba(11,24,36,0.98))] px-6 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
           <div className="absolute inset-0 opacity-[0.08]">
@@ -18,19 +18,15 @@ export default function CTASection() {
 
           <div className="relative z-10 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold leading-tight tracking-tight text-[var(--color-text-primary)] sm:text-3xl lg:text-4xl">
-              Ready to Strengthen Your
-              <span className="text-[var(--color-accent)]"> Security Posture?</span>
+              Do You Need Our Help in Securing Your Systems?
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-              Get an expert review of your attack surface, compliance readiness, and response capabilities.
-            </p>
 
-            <div className="mt-10">
+            <div className="mt-8">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-8 py-4 text-base font-semibold text-[var(--color-text-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]"
+                className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-10 py-4 text-base font-semibold text-[var(--color-text-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]"
               >
-                Talk to a Security Expert
+                Yes, We Do.
               </a>
             </div>
           </div>

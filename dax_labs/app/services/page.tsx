@@ -1,10 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import ServicesHero from '../components/ServicesHero';
-import ServicesDetail from '../components/ServicesDetail';
-import ServicesMethodology from '../components/ServicesMethodology';
-import ServiceIndustries from '../components/ServiceIndustries';
-import ServicesCTA from '../components/ServicesCTA';
+import ServicesContent from './ServicesContent';
 
 export const metadata = {
   title: 'Our Services | DAK Security',
@@ -21,11 +17,7 @@ export default function ServicesPage() {
     <>
       <Header />
       <main>
-        <ServicesHero />
-        <ServicesDetail />
-        <ServicesMethodology />
-        <ServiceIndustries />
-        <ServicesCTA />
+        <ServicesContent />
       </main>
       <Footer />
     </>
