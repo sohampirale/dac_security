@@ -91,59 +91,57 @@ export default function Certifications() {
           </p>
         </div>
 
-        <div className="grid max-w-5xl gap-8 mx-auto md:grid-cols-2 items-stretch">
-          <div
-            className={`flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 ${
+          <div className="grid max-w-5xl gap-8 mx-auto md:grid-cols-2 items-stretch">
+            <div className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 hover:-translate-y-1 hover:shadow-md ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '0.2s' }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
-                </svg>
-              </div>
-              <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)]">Certified Expertise</h3>
-            </div>
-            <ul className="space-y-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base">
-              {expertise.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            }`} 
+            style={{ transitionDelay: '0.2s' }}>
+              <div className="absolute inset-y-6 left-6 w-1 rounded-r-full bg-gradient-to-b from-[rgba(0,212,170,0.9)] to-transparent opacity-60" />
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
                   </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)]">Certified Expertise</h3>
+              </div>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2">
+                {expertise.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className={`${index === 0 ? 'font-semibold text-[var(--color-text-primary)]' : ''}`}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div
-            className={`flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 ${
+            <div className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 hover:-translate-y-1 hover:shadow-md ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ transitionDelay: '0.3s' }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
-                <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" />
-                </svg>
-              </div>
-              <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)]">Applicable Across Critical Sectors</h3>
-            </div>
-            <ul className="space-y-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base">
-              {sectors.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            }`} 
+            style={{ transitionDelay: '0.3s' }}>
+              <div className="absolute inset-y-6 left-6 w-1 rounded-r-full bg-gradient-to-b from-[rgba(0,212,170,0.9)] to-transparent opacity-60" />
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
+                  <svg className="w-6 h-6 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" />
                   </svg>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary)]">Applicable Across Critical Sectors</h3>
+              </div>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2">
+                {sectors.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className={`${index === 0 ? 'font-semibold text-[var(--color-text-primary)]' : ''}`}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
       </div>
     </section>
   );
