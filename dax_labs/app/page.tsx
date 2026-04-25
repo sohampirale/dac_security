@@ -2,6 +2,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Commitment from './components/Commitment';
 import ServicesOverview from './components/ServicesOverview';
+import ServicesFramework from './components/ServicesFramework';
 import ServicesMethodology from './components/ServicesMethodology';
 import ServiceIndustries from './components/ServiceIndustries';
 import Certifications from './components/Certifications';
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <Commitment />
+        <ServicesFramework />
         <ServicesOverview />
         <ServicesMethodology />
         <ServiceIndustries />

@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
         <div className="max-w-4xl">
           <p
-            className="mb-6 inline-flex items-center rounded-full border border-[var(--color-border)] bg-[rgba(10,22,34,0.75)] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)] animate-fade-in-up"
+            className="mb-6 inline-flex items-center rounded-full border border-[var(--color-border)] bg-[rgba(10,22,34,0.75)] px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)] animate-fade-in-up"
             style={{ animationDelay: '0.05s' }}
           >
             DAK SECURITY LABS
@@ -40,19 +40,15 @@ export default function Hero() {
             className="animate-fade-in-up text-3xl font-bold leading-[1.06] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
-            Secure Critical Infrastructure With
-            <span className="relative inline-block">
-              <span className="relative z-10 text-[var(--color-accent)]"> Precision-First Cyber Defense</span>
-              <span className="absolute bottom-1 left-0 h-3 w-full -skew-x-3 bg-[var(--color-accent)] opacity-15" />
-            </span>
+            Your Systems | Your Data | Your Responsibility
           </h1>
 
           <p
             className="mt-8 max-w-3xl animate-fade-in-up text-lg leading-relaxed text-[var(--color-text-secondary)] sm:text-xl"
             style={{ animationDelay: '0.2s' }}
           >
-            From regulatory compliance to active threat response, we help government, enterprise,
-            and high-risk sectors operate with confidence under real-world attack conditions.
+            Secured with discipline, integrity, and military-grade cybersecurity practices that you can
+            trust.
           </p>
 
           <div
