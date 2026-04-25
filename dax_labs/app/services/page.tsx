@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ServicesContent from './ServicesContent';
+import CTASection from '../components/CTASection';
 
 export const metadata = {
   title: 'Our Services | DAK Security',
@@ -18,6 +19,7 @@ export default function ServicesPage() {
       <Header />
       <main>
         <ServicesContent />
+        <CTASection />
       </main>
       <Footer />
     </>
