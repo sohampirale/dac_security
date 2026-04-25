@@ -110,11 +110,11 @@ export default function Certifications() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4" />
                   </svg>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-200] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'150ms'}}>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-300] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'300ms'}}>
                   Certified Expertise
                 </h3>
               </div>
-              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'200ms'}}>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'380ms'}}>
                 {expertise.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,11 +144,11 @@ export default function Certifications() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16" />
                   </svg>
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-200] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'150ms'}}>
+                <h3 className="text-xl lg:text-2xl font-bold text-[var(--color-text-primary) transition-colors duration-300] group-hover:text-[var(--color-accent)]" style={{transitionDelay:'300ms'}}>
                   Applicable Across Critical Sectors
                 </h3>
               </div>
-              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'200ms'}}>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'380ms'}}>
                 {sectors.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
