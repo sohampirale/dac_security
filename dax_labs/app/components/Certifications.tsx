@@ -114,7 +114,7 @@ export default function Certifications() {
                   Certified Expertise
                 </h3>
               </div>
-              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'380ms'}}>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transform translate-y-3 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" style={{transitionDelay:'420ms'}}>
                 {expertise.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,7 +148,7 @@ export default function Certifications() {
                   Applicable Across Critical Sectors
                 </h3>
               </div>
-              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transition-opacity duration-300 group-hover:opacity-100" style={{transitionDelay:'380ms'}}>
+              <ul className="mt-4 grid gap-3 text-sm leading-6 text-[var(--color-text-secondary)] sm:text-base lg:grid-cols-2 opacity-80 transform translate-y-3 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0" style={{transitionDelay:'420ms'}}>
                 {sectors.map((item, index) => (
                   <li key={index} className="flex items-start">
                     <svg className="w-5 h-5 text-[var(--color-accent)] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
