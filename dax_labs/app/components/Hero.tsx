@@ -21,8 +21,14 @@ export default function Hero() {
         </svg>
       </div>
 
-      <div className="absolute right-[8%] top-32 h-72 w-72 animate-pulse-slow rounded-full bg-[var(--color-accent)] opacity-[0.08] blur-3xl" />
-      <div className="absolute bottom-24 left-[3%] h-80 w-80 animate-pulse-slow rounded-full bg-[#2f90ff] opacity-[0.1] blur-3xl" style={{ animationDelay: '1s' }} />
+      <div
+        className="absolute right-[8%] top-32 h-72 w-72 animate-pulse-slow rounded-full bg-[var(--color-accent)] opacity-[0.08] blur-3xl"
+        style={{ animationDuration: '6s' }}
+      />
+      <div
+        className="absolute bottom-24 left-[3%] h-80 w-80 animate-pulse-slow rounded-full bg-[#2f90ff] opacity-[0.1] blur-3xl"
+        style={{ animationDelay: '1s', animationDuration: '6.5s' }}
+      />
 
       <div className="absolute left-0 top-0 h-36 w-36 border-l-2 border-t-2 border-[var(--color-accent)] opacity-20" />
       <div className="absolute bottom-0 right-0 h-36 w-36 border-b-2 border-r-2 border-[var(--color-accent)] opacity-20" />
@@ -71,11 +77,11 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-wrap gap-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <div className="flex items-center space-x-3">
-              <div className="h-2 w-2 animate-pulse rounded-full bg-[var(--color-accent)]" />
+            <div className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
               <span className="text-sm text-[var(--color-text-muted)]">CERT-In Aligned Practices</span>
             </div>
             <div className="flex items-center space-x-3">
-              <div className="h-2 w-2 animate-pulse rounded-full bg-[var(--color-accent)]" style={{ animationDelay: '0.5s' }} />
+            <div className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
               <span className="text-sm text-[var(--color-text-muted)]">Enterprise & Government Trusted</span>
             </div>
           </div>
@@ -99,7 +105,7 @@ export default function Hero() {
         </aside>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
         <svg className="w-6 h-6 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
