@@ -103,7 +103,7 @@ export default function ServicesFramework() {
           ].map((card, idx) => (
             <div
               key={card.title}
-              className={`group relative rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.4)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden ${
+              className={`group relative rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.4)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden flex flex-col min-h-[260px] ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
               style={{ transitionDelay: `${0.3 + idx * 0.1}s` }}
@@ -120,12 +120,9 @@ export default function ServicesFramework() {
               <p className="mt-3 text-sm text-[var(--color-text-secondary)] leading-relaxed">{card.desc}</p>
 
               {card.services && (
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-2 mt-auto">
                   {card.services.slice(0, 3).map((s) => (
-                    <span
-                      key={s}
-                      className="inline-block text-xs px-3 py-1 rounded-full bg-[rgba(10,30,40,0.35)] text-[var(--color-text-secondary)] border border-[rgba(255,255,255,0.02)]"
-                    >
+                    <span key={s} className="inline-block max-w-[40%] lg:max-w-[30%] truncate text-xs px-3 py-1 rounded-full bg-[rgba(10,30,40,0.35)] text-[var(--color-text-secondary)] border border-[rgba(255,255,255,0.02)] whitespace-nowrap overflow-hidden text-ellipsis">
                       {s}
                     </span>
                   ))}
