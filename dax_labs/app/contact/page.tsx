@@ -63,7 +63,7 @@ export default function ContactPage() {
           </section>
 
           <section className="py-10 sm:py-12">
-            <div className="max-w-3xl mx-auto">
+            <div className="max-w-3xl">
               <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">Let&apos;s Discuss</h2>
 
               <form onSubmit={handleSubmit} className="mt-8 grid grid-cols-1 gap-5">

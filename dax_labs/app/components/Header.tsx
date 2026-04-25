@@ -203,7 +203,7 @@ export default function Header() {
       <nav className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <div className="flex-shrink-0">
-            <a href="#" className="flex items-center space-x-2">
+            <a href="/" className="flex items-center space-x-2">
               <span className="text-xl font-bold tracking-[0.08em] text-[var(--color-text-primary)] lg:text-2xl">
                 DAK <span className="text-[var(--color-accent)]">SECURITY</span>
               </span>
@@ -221,13 +221,9 @@ export default function Header() {
                 }}
               >
                 {item.hasDropdown ? (
-                  <button
-                    type="button"
+                  <a
+                    href={item.href}
                     onFocus={() => openDropdown(item.name === 'Services' ? 'services' : 'products')}
-                    onClick={() => {
-                      const menu = item.name === 'Services' ? 'services' : 'products';
-                      setActiveDropdown((current) => (current === menu ? null : menu));
-                    }}
                     className="group relative inline-flex items-center py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-colors duration-200 hover:text-[var(--color-text-primary)]"
                     aria-expanded={activeDropdown === (item.name === 'Services' ? 'services' : 'products')}
                     aria-haspopup="true"
@@ -244,8 +240,8 @@ export default function Header() {
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
-                     <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
-                   </button>
+                    <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-[var(--color-accent)] transition-all duration-300 group-hover:w-full" />
+                  </a>
                 ) : (
                   <a
                     href={item.href}
