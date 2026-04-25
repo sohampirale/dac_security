@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import Commitment from './components/Commitment';
 import ServicesOverview from './components/ServicesOverview';
 import ServicesFramework from './components/ServicesFramework';
-import ServicesMethodology from './components/ServicesMethodology';
+// ServicesMethodology intentionally removed from homepage to avoid duplication
 import ServiceIndustries from './components/ServiceIndustries';
 import Certifications from './components/Certifications';
 import Partners from './components/Partners';
@@ -19,7 +19,6 @@ export default function Home() {
         <Commitment />
         <ServicesFramework />
         <ServicesOverview />
-        <ServicesMethodology />
         <ServiceIndustries />
         <Certifications />
         <Partners />
