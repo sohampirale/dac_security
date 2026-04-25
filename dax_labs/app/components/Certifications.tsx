@@ -92,10 +92,17 @@ export default function Certifications() {
         </div>
 
           <div className="grid max-w-5xl gap-8 mx-auto md:grid-cols-2 items-stretch">
-            <div className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 hover:-translate-y-1 hover:shadow-md ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`} 
-            style={{ transitionDelay: '0.2s' }}>
+            <div
+              key="certified"
+              tabIndex={0}
+              className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.36)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden lg:p-10 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '0.2s' }}
+            >
+              <div className="absolute top-0 right-0 w-10 h-10 border-r-2 border-t-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-tr-2xl" />
+              <div className="absolute bottom-0 left-0 w-10 h-10 border-l-2 border-b-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-bl-2xl" />
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-accent)] group-hover:w-full transition-all duration-500 rounded-full" />
               <div className="absolute inset-y-6 left-6 w-1 rounded-r-full bg-gradient-to-b from-[rgba(0,212,170,0.9)] to-transparent opacity-60" />
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
@@ -117,10 +124,17 @@ export default function Certifications() {
               </ul>
             </div>
 
-            <div className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-700 lg:p-10 hover:-translate-y-1 hover:shadow-md ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`} 
-            style={{ transitionDelay: '0.3s' }}>
+            <div
+              key="sectors"
+              tabIndex={0}
+              className={`group relative flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(12,26,38,0.96))] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.36)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden lg:p-10 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+              style={{ transitionDelay: '0.3s' }}
+            >
+              <div className="absolute top-0 right-0 w-10 h-10 border-r-2 border-t-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-tr-2xl" />
+              <div className="absolute bottom-0 left-0 w-10 h-10 border-l-2 border-b-2 border-transparent group-hover:border-[var(--color-accent)] transition-all duration-300 rounded-bl-2xl" />
+              <div className="absolute bottom-0 left-0 w-0 h-1 bg-[var(--color-accent)] group-hover:w-full transition-all duration-500 rounded-full" />
               <div className="absolute inset-y-6 left-6 w-1 rounded-r-full bg-gradient-to-b from-[rgba(0,212,170,0.9)] to-transparent opacity-60" />
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mr-4">
