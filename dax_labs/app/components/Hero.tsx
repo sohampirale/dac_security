@@ -34,19 +34,22 @@ export default function Hero() {
       <div className="absolute bottom-0 right-0 h-36 w-36 border-b-2 border-r-2 border-[var(--color-accent)] opacity-20" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
-        <div className="max-w-4xl">
+        <div className="max-w-6xl">
           <p
-            className="mb-6 inline-flex items-center rounded-full border border-[var(--color-border)] bg-[rgba(10,22,34,0.75)] px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)] animate-fade-in-up"
+            className="mb-6 flex w-fit items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[linear-gradient(120deg,rgba(10,28,40,0.92),rgba(6,18,28,0.85))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-accent)] shadow-[0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm animate-fade-in-up mx-auto"
             style={{ animationDelay: '0.05s' }}
           >
             DAK Security Labs
           </p>
 
           <h1
-            className="animate-fade-in-up text-3xl font-bold leading-[1.06] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
+            className="max-w-none animate-fade-in-up text-3xl font-bold leading-[1.04] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
-            Your Systems. Your Data. Your Responsibility.
+            <span className="block whitespace-nowrap">Your Systems. Your Data.</span>
+            <span className="block">
+              <span className="text-[var(--color-accent)]">Our</span> Responsibility.
+            </span>
           </h1>
 
           <p
@@ -62,47 +65,20 @@ export default function Hero() {
             style={{ animationDelay: '0.3s' }}
           >
             <a
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-6 py-3 text-sm font-semibold text-[var(--color-text-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]"
+              href="/methodology"
+              className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.45)] bg-[linear-gradient(135deg,rgba(46,208,196,0.95),rgba(20,160,150,0.95))] px-7 py-3 text-sm font-semibold text-[var(--color-text-light)] shadow-[0_14px_30px_rgba(10,20,30,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(10,20,30,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
-              Book Security Consultation
+              Explore Our Methodology
             </a>
             <a
-              href="/services"
-              className="inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(11,24,37,0.72)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+              href="/spheres-of-security"
+              className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[rgba(8,20,30,0.85)] px-7 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-[0_12px_26px_rgba(5,12,20,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_16px_32px_rgba(5,12,20,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
-              Explore Services
+              Explore Spheres of Security
             </a>
-          </div>
-
-          <div className="mt-10 flex flex-wrap gap-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <div className="flex items-center space-x-3">
-            <div className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-              <span className="text-sm text-[var(--color-text-muted)]">CERT-In Aligned Practices</span>
-            </div>
-            <div className="flex items-center space-x-3">
-            <div className="h-2 w-2 rounded-full bg-[var(--color-accent)]" />
-              <span className="text-sm text-[var(--color-text-muted)]">Enterprise & Government Trusted</span>
-            </div>
           </div>
         </div>
 
-        <aside className="animate-fade-in-up rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(14,28,43,0.95),rgba(10,20,31,0.95))] p-6 backdrop-blur-sm" style={{ animationDelay: '0.35s' }}>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Rapid Assurance</p>
-          <h3 className="mt-4 text-2xl font-semibold text-[var(--color-text-primary)]">3-Phase Security Model</h3>
-          <ul className="mt-6 space-y-4 text-sm text-[var(--color-text-secondary)]">
-            {[
-              'Detect: discover exposure across apps, networks, and assets',
-              'Analyze: map exploit paths and business impact',
-              'Kinetic: execute remediation and response with speed',
-            ].map((line) => (
-              <li key={line} className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-accent)]" />
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </aside>
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">

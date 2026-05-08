@@ -1,6 +1,6 @@
 const directors = [
   {
-    name: 'Aditya',
+    name: 'Vijaykumar Dhar',
     designation: 'Director — Business Operations',
     statement:
       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',

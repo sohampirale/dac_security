@@ -2,6 +2,7 @@ import Header from './components/Header';
 import AboutDirectors from './components/AboutDirectors';
 import Hero from './components/Hero';
 import Commitment from './components/Commitment';
+import OurMethodology from './components/OurMethodology';
 import ServicesOverview from './components/ServicesOverview';
 import ServicesFramework from './components/ServicesFramework';
 // ServicesMethodology intentionally removed from homepage to avoid duplication
@@ -18,6 +19,7 @@ export default function Home() {
       <main>
         <AboutDirectors />
         <Hero />
+        <OurMethodology />
         <Commitment />
         <ServicesFramework />
         <ServicesOverview />
