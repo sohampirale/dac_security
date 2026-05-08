@@ -4,60 +4,65 @@ import { useMemo, useState } from 'react';
 
 type StepKey = 'detect' | 'analyze' | 'kinetic';
 
+type StepItem = {
+  label: string;
+  href: string;
+};
+
 const steps = [
   {
     key: 'detect' as StepKey,
     label: 'Detect',
     heading: 'Understand where your systems are exposed.',
     items: [
-      'Applications',
-      'Networks',
-      'Infrastructure',
-      'Configurations',
-      'Weak points',
-      'Internet-facing systems',
-      'Exposure points',
-      'Misconfigurations',
-    ],
+      { label: 'Applications', href: '/services#detect' },
+      { label: 'Networks', href: '/services#detect' },
+      { label: 'Infrastructure', href: '/services#detect' },
+      { label: 'Configurations', href: '/services#detect' },
+      { label: 'Weak points', href: '/services#detect' },
+      { label: 'Internet-facing systems', href: '/services#detect' },
+      { label: 'Exposure points', href: '/services#detect' },
+      { label: 'Misconfigurations', href: '/services#detect' },
+    ] as StepItem[],
   },
   {
     key: 'analyze' as StepKey,
     label: 'Analyze',
     heading: 'Test your systems and understand what can go wrong.',
     items: [
-      'VAPT',
-      'Red Teaming',
-      'Network testing',
-      'Application testing',
-      'Incident investigation',
-      'Log analysis',
-      'Root cause identification',
-      'Digital forensics',
-      'Mobile forensics',
-      'Data recovery',
-      'Evidence handling',
-    ],
+      { label: 'VAPT', href: '/services#analyze' },
+      { label: 'Red Teaming', href: '/services#analyze' },
+      { label: 'Network testing', href: '/services#analyze' },
+      { label: 'Application testing', href: '/services#analyze' },
+      { label: 'Incident investigation', href: '/services#analyze' },
+      { label: 'Log analysis', href: '/services#analyze' },
+      { label: 'Root cause identification', href: '/services#analyze' },
+      { label: 'Digital forensics', href: '/services#analyze' },
+      { label: 'Mobile forensics', href: '/services#analyze' },
+      { label: 'Data recovery', href: '/services#analyze' },
+      { label: 'Evidence handling', href: '/services#analyze' },
+    ] as StepItem[],
   },
   {
     key: 'kinetic' as StepKey,
     label: 'Kinetic',
     heading: 'Fix issues. Strengthen systems. Maintain readiness.',
     items: [
-      'Hardening',
-      'Secure configurations',
-      'Security implementation',
-      'System alignment',
-      'SOC',
-      'Monitoring',
-      'Threat detection',
-      'Incident response',
-      'ISO 27001',
-      'DPDP',
-      'IoT',
-      'OT / SCADA',
-      'Awareness sessions',
-      'Incident drills',
-    ],
+      { label: 'Hardening', href: '/services#kinetic' },
+      { label: 'Secure configurations', href: '/services#kinetic' },
+      { label: 'Security implementation', href: '/services#kinetic' },
+      { label: 'System alignment', href: '/services#kinetic' },
+      { label: 'SOC', href: '/services#kinetic' },
+      { label: 'Monitoring', href: '/services#kinetic' },
+      { label: 'Threat detection', href: '/services#kinetic' },
+      { label: 'Incident response', href: '/services#kinetic' },
+      { label: 'ISO 27001', href: '/services#kinetic' },
+      { label: 'DPDP', href: '/services#kinetic' },
+      { label: 'IoT', href: '/services#kinetic' },
+      { label: 'OT / SCADA', href: '/services#kinetic' },
+      { label: 'Awareness sessions', href: '/services#kinetic' },
+      { label: 'Incident drills', href: '/services#kinetic' },
+    ] as StepItem[],
   },
 ];
 
@@ -67,7 +72,7 @@ export default function OurMethodology() {
   const activeIndex = useMemo(() => Math.max(0, steps.findIndex((step) => step.key === activeKey)), [activeKey]);
 
   return (
-    <section className="relative overflow-hidden bg-transparent py-20 sm:py-24">
+    <section id="our-methodology" className="relative overflow-hidden bg-transparent py-20 sm:py-24">
       <div
         className="absolute inset-0 -z-20"
         style={{
@@ -184,12 +189,13 @@ export default function OurMethodology() {
 
             <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {activeStep.items.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(8,16,24,0.75)] px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)]"
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(8,16,24,0.75)] px-4 py-3 text-sm font-medium text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
                 >
-                  {item}
-                </div>
+                  {item.label}
+                </a>
               ))}
             </div>
           </div>

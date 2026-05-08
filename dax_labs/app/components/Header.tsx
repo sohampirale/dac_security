@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 
 const navItems = [
   { name: 'Who We Are', href: '/#who-we-are' },
+  { name: 'Spheres', href: '/#spheres-of-security' },
   { name: 'Services', href: '/services', hasDropdown: true },
   { name: 'Products', href: '/products', hasDropdown: true },
   { name: 'Contact', href: '/contact' },
