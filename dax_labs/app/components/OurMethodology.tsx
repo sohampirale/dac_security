@@ -64,6 +64,7 @@ const steps = [
 export default function OurMethodology() {
   const [activeKey, setActiveKey] = useState<StepKey>('detect');
   const activeStep = useMemo(() => steps.find((step) => step.key === activeKey)!, [activeKey]);
+  const activeIndex = useMemo(() => Math.max(0, steps.findIndex((step) => step.key === activeKey)), [activeKey]);
 
   return (
     <section className="relative overflow-hidden bg-transparent py-20 sm:py-24">
@@ -101,12 +102,10 @@ export default function OurMethodology() {
 
         <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-6">
           <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-6 sm:p-8">
-            <div className="absolute left-6 right-6 top-1/2 hidden h-px -translate-y-1/2 bg-gradient-to-r from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:block" />
             <div className="absolute bottom-6 left-8 top-6 w-px bg-gradient-to-b from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:hidden" />
             <div className="grid gap-6 sm:grid-cols-3">
               {steps.map((step, index) => {
                 const isActive = step.key === activeKey;
-                const isLast = index === steps.length - 1;
                 return (
                   <button
                     key={step.key}
@@ -121,25 +120,39 @@ export default function OurMethodology() {
                         : 'border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.6)] hover:border-[rgba(46,208,196,0.45)]'
                     }`}
                   >
-                    <div className="flex items-center gap-5">
+                    {index < steps.length - 1 && (
+                      <>
+                        <span
+                          className="pointer-events-none absolute left-[46px] top-[46px] hidden h-[2px] bg-[rgba(255,255,255,0.18)] sm:left-[54px] sm:top-[50px] sm:block z-0"
+                          style={{ width: 'calc(100% + 28px)' }}
+                        />
+                        <span
+                          className={`pointer-events-none absolute left-[46px] top-[46px] hidden h-[3px] sm:left-[54px] sm:top-[50px] sm:block z-0 ${
+                            activeIndex > index
+                              ? 'bg-[linear-gradient(90deg,rgba(46,208,196,0.98),rgba(46,208,196,0.18))] shadow-[0_0_14px_rgba(46,208,196,0.45)]'
+                              : 'bg-transparent'
+                          }`}
+                          style={{ width: 'calc(100% + 28px)' }}
+                        />
+                      </>
+                    )}
+                    <div className="relative z-10 flex flex-col items-start gap-3">
                       <span
-                        className={`flex h-12 w-12 items-center justify-center rounded-full border text-xs font-semibold uppercase tracking-[0.3em] ${
+                        className={`flex h-11 w-11 items-center justify-center rounded-full border text-xs font-semibold uppercase tracking-[0.3em] ${
                           isActive
-                            ? 'border-[rgba(46,208,196,0.75)] text-[var(--color-text-primary)]'
-                            : 'border-[rgba(255,255,255,0.12)] text-[var(--color-text-muted)]'
+                            ? 'border-[rgba(46,208,196,0.9)] bg-[rgba(9,22,30,0.95)] text-[var(--color-text-primary)] shadow-[0_0_18px_rgba(46,208,196,0.25)]'
+                            : 'border-[rgba(255,255,255,0.16)] bg-[rgba(8,16,24,0.95)] text-[var(--color-text-muted)]'
                         }`}
                       >
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <div>
-                        <p
-                          className={`text-sm font-semibold uppercase tracking-[0.35em] sm:text-base ${
-                            isActive ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)]'
-                          }`}
-                        >
-                          {step.label}
-                        </p>
-                      </div>
+                      <p
+                        className={`text-sm font-semibold uppercase tracking-[0.35em] sm:text-base ${
+                          isActive ? 'text-[var(--color-text-primary)]' : 'text-[var(--color-text-muted)]'
+                        }`}
+                      >
+                        {step.label}
+                      </p>
                     </div>
                     <div
                       className={`mt-6 h-1.5 w-full rounded-full transition-colors ${
