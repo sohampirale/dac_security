@@ -39,14 +39,14 @@ export default function Hero() {
             className="mb-6 inline-flex items-center rounded-full border border-[var(--color-border)] bg-[rgba(10,22,34,0.75)] px-4 py-1.5 text-sm font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)] animate-fade-in-up"
             style={{ animationDelay: '0.05s' }}
           >
-            DAK SECURITY LABS
+            DAK Security Labs
           </p>
 
           <h1
             className="animate-fade-in-up text-3xl font-bold leading-[1.06] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
-            Your Systems | Your Data | Your Responsibility
+            Your Systems. Your Data. Your Responsibility.
           </h1>
 
           <p

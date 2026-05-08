@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import AboutDirectors from './components/AboutDirectors';
 import Hero from './components/Hero';
 import Commitment from './components/Commitment';
 import ServicesOverview from './components/ServicesOverview';
@@ -15,6 +16,7 @@ export default function Home() {
     <>
       <Header />
       <main>
+        <AboutDirectors />
         <Hero />
         <Commitment />
         <ServicesFramework />
