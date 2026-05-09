@@ -108,12 +108,19 @@ export default function OurMethodology() {
 
         <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-5 sm:p-6">
           <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-6 sm:p-8">
-            <div className="absolute bottom-6 left-8 top-6 w-px bg-gradient-to-b from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:hidden" />
+            <div className="absolute bottom-6 left-8 top-6 hidden w-px bg-gradient-to-b from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:hidden" />
             <div className="grid gap-6 sm:gap-6 sm:grid-cols-3 sm:hidden">
               {steps.map((step, index) => {
                 const isActive = step.key === activeKey;
                 return (
-                  <div key={step.key} className="relative rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.6)] p-5">
+                  <div
+                    key={step.key}
+                    className={`relative rounded-2xl border bg-[rgba(6,12,18,0.65)] p-6 transition-shadow ${
+                      isActive
+                        ? 'border-[rgba(46,208,196,0.35)] shadow-[0_12px_30px_rgba(6,14,22,0.45)]'
+                        : 'border-[rgba(255,255,255,0.08)]'
+                    }`}
+                  >
                     <button
                       type="button"
                       onClick={() => {
@@ -122,14 +129,14 @@ export default function OurMethodology() {
                       }}
                       aria-pressed={isActive}
                       aria-expanded={isActive}
-                      className="flex w-full items-center justify-between text-left"
+                      className="flex w-full items-start justify-between gap-4 text-left"
                     >
                       <div className="flex items-center gap-3">
                         <span
                           className={`flex h-11 w-11 items-center justify-center rounded-full border text-xs font-semibold uppercase tracking-[0.3em] ${
                             isActive
-                              ? 'border-[rgba(46,208,196,0.9)] bg-[rgba(9,22,30,0.95)] text-[var(--color-text-primary)] shadow-[0_0_18px_rgba(46,208,196,0.25)]'
-                              : 'border-[rgba(255,255,255,0.16)] bg-[rgba(8,16,24,0.95)] text-[var(--color-text-muted)]'
+                              ? 'border-[rgba(46,208,196,0.95)] bg-[rgba(9,22,30,0.95)] text-[var(--color-text-primary)] shadow-[0_0_16px_rgba(46,208,196,0.35)] ring-2 ring-[rgba(46,208,196,0.25)]'
+                              : 'border-[rgba(255,255,255,0.24)] bg-[rgba(8,16,24,0.95)] text-[var(--color-text-muted)]'
                           }`}
                         >
                           {String(index + 1).padStart(2, '0')}
@@ -138,18 +145,22 @@ export default function OurMethodology() {
                           <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
                             {step.label}
                           </p>
-                          <p className="mt-2 text-base font-semibold text-[var(--color-text-primary)]">
+                          <p className="mt-2 text-base font-semibold leading-snug text-[var(--color-text-primary)]">
                             {step.heading}
                           </p>
                         </div>
                       </div>
                       <span
-                        className={`ml-3 h-2.5 w-2.5 rounded-full border transition-colors ${
+                        className={`mt-1 flex h-7 w-7 items-center justify-center rounded-full border transition-transform ${
                           isActive
-                            ? 'border-[rgba(46,208,196,0.9)] bg-[rgba(46,208,196,0.4)]'
+                            ? 'border-[rgba(46,208,196,0.6)] rotate-180'
                             : 'border-[rgba(255,255,255,0.18)]'
                         }`}
-                      />
+                      >
+                        <svg className="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
                     </button>
                     <div
                       className={`mt-5 overflow-hidden rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(8,16,24,0.75)] transition-all duration-300 ${
