@@ -1,6 +1,6 @@
 const directors = [
   {
-    name: 'Vijaykumar Dhar',
+    name: 'Adity Mahindrakar',
     designation: 'Director — Business Operations',
     statement:
       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
@@ -8,7 +8,7 @@ const directors = [
     animation: 'animate-slide-in-left',
   },
   {
-    name: 'Director 2',
+    name: 'Vijaykumar Dhar',
     designation: 'Director — Finance & Operations',
     statement:
       'Strong systems are built through discipline, clarity, and long-term accountability. We approach that responsibility with the same seriousness expected for systems that support institutions, operations, and national continuity.',
