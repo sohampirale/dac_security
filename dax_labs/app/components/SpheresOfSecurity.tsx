@@ -259,41 +259,41 @@ export default function SpheresOfSecurity() {
                 {activeSphere.philosophy}
               </p>
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
-                <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)]">
+                <a
+                  href="/services"
+                  className="group rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Services</p>
                   <ul className="mt-4 space-y-2 text-sm text-[var(--color-text-secondary)]">
                     {activeSphere.services?.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
+                      <li key={item} className="flex items-start gap-2 transition group-hover:text-[var(--color-text-primary)]">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <a href="/services" className="transition hover:text-[var(--color-text-primary)]">
-                          {item}
-                        </a>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)]">
+                </a>
+                <a
+                  href="/products"
+                  className="group rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                >
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Products</p>
                   <ul className="mt-4 space-y-2 text-sm text-[var(--color-text-secondary)]">
                     {activeSphere.products?.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
+                      <li key={item} className="flex items-start gap-2 transition group-hover:text-[var(--color-text-primary)]">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <a href="/products" className="transition hover:text-[var(--color-text-primary)]">
-                          {item}
-                        </a>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>
-                </div>
+                </a>
                 <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-5 transition duration-300 hover:-translate-y-1 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] sm:col-span-2">
                   <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Training</p>
                   <ul className="mt-4 grid gap-2 text-sm text-[var(--color-text-secondary)] sm:grid-cols-2">
                     {activeSphere.training?.map((item) => (
                       <li key={item} className="flex items-start gap-2">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <a href="/services" className="transition hover:text-[var(--color-text-primary)]">
-                          {item}
-                        </a>
+                        <span>{item}</span>
                       </li>
                     ))}
                   </ul>

@@ -149,7 +149,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label htmlFor="requirements" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Your Requirements Document</label>
+                    <label htmlFor="requirements" className="block text-sm font-medium text-[var(--color-text-primary)] mb-2">Your Requirements Document <span className="text-[var(--color-text-muted)] font-normal">(Optional)</span></label>
                     <input id="requirements" name="requirements" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt" className="w-full px-4 py-3 bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-md text-[var(--color-text-primary)] file:mr-4 file:rounded-md file:border-0 file:bg-[var(--color-accent)] file:px-4 file:py-2 file:text-sm file:font-semibold file:text-[var(--color-text-light)] hover:file:bg-[var(--color-accent-hover)] transition-colors" />
                   </div>
 

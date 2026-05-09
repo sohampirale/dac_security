@@ -30,7 +30,6 @@ export default function Hero() {
         style={{ animationDelay: '1s', animationDuration: '6.5s' }}
       />
 
-      <div className="absolute left-0 top-0 h-36 w-36 border-l-2 border-t-2 border-[var(--color-accent)] opacity-20" />
       <div className="absolute bottom-0 right-0 h-36 w-36 border-b-2 border-r-2 border-[var(--color-accent)] opacity-20" />
 
       <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
@@ -65,13 +64,13 @@ export default function Hero() {
             style={{ animationDelay: '0.3s' }}
           >
             <a
-              href="/methodology"
+              href="#our-methodology"
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.45)] bg-[linear-gradient(135deg,rgba(46,208,196,0.95),rgba(20,160,150,0.95))] px-7 py-3 text-sm font-semibold text-[var(--color-text-light)] shadow-[0_14px_30px_rgba(10,20,30,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(10,20,30,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
               Explore Our Methodology
             </a>
             <a
-              href="/spheres-of-security"
+              href="#spheres-of-security"
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[rgba(8,20,30,0.85)] px-7 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-[0_12px_26px_rgba(5,12,20,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_16px_32px_rgba(5,12,20,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
               Explore Spheres of Security
