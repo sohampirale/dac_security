@@ -52,7 +52,7 @@ export default function AboutDirectors() {
               className={`relative min-h-[240px] sm:min-h-[300px] ${director.reverse ? 'lg:order-2' : ''}`}
             >
               <div
-                className="absolute inset-0 bg-cover bg-top"
+                className="absolute inset-0 bg-contain bg-top bg-no-repeat sm:bg-cover sm:bg-center"
                 style={{ backgroundImage: `url(${director.image})` }}
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,12,18,0.05),rgba(7,12,18,0.4))]" />
@@ -66,7 +66,7 @@ export default function AboutDirectors() {
               </p>
               <div className="mt-8">
                 <p className="text-xl font-semibold text-[var(--color-text-primary)]">{director.name}</p>
-                <p className="mt-2 text-sm uppercase tracking-[0.24em] text-[var(--color-accent)]">
+                <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-accent)] whitespace-nowrap sm:text-sm sm:tracking-[0.24em] sm:whitespace-normal">
                   {director.designation}
                 </p>
               </div>

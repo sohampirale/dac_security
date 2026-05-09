@@ -105,10 +105,78 @@ export default function OurMethodology() {
           </p>
         </div>
 
-        <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-4 sm:p-6">
-          <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-5 sm:p-8">
+        <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-5 sm:p-6">
+          <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-6 sm:p-8">
             <div className="absolute bottom-6 left-8 top-6 w-px bg-gradient-to-b from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:hidden" />
-            <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">
+            <div className="grid gap-6 sm:gap-6 sm:grid-cols-3 sm:hidden">
+              {steps.map((step, index) => {
+                const isActive = step.key === activeKey;
+                return (
+                  <div key={step.key} className="relative rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.6)] p-5">
+                    <button
+                      type="button"
+                      onClick={() => setActiveKey(step.key)}
+                      aria-pressed={isActive}
+                      aria-expanded={isActive}
+                      className="flex w-full items-center justify-between text-left"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span
+                          className={`flex h-11 w-11 items-center justify-center rounded-full border text-xs font-semibold uppercase tracking-[0.3em] ${
+                            isActive
+                              ? 'border-[rgba(46,208,196,0.9)] bg-[rgba(9,22,30,0.95)] text-[var(--color-text-primary)] shadow-[0_0_18px_rgba(46,208,196,0.25)]'
+                              : 'border-[rgba(255,255,255,0.16)] bg-[rgba(8,16,24,0.95)] text-[var(--color-text-muted)]'
+                          }`}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
+                            {step.label}
+                          </p>
+                          <p className="mt-2 text-base font-semibold text-[var(--color-text-primary)]">
+                            {step.heading}
+                          </p>
+                        </div>
+                      </div>
+                      <span
+                        className={`ml-3 h-2.5 w-2.5 rounded-full border transition-colors ${
+                          isActive
+                            ? 'border-[rgba(46,208,196,0.9)] bg-[rgba(46,208,196,0.4)]'
+                            : 'border-[rgba(255,255,255,0.18)]'
+                        }`}
+                      />
+                    </button>
+                    <div
+                      className={`mt-5 overflow-hidden rounded-xl border border-[rgba(255,255,255,0.08)] bg-[rgba(8,16,24,0.75)] transition-all duration-300 ${
+                        isActive ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}
+                    >
+                      <div className="p-5">
+                        <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-accent)]">
+                          {step.label} Phase
+                        </p>
+                        <p className="mt-3 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                          {step.heading}
+                        </p>
+                        <div className="mt-4 grid gap-2">
+                          {step.items.map((item) => (
+                            <a
+                              key={item.label}
+                              href={item.href}
+                              className="rounded-lg border border-[rgba(255,255,255,0.08)] bg-[rgba(8,16,24,0.85)] px-3 py-2 text-xs font-medium text-[var(--color-text-secondary)]"
+                            >
+                              {item.label}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="hidden gap-4 sm:gap-6 sm:grid sm:grid-cols-3">
               {steps.map((step, index) => {
                 const isActive = step.key === activeKey;
                 return (
@@ -172,8 +240,8 @@ export default function OurMethodology() {
             </div>
           </div>
 
-            <div className="mt-8 rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(6,14,22,0.85)] p-5 sm:p-8">
-              <div className="flex flex-wrap items-baseline justify-between gap-3">
+          <div className="mt-8 hidden rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(6,14,22,0.85)] p-5 sm:block sm:p-8">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-accent)]">
                   {activeStep.label}
@@ -187,7 +255,7 @@ export default function OurMethodology() {
               </span>
             </div>
 
-              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {activeStep.items.map((item) => (
                 <a
                   key={item.label}

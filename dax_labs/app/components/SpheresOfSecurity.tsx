@@ -146,9 +146,13 @@ const sphereOrder = spheres.filter((sphere) => sphere.key !== 'core').map((spher
 export default function SpheresOfSecurity() {
   const [activeKey, setActiveKey] = useState<SphereKey>('land');
   const activeSphere = useMemo(() => spheres.find((sphere) => sphere.key === activeKey)!, [activeKey]);
+  const selectableSpheres = useMemo(() => spheres.filter((sphere) => sphere.key !== 'core'), []);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
+      if (!window.matchMedia('(min-width: 640px)').matches) {
+        return;
+      }
       setActiveKey((current) => {
         const currentIndex = sphereOrder.indexOf(current);
         const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % sphereOrder.length;
@@ -180,16 +184,16 @@ export default function SpheresOfSecurity() {
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-8 max-w-md">
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--color-text-primary)] sm:text-4xl">
+            Spheres of Security
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
+            In defense of your digital sovereignty, we operate across the Five Spheres of Defence.
+          </p>
+        </div>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center">
-          <div className="relative">
-            <div className="mb-8 max-w-md">
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--color-text-primary)] sm:text-4xl">
-                5 Spheres of Security
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-[var(--color-text-secondary)] sm:text-lg">
-                In defense of your digital sovereignty, we operate across the Five Spheres of Defence.
-              </p>
-            </div>
+          <div className="relative hidden sm:block">
             <div className="relative mx-auto aspect-square w-full max-w-[360px] sm:max-w-[520px]">
               <div className="absolute inset-[12%] rounded-full border border-[rgba(255,255,255,0.08)]" />
               <div className="absolute inset-[20%] rounded-full border border-dashed border-[rgba(32,215,181,0.2)]" />
@@ -197,9 +201,7 @@ export default function SpheresOfSecurity() {
               <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(32,215,181,0.12),transparent_60%)]" />
 
               <div className="absolute inset-0 motion-safe:animate-[spin_90s_linear_infinite]">
-                {spheres
-                  .filter((sphere) => sphere.key !== 'core')
-                  .map((sphere) => {
+                {selectableSpheres.map((sphere) => {
                     const isActive = activeKey === sphere.key;
                     return (
                       <button
@@ -232,13 +234,96 @@ export default function SpheresOfSecurity() {
                         />
                       </button>
                     );
-                  })}
+                })}
               </div>
             </div>
-
           </div>
 
-          <div>
+          <div className="sm:hidden">
+            <div className="rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
+              <label className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
+                Select Sphere
+              </label>
+              <div className="mt-3 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
+                  <Image src={activeSphere.logo} alt={activeSphere.label} width={36} height={36} className="object-contain" />
+                </div>
+                <select
+                  value={activeKey}
+                  onChange={(event) => setActiveKey(event.target.value as SphereKey)}
+                  className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(6,12,18,0.72)] px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
+                  aria-label="Select a security sphere"
+                >
+                  {selectableSpheres.map((sphere) => (
+                    <option key={sphere.key} value={sphere.key}>
+                      {sphere.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="mt-6 rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
+                  <Image src={activeSphere.logo} alt={activeSphere.label} width={36} height={36} className="object-contain" />
+                </div>
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
+                    {activeSphere.title}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold text-[var(--color-text-primary)]">
+                    {activeSphere.label}
+                  </h3>
+                </div>
+              </div>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                {activeSphere.philosophy}
+              </p>
+              <div className="mt-5 grid gap-4">
+                <a
+                  href="/services"
+                  className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4 transition duration-300 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Services</p>
+                  <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
+                    {activeSphere.services?.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </a>
+                <a
+                  href="/products"
+                  className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4 transition duration-300 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                >
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Products</p>
+                  <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
+                    {activeSphere.products?.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </a>
+                <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Training</p>
+                  <ul className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)]">
+                    {activeSphere.training?.map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden sm:block">
             <div className="mt-10 rounded-[28px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-6 sm:p-8">
               <div className="flex flex-wrap items-center gap-4">
                 <div
