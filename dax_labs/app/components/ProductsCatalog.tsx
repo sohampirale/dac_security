@@ -136,20 +136,20 @@ const itSecurityProducts = [
 
 export default function ProductsCatalog() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-primary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             IT SECURITY PRODUCTS
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Enterprise-grade security products and solutions to protect your digital infrastructure from advanced cyber threats.
           </p>
         </div>
 
         {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {itSecurityProducts.map((product, index) => {
             const IconComponent = iconMap[product.iconKey] || WafIcon;
             return (

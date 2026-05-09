@@ -190,7 +190,7 @@ export default function SpheresOfSecurity() {
                 In defense of your digital sovereignty, we operate across the Five Spheres of Defence.
               </p>
             </div>
-            <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+            <div className="relative mx-auto aspect-square w-full max-w-[360px] sm:max-w-[520px]">
               <div className="absolute inset-[12%] rounded-full border border-[rgba(255,255,255,0.08)]" />
               <div className="absolute inset-[20%] rounded-full border border-dashed border-[rgba(32,215,181,0.2)]" />
               <div className="absolute inset-[32%] rounded-full border border-[rgba(32,215,181,0.12)]" />
@@ -209,7 +209,7 @@ export default function SpheresOfSecurity() {
                         onMouseEnter={() => setActiveKey(sphere.key)}
                         onFocus={() => setActiveKey(sphere.key)}
                         aria-pressed={isActive}
-                        className={`group absolute ${sphere.orbitClass} flex h-24 w-24 items-center justify-center rounded-full border text-left transition-all duration-300 motion-safe:[animation:spin_90s_linear_infinite_reverse] sm:h-28 sm:w-28 ${
+                        className={`group absolute ${sphere.orbitClass} flex h-16 w-16 items-center justify-center rounded-full border text-left transition-all duration-300 motion-safe:[animation:spin_90s_linear_infinite_reverse] sm:h-24 sm:w-24 lg:h-28 lg:w-28 ${
                           isActive
                             ? 'border-[rgba(32,215,181,0.85)] bg-[rgba(8,18,28,0.92)] shadow-[0_0_24px_rgba(32,215,181,0.35)]'
                             : 'border-[rgba(255,255,255,0.14)] bg-[rgba(8,16,24,0.8)] hover:border-[rgba(32,215,181,0.5)]'
@@ -217,11 +217,11 @@ export default function SpheresOfSecurity() {
                       >
                         <div className="flex flex-col items-center gap-2 text-center">
                           <span
-                            className={`flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(10,18,28,0.9)] shadow-[0_10px_20px_rgba(2,6,10,0.4)]`}
+                            className="flex h-8 w-8 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(10,18,28,0.9)] shadow-[0_10px_20px_rgba(2,6,10,0.4)] sm:h-11 sm:w-11"
                           >
-                            <Image src={sphere.logo} alt={sphere.label} width={30} height={30} className="object-contain" />
+                            <Image src={sphere.logo} alt={sphere.label} width={26} height={26} className="object-contain" />
                           </span>
-                          <span className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
+                          <span className="hidden text-[11px] font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)] sm:block">
                             {sphere.label}
                           </span>
                         </div>

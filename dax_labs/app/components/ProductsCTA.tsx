@@ -9,24 +9,24 @@ export default function ProductsCTA() {
   const [activeForm, setActiveForm] = useState<FormType | null>(null);
 
   return (
-    <section id="contact" className="py-20 lg:py-28 bg-[var(--color-bg-primary)]">
+    <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             READY TO ENHANCE YOUR SECURITY POSTURE?
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Contact our product specialists to discuss your requirements and get a customized security solution recommendation.
           </p>
         </div>
 
         {/* CTA Buttons */}
         {!activeForm && (
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col gap-4 sm:flex-row sm:justify-center mb-10 sm:mb-12">
             <button
               onClick={() => setActiveForm('demo')}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-light)] bg-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent-hover)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-[var(--color-text-light)] bg-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent-hover)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
             >
               <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
@@ -36,7 +36,7 @@ export default function ProductsCTA() {
             </button>
             <button
               onClick={() => setActiveForm('quote')}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent)] hover:text-[var(--color-text-light)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent)] hover:text-[var(--color-text-light)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
             >
               <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -45,7 +45,7 @@ export default function ProductsCTA() {
             </button>
             <button
               onClick={() => setActiveForm('sales')}
-              className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent)] hover:text-[var(--color-text-light)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-[var(--color-text-primary)] bg-transparent border-2 border-[var(--color-accent)] rounded-md hover:bg-[var(--color-accent)] hover:text-[var(--color-text-light)] transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg"
             >
               <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -73,7 +73,7 @@ export default function ProductsCTA() {
         )}
 
         {/* Contact Information */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-border)]">
+        <div className="mt-10 sm:mt-12 pt-6 sm:pt-8 border-t border-[var(--color-border)]">
           <div className="text-center mb-8">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-4">
               Or contact us directly

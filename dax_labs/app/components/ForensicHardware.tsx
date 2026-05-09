@@ -62,20 +62,20 @@ const applications = [
 
 export default function ForensicHardware() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-primary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             DIGITAL FORENSIC HARDWARE
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Specialized forensic hardware and equipment for digital investigations, evidence collection, and forensic analysis.
           </p>
         </div>
 
         {/* Hardware Products Grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-3 mb-12 sm:mb-16">
           {forensicHardwareProducts.map((product, index) => (
             <div
               key={product.name}

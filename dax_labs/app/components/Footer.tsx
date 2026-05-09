@@ -7,17 +7,17 @@ export default function Footer() {
         <div className="grid gap-6 md:grid-cols-3">
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Email</h3>
-            <a href="mailto:info@daksecurity.com" className="mt-2 inline-block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
+            <a href="mailto:info@daksecurity.com" className="mt-2 inline-block text-sm sm:text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Phone</h3>
-            <a href="tel:+919604551338" className="mt-2 inline-block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
+            <a href="tel:+919604551338" className="mt-2 inline-block text-sm sm:text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Address</h3>
-            <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">20, H-1/A, Sector 63<br />Noida - 201301<br />Uttar Pradesh, India</address>
+            <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">20, H-1/A, Sector 63<br />Noida - 201301<br />Uttar Pradesh, India</address>
           </div>
         </div>
 

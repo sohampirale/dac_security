@@ -2,7 +2,7 @@
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-20 lg:pt-24">
+    <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-16 sm:min-h-screen sm:pt-20 lg:pt-24">
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -32,8 +32,8 @@ export default function Hero() {
 
       <div className="absolute bottom-0 right-0 h-36 w-36 border-b-2 border-r-2 border-[var(--color-accent)] opacity-20" />
 
-      <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-14 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
-        <div className="max-w-6xl">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-12 px-4 py-14 sm:gap-14 sm:px-6 sm:py-16 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
+        <div className="max-w-6xl text-center lg:text-left">
           <p
             className="mb-6 flex w-fit items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[linear-gradient(120deg,rgba(10,28,40,0.92),rgba(6,18,28,0.85))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-accent)] shadow-[0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm animate-fade-in-up mx-auto"
             style={{ animationDelay: '0.05s' }}
@@ -42,17 +42,17 @@ export default function Hero() {
           </p>
 
           <h1
-            className="max-w-none animate-fade-in-up text-3xl font-bold leading-[1.04] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
+            className="max-w-none animate-fade-in-up text-3xl font-bold leading-[1.08] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
-            <span className="block whitespace-nowrap">Your Systems. Your Data.</span>
+            <span className="block sm:whitespace-nowrap">Your Systems. Your Data.</span>
             <span className="block">
               <span className="text-[var(--color-accent)]">Our</span> Responsibility.
             </span>
           </h1>
 
           <p
-            className="mt-8 max-w-3xl animate-fade-in-up text-lg leading-relaxed text-[var(--color-text-secondary)] sm:text-xl"
+            className="mt-6 max-w-3xl animate-fade-in-up text-base leading-relaxed text-[var(--color-text-secondary)] sm:mt-8 sm:text-xl"
             style={{ animationDelay: '0.2s' }}
           >
             Secured with discipline, integrity, and military-grade cybersecurity practices that you can
@@ -60,7 +60,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="mt-10 flex flex-wrap gap-4 animate-fade-in-up"
+            className="mt-8 flex flex-col flex-wrap items-center gap-4 animate-fade-in-up sm:mt-10 sm:flex-row sm:justify-center lg:justify-start"
             style={{ animationDelay: '0.3s' }}
           >
             <a

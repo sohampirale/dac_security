@@ -73,28 +73,28 @@ const segments = [
 
 export default function ProductSelectionGuide() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             PRODUCT SELECTION GUIDE
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Find the right security products for your organization size and requirements.
           </p>
         </div>
 
         {/* Segments Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
           {segments.map((segment, index) => (
             <div
               key={segment.title}
-              className="group p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all duration-300 hover-lift"
+              className="group p-6 sm:p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all duration-300 hover-lift"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors duration-300">
                 {segment.icon}
               </div>
 
@@ -102,12 +102,12 @@ export default function ProductSelectionGuide() {
               <h3 className="mt-5 text-xl font-bold text-[var(--color-text-primary)]">
                 {segment.title}
               </h3>
-              <p className="mt-2 text-[var(--color-text-secondary)] leading-relaxed">
+              <p className="mt-2 text-sm text-[var(--color-text-secondary)] leading-relaxed sm:text-base">
                 {segment.description}
               </p>
 
               {/* Products List */}
-              <div className="mt-6">
+              <div className="mt-5 sm:mt-6">
                 <h4 className="text-sm font-semibold text-[var(--color-text-primary)] uppercase tracking-wide mb-4">
                   Recommended Products
                 </h4>

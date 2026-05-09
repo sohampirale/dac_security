@@ -22,9 +22,9 @@ export default function ServicesFramework() {
   }, []);
 
   return (
-    <section id="framework" className="bg-[var(--color-bg-secondary)] py-20 lg:py-28 transition-colors duration-300">
+    <section id="framework" className="bg-[var(--color-bg-secondary)] py-16 sm:py-20 lg:py-28 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -43,7 +43,7 @@ export default function ServicesFramework() {
           </h2>
 
           <p
-            className={`mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
+            className={`mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.2s' }}
@@ -52,7 +52,7 @@ export default function ServicesFramework() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8 items-start">
           {[
             {
               title: 'DETECT',
@@ -103,9 +103,9 @@ export default function ServicesFramework() {
           ].map((card, idx) => (
             <div
               key={card.title}
-              className={`group relative rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.4)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden flex flex-col min-h-[260px] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+                className={`group relative rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(18,36,54,0.96),rgba(11,25,38,0.96))] p-6 lg:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-lg hover:shadow-[rgba(0,0,0,0.4)] hover:border-[var(--color-accent)] focus-within:scale-[1.01] overflow-hidden flex flex-col min-h-[240px] sm:min-h-[260px] ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${0.3 + idx * 0.1}s` }}
               tabIndex={0}
             >

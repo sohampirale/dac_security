@@ -71,9 +71,9 @@ export default function Partners() {
   }, []);
 
   return (
-    <section id="partners" className="bg-[var(--color-bg-primary)] py-24 lg:py-32">
+    <section id="partners" className="bg-[var(--color-bg-primary)] py-16 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -82,7 +82,7 @@ export default function Partners() {
             COLLABORATIONS
           </p>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
+            className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.1s' }}
@@ -90,7 +90,7 @@ export default function Partners() {
             Our Technology Partners
           </h2>
           <p
-            className={`mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
+            className={`mt-4 sm:mt-6 text-sm sm:text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.2s' }}
@@ -99,7 +99,7 @@ export default function Partners() {
           </p>
         </div>
 
-        <div className="mb-12 flex flex-wrap justify-center gap-4">
+        <div className="mb-10 sm:mb-12 flex flex-wrap justify-center gap-3 sm:gap-4">
           {[
             'Authorized Reseller',
             'Certified Technical Team',
@@ -108,7 +108,7 @@ export default function Partners() {
           ].map((benefit, index) => (
             <div
               key={benefit}
-                className={`rounded-full border border-[var(--color-border)] bg-[rgba(17,35,53,0.9)] px-4 py-2 text-sm font-medium text-[var(--color-text-secondary)] transition-all duration-700 ${
+                className={`rounded-full border border-[var(--color-border)] bg-[rgba(17,35,53,0.9)] px-4 py-2 text-xs sm:text-sm font-medium text-[var(--color-text-secondary)] transition-all duration-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
@@ -119,7 +119,7 @@ export default function Partners() {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {partners.map((partner, index) => (
             <div
               key={partner.name}
@@ -153,10 +153,10 @@ export default function Partners() {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10 sm:mt-12 text-center">
           <a
             href="/products"
-            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             View All Partners
             <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

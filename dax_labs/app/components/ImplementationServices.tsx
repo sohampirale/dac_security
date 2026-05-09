@@ -51,33 +51,33 @@ const services = [
 
 export default function ImplementationServices() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-primary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-primary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             IMPLEMENTATION & SUPPORT SERVICES
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             We don&apos;t just sell products—we ensure successful deployment, adoption, and ongoing success.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group p-8 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all duration-300 hover-lift"
+              className="group p-6 sm:p-8 bg-[var(--color-bg-secondary)] rounded-lg border border-[var(--color-border)] hover:border-[var(--color-border-hover)] transition-all duration-300 hover-lift"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div className="inline-flex items-center justify-center w-14 h-14 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors duration-300">
+              <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-[var(--color-text-light)] transition-colors duration-300">
                 {service.icon}
               </div>
 
               {/* Title */}
-              <h3 className="mt-5 text-xl font-bold text-[var(--color-text-primary)]">
+              <h3 className="mt-4 sm:mt-5 text-lg sm:text-xl font-bold text-[var(--color-text-primary)]">
                 {service.title}
               </h3>
 

@@ -91,9 +91,9 @@ export default function ServicesOverview() {
   }, []);
 
   return (
-    <section id="services" className="bg-[var(--color-bg-secondary)] py-20 transition-colors duration-300 lg:py-24">
+    <section id="services" className="bg-[var(--color-bg-secondary)] py-16 transition-colors duration-300 sm:py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -102,7 +102,7 @@ export default function ServicesOverview() {
             WHAT WE DO
           </p>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
+            className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.1s' }}
@@ -110,7 +110,7 @@ export default function ServicesOverview() {
             Comprehensive Security Services
           </h2>
           <p
-            className={`mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
+            className={`mt-4 sm:mt-6 text-sm sm:text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.2s' }}
@@ -119,13 +119,13 @@ export default function ServicesOverview() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className={`group relative rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(13,28,42,0.96))] p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent)] ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
+                className={`group relative rounded-xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(17,35,53,0.96),rgba(13,28,42,0.96))] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--color-accent)] ${
+                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               style={{ transitionDelay: `${0.3 + index * 0.1}s` }}
             >
               <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-[var(--color-accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -161,10 +161,10 @@ export default function ServicesOverview() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <div className="mt-12 sm:mt-16 text-center">
           <a
             href="/services"
-            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-8 py-4 text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
+            className="group inline-flex items-center justify-center rounded-md border border-[var(--color-border)] bg-[rgba(10,20,31,0.84)] px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base font-semibold text-[var(--color-text-primary)] transition-all duration-300 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
           >
             View All Services
             <svg className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

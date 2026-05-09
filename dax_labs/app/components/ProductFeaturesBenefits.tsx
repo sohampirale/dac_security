@@ -41,20 +41,20 @@ const forensicFeatures = {
 
 export default function ProductFeaturesBenefits() {
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             WHY CHOOSE DAK SECURITY PRODUCTS?
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Enterprise-grade features paired with tangible business benefits.
           </p>
         </div>
 
         {/* Enterprise Security Section */}
-        <div className="mb-16">
+         <div className="mb-12 sm:mb-16">
           <div className="text-center mb-10">
             <h3 className="text-xl font-bold text-[var(--color-text-primary)]">
               Enterprise Security Products
@@ -64,9 +64,9 @@ export default function ProductFeaturesBenefits() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {/* Features Column */}
-            <div className="p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
+            <div className="p-6 sm:p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
               <div className="flex items-center mb-6">
                 <div className="inline-flex items-center justify-center w-10 h-10 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +103,7 @@ export default function ProductFeaturesBenefits() {
             </div>
 
             {/* Benefits Column */}
-            <div className="p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
+            <div className="p-6 sm:p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
               <div className="flex items-center mb-6">
                 <div className="inline-flex items-center justify-center w-10 h-10 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -152,9 +152,9 @@ export default function ProductFeaturesBenefits() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2">
             {/* Features Column */}
-            <div className="p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
+            <div className="p-6 sm:p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
               <div className="flex items-center mb-6">
                 <div className="inline-flex items-center justify-center w-10 h-10 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -191,7 +191,7 @@ export default function ProductFeaturesBenefits() {
             </div>
 
             {/* Benefits Column */}
-            <div className="p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
+            <div className="p-6 sm:p-8 bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)]">
               <div className="flex items-center mb-6">
                 <div className="inline-flex items-center justify-center w-10 h-10 bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

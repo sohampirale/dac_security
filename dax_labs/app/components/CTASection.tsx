@@ -1,8 +1,8 @@
 export default function CTASection() {
   return (
-    <section id="contact" className="bg-[var(--color-bg-secondary)] py-24 transition-colors duration-300 lg:py-32">
+    <section id="contact" className="bg-[var(--color-bg-secondary)] py-16 transition-colors duration-300 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(125deg,rgba(20,39,58,0.98),rgba(11,24,36,0.98))] px-6 py-16 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
+        <div className="relative overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[linear-gradient(125deg,rgba(20,39,58,0.98),rgba(11,24,36,0.98))] px-6 py-12 sm:px-12 sm:py-20 lg:px-16 lg:py-24">
           <div className="absolute inset-0 opacity-[0.08]">
             <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
@@ -17,14 +17,14 @@ export default function CTASection() {
           <div className="absolute -bottom-16 left-12 h-56 w-56 rounded-full bg-[rgba(47,144,255,0.14)] blur-3xl" />
 
           <div className="relative z-10 text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold leading-tight tracking-tight text-[var(--color-text-primary)] sm:text-3xl lg:text-4xl">
+            <h2 className="text-xl sm:text-2xl font-bold leading-tight tracking-tight text-[var(--color-text-primary)] sm:text-3xl lg:text-4xl">
               Do You Need Our Help in Securing Your Systems?
             </h2>
 
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-10 py-4 text-base font-semibold text-[var(--color-text-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]"
+                className="inline-flex items-center justify-center rounded-md bg-[var(--color-accent)] px-8 py-3 text-sm sm:px-10 sm:py-4 sm:text-base font-semibold text-[var(--color-text-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[var(--color-accent-hover)]"
               >
                 Yes, We Do.
               </a>

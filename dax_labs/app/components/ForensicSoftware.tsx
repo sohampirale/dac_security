@@ -264,14 +264,14 @@ export default function ForensicSoftware() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[var(--color-bg-secondary)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--color-text-primary)] tracking-tight">
             FORENSIC SOFTWARE TOOLS
           </h2>
-          <p className="mt-4 text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          <p className="mt-4 text-sm sm:text-lg text-[var(--color-text-secondary)] leading-relaxed">
             Comprehensive suite of forensic software tools for digital evidence collection, analysis, and reporting across various platforms and devices.
           </p>
         </div>
@@ -286,14 +286,14 @@ export default function ForensicSoftware() {
               {/* Header */}
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-[var(--color-bg-tertiary)] transition-colors"
+                className="w-full px-4 py-4 flex items-center justify-between text-left hover:bg-[var(--color-bg-tertiary)] transition-colors sm:px-6 sm:py-5"
                 aria-expanded={openIndex === index}
               >
-                <div className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[var(--color-bg-tertiary)] rounded-lg text-[var(--color-accent)]">
                     {tool.icon}
                   </div>
-                  <span className="text-lg font-semibold text-[var(--color-text-primary)]">
+                  <span className="text-base font-semibold text-[var(--color-text-primary)] sm:text-lg">
                     {tool.category}
                   </span>
                 </div>
@@ -315,8 +315,8 @@ export default function ForensicSoftware() {
                   openIndex === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}
               >
-                <div className="px-6 pb-6">
-                  <p className="text-[var(--color-text-secondary)] leading-relaxed mb-4">
+                <div className="px-4 pb-5 sm:px-6 sm:pb-6">
+                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed mb-4 sm:text-base">
                     {tool.description}
                   </p>
                   <div className="grid sm:grid-cols-2 gap-3">
@@ -335,7 +335,7 @@ export default function ForensicSoftware() {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-sm text-[var(--color-text-muted)]">
+                        <span className="text-xs text-[var(--color-text-muted)] sm:text-sm">
                           {feature}
                         </span>
                       </div>

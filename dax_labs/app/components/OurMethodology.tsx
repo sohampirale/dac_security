@@ -105,10 +105,10 @@ export default function OurMethodology() {
           </p>
         </div>
 
-        <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-6">
-          <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-6 sm:p-8">
+        <div className="mt-10 rounded-[28px] border border-[rgba(46,208,196,0.2)] bg-transparent p-4 sm:p-6">
+          <div className="relative rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(8,16,24,0.92)] p-5 sm:p-8">
             <div className="absolute bottom-6 left-8 top-6 w-px bg-gradient-to-b from-transparent via-[rgba(46,208,196,0.35)] to-transparent sm:hidden" />
-            <div className="grid gap-6 sm:grid-cols-3">
+            <div className="grid gap-4 sm:gap-6 sm:grid-cols-3">
               {steps.map((step, index) => {
                 const isActive = step.key === activeKey;
                 return (
@@ -119,7 +119,7 @@ export default function OurMethodology() {
                     onFocus={() => setActiveKey(step.key)}
                     onClick={() => setActiveKey(step.key)}
                     aria-pressed={isActive}
-                    className={`group relative z-10 rounded-2xl border px-6 py-6 text-left transition-all duration-300 sm:px-8 sm:py-7 ${
+                    className={`group relative z-10 rounded-2xl border px-4 py-5 text-left transition-all duration-300 sm:px-8 sm:py-7 ${
                       isActive
                         ? 'border-[rgba(46,208,196,0.75)] bg-[linear-gradient(135deg,rgba(46,208,196,0.16),rgba(10,22,32,0.9))] shadow-[0_16px_40px_rgba(8,18,28,0.55)]'
                         : 'border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.6)] hover:border-[rgba(46,208,196,0.45)]'
@@ -172,8 +172,8 @@ export default function OurMethodology() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(6,14,22,0.85)] p-6 sm:p-8">
-            <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <div className="mt-8 rounded-2xl border border-[rgba(46,208,196,0.18)] bg-[rgba(6,14,22,0.85)] p-5 sm:p-8">
+              <div className="flex flex-wrap items-baseline justify-between gap-3">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.4em] text-[var(--color-accent)]">
                   {activeStep.label}
@@ -187,7 +187,7 @@ export default function OurMethodology() {
               </span>
             </div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {activeStep.items.map((item) => (
                 <a
                   key={item.label}

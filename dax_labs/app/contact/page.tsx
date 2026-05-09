@@ -73,26 +73,26 @@ export default function ContactPage() {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-[var(--color-bg-primary)] pt-24 pb-16 transition-colors duration-300">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
-          <div className="border-b border-[var(--color-border)] pb-8 sm:pb-10">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-text-primary)]">
+      <div className="min-h-screen bg-[var(--color-bg-primary)] pt-20 pb-14 sm:pt-24 sm:pb-16 transition-colors duration-300">
+        <div className="mx-auto max-w-5xl px-4 sm:px-8 lg:px-10">
+          <div className="border-b border-[var(--color-border)] pb-6 sm:pb-10">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-text-primary)]">
               Contact Us
             </h1>
           </div>
 
-          <section className="border-b border-[var(--color-border)] py-10 sm:py-12">
-            <p className="max-w-4xl text-lg font-semibold leading-relaxed text-[var(--color-text-primary)]">
+          <section className="border-b border-[var(--color-border)] py-8 sm:py-12">
+            <p className="max-w-4xl text-sm sm:text-lg font-semibold leading-relaxed text-[var(--color-text-primary)]">
               All communication is handled with confidentiality and professional discretion.
               <br className="hidden sm:block" />
               The more accurate information you provide, the faster we can understand and assist your requirement.
             </p>
           </section>
 
-          <section className="py-10 sm:py-12">
-            <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:items-start">
-              <aside className="rounded-2xl border border-[var(--color-border)] bg-[rgba(8,17,26,0.65)] p-6 sm:p-8">
-                <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">Let&apos;s Discuss</h2>
+          <section className="py-8 sm:py-12">
+            <div className="grid gap-8 sm:gap-10 lg:grid-cols-[1fr_2fr] lg:items-start">
+              <aside className="rounded-2xl border border-[var(--color-border)] bg-[rgba(8,17,26,0.65)] p-5 sm:p-8">
+                <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-text-primary)]">Let&apos;s Discuss</h2>
                 <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Email</p>
                 <a href="mailto:info@daksecurity.com" className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
                 <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Phone</p>

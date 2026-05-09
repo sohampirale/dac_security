@@ -85,9 +85,9 @@ export default function ServiceIndustries() {
   }, []);
 
   return (
-    <section id="industries" className="bg-[var(--color-bg-primary)] py-24 transition-colors duration-300 lg:py-32">
+    <section id="industries" className="bg-[var(--color-bg-primary)] py-16 transition-colors duration-300 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-20">
           <p
             className={`text-sm font-semibold text-[var(--color-accent)] tracking-[0.3em] uppercase mb-4 transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -96,7 +96,7 @@ export default function ServiceIndustries() {
             INDUSTRIES WE SERVE
           </p>
           <h2
-            className={`text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
+            className={`text-2xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] tracking-tight transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.1s' }}
@@ -104,7 +104,7 @@ export default function ServiceIndustries() {
             Tailored Solutions for Every Sector
           </h2>
           <p
-            className={`mt-6 text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
+            className={`mt-4 sm:mt-6 text-sm sm:text-xl text-[var(--color-text-secondary)] leading-relaxed transition-all duration-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ transitionDelay: '0.2s' }}
@@ -113,7 +113,7 @@ export default function ServiceIndustries() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {industries.map((industry, index) => (
             <div
               key={industry.name}

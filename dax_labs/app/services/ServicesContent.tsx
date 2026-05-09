@@ -122,15 +122,15 @@ export default function ServicesContent() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-24">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 sm:pt-28 sm:pb-24">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">
-            <h1 className="text-4xl font-bold leading-tight">Services</h1>
-            <p className="mt-4 text-[var(--color-text-secondary)]">We work on your systems to identify risks, test security, fix issues, and keep everything protected over time.</p>
+            <h1 className="text-3xl font-bold leading-tight sm:text-4xl">Services</h1>
+            <p className="mt-4 text-sm text-[var(--color-text-secondary)] sm:text-base">We work on your systems to identify risks, test security, fix issues, and keep everything protected over time.</p>
 
-            <nav className="mt-10" aria-label="Services sections">
-              <div className="space-y-6">
+            <nav className="mt-8 sm:mt-10" aria-label="Services sections">
+              <div className="space-y-5 sm:space-y-6">
                 {sectionOrder.map((key, index) => {
                   const isActive = active === key;
                   const isComplete = sectionOrder.indexOf(active) >= index;
@@ -168,18 +168,18 @@ export default function ServicesContent() {
                 sectionRefs.current[key] = el;
               }}
               data-section={key}
-              className={`scroll-mt-32 pb-20 ${sectionIndex === 0 ? '' : 'border-t border-white/10 pt-12'}`}
+              className={`scroll-mt-32 pb-16 sm:pb-20 ${sectionIndex === 0 ? '' : 'border-t border-white/10 pt-10 sm:pt-12'}`}
               aria-labelledby={`${key}-title`}
             >
-              <div className="flex items-end justify-between gap-6">
+              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                 <div>
                   <h2
                     id={`${key}-title`}
-                    className={`text-2xl font-bold tracking-[0.04em] ${active === key ? 'text-[var(--color-accent)]' : ''}`}
+                    className={`text-xl font-bold tracking-[0.04em] sm:text-2xl ${active === key ? 'text-[var(--color-accent)]' : ''}`}
                   >
                     {sections[key].title}
                   </h2>
-                  <p className="mt-2 text-[var(--color-text-secondary)] max-w-xl">{sections[key].subtitle}</p>
+                  <p className="mt-2 max-w-xl text-sm text-[var(--color-text-secondary)] sm:text-base">{sections[key].subtitle}</p>
                 </div>
                 <div className="hidden lg:flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-[var(--color-text-secondary)]">
                   <span className="h-[1px] w-10 bg-white/20" />
@@ -187,12 +187,12 @@ export default function ServicesContent() {
                 </div>
               </div>
 
-              <div className="mt-8 grid gap-8 lg:grid-cols-2">
+              <div className="mt-6 grid gap-6 sm:mt-8 sm:gap-8 lg:grid-cols-2">
                 {sections[key].blocks.map((block, idx) => (
                   <div key={idx} className="border-l border-white/10 pl-5">
                     <h3 className="font-semibold">{block.title}</h3>
-                    <p className="text-[var(--color-text-secondary)] mt-2">{block.line}</p>
-                    <ul className="mt-3 space-y-2 text-[var(--color-text-secondary)]">
+                    <p className="mt-2 text-sm text-[var(--color-text-secondary)] sm:text-base">{block.line}</p>
+                    <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)] sm:text-base">
                       {block.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
