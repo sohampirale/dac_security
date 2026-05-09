@@ -79,11 +79,11 @@ export default function OurMethodology() {
           background: 'linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%)',
         }}
       />
-      <div className="absolute inset-0 -z-10 opacity-[0.08]">
+      <div className="absolute inset-0 -z-10 opacity-[0.06]">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
-            <pattern id="methodologyGrid" width="5" height="5" patternUnits="userSpaceOnUse">
-              <path d="M 5 0 L 0 0 0 5" fill="none" stroke="currentColor" strokeWidth="0.2" />
+            <pattern id="methodologyGrid" width="4" height="4" patternUnits="userSpaceOnUse">
+              <path d="M 4 0 L 0 0 0 4" fill="none" stroke="currentColor" strokeWidth="0.3" />
             </pattern>
           </defs>
           <rect width="100" height="100" fill="url(#methodologyGrid)" />

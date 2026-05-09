@@ -168,11 +168,11 @@ export default function SpheresOfSecurity() {
             'radial-gradient(circle at 18% 18%, rgba(32,215,181,0.12), transparent 45%), radial-gradient(circle at 86% 24%, rgba(92,160,255,0.12), transparent 40%), linear-gradient(160deg, rgba(8,16,24,0.96) 0%, rgba(10,20,30,0.92) 45%, rgba(6,12,18,0.98) 100%)',
         }}
       />
-      <div className="absolute inset-0 -z-10 opacity-[0.12]">
+      <div className="absolute inset-0 -z-10 opacity-[0.06]">
         <svg className="h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
-            <pattern id="spheresGrid" width="6" height="6" patternUnits="userSpaceOnUse">
-              <path d="M 6 0 L 0 0 0 6" fill="none" stroke="currentColor" strokeWidth="0.25" />
+            <pattern id="spheresGrid" width="4" height="4" patternUnits="userSpaceOnUse">
+              <path d="M 4 0 L 0 0 0 4" fill="none" stroke="currentColor" strokeWidth="0.3" />
             </pattern>
           </defs>
           <rect width="100" height="100" fill="url(#spheresGrid)" />
