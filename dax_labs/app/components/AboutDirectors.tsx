@@ -40,7 +40,7 @@ export default function AboutDirectors() {
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-10 px-4 py-16 sm:px-6 lg:px-8">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col justify-center gap-14 px-4 pb-16 pt-24 sm:px-6 lg:px-8">
         {directors.map((director) => (
           <div
             key={director.designation}
