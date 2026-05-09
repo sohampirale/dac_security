@@ -68,6 +68,7 @@ const steps = [
 
 export default function OurMethodology() {
   const [activeKey, setActiveKey] = useState<StepKey>('detect');
+  const [showAllKey, setShowAllKey] = useState<StepKey | null>(null);
   const activeStep = useMemo(() => steps.find((step) => step.key === activeKey)!, [activeKey]);
   const activeIndex = useMemo(() => Math.max(0, steps.findIndex((step) => step.key === activeKey)), [activeKey]);
 
@@ -115,7 +116,10 @@ export default function OurMethodology() {
                   <div key={step.key} className="relative rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.6)] p-5">
                     <button
                       type="button"
-                      onClick={() => setActiveKey(step.key)}
+                      onClick={() => {
+                        setActiveKey(step.key);
+                        setShowAllKey(null);
+                      }}
                       aria-pressed={isActive}
                       aria-expanded={isActive}
                       className="flex w-full items-center justify-between text-left"
@@ -160,7 +164,7 @@ export default function OurMethodology() {
                           {step.heading}
                         </p>
                         <div className="mt-4 grid gap-2">
-                          {step.items.map((item) => (
+                          {(showAllKey === step.key ? step.items : step.items.slice(0, 4)).map((item) => (
                             <a
                               key={item.label}
                               href={item.href}
@@ -169,6 +173,15 @@ export default function OurMethodology() {
                               {item.label}
                             </a>
                           ))}
+                          {step.items.length > 4 && (
+                            <button
+                              type="button"
+                              onClick={() => setShowAllKey(showAllKey === step.key ? null : step.key)}
+                              className="rounded-lg border border-[rgba(46,208,196,0.35)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]"
+                            >
+                              {showAllKey === step.key ? 'Show less' : `Show ${step.items.length - 4} more`}
+                            </button>
+                          )}
                         </div>
                       </div>
                     </div>

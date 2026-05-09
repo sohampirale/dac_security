@@ -147,6 +147,7 @@ export default function SpheresOfSecurity() {
   const [activeKey, setActiveKey] = useState<SphereKey>('land');
   const activeSphere = useMemo(() => spheres.find((sphere) => sphere.key === activeKey)!, [activeKey]);
   const selectableSpheres = useMemo(() => spheres.filter((sphere) => sphere.key !== 'core'), []);
+  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -241,25 +242,68 @@ export default function SpheresOfSecurity() {
 
           <div className="sm:hidden">
             <div className="rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
-              <label className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
                 Select Sphere
-              </label>
-              <div className="mt-3 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
-                  <Image src={activeSphere.logo} alt={activeSphere.label} width={36} height={36} className="object-contain" />
-                </div>
-                <select
-                  value={activeKey}
-                  onChange={(event) => setActiveKey(event.target.value as SphereKey)}
-                  className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(6,12,18,0.72)] px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
-                  aria-label="Select a security sphere"
+              </p>
+              <div className="relative mt-3">
+                <button
+                  type="button"
+                  onClick={() => setIsSelectorOpen((open) => !open)}
+                  aria-haspopup="listbox"
+                  aria-expanded={isSelectorOpen}
+                  className="flex w-full items-center justify-between gap-3 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(6,12,18,0.72)] px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
                 >
-                  {selectableSpheres.map((sphere) => (
-                    <option key={sphere.key} value={sphere.key}>
-                      {sphere.label}
-                    </option>
-                  ))}
-                </select>
+                  <span className="flex items-center gap-3">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
+                      <Image src={activeSphere.logo} alt={activeSphere.label} width={32} height={32} className="object-contain" />
+                    </span>
+                    <span>{activeSphere.label}</span>
+                  </span>
+                  <span
+                    className={`flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(255,255,255,0.2)] transition-transform ${
+                      isSelectorOpen ? 'rotate-180' : ''
+                    }`}
+                  >
+                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  role="listbox"
+                  aria-label="Security spheres"
+                  className={`absolute left-0 right-0 z-20 mt-3 overflow-hidden rounded-2xl border border-[rgba(32,215,181,0.25)] bg-[rgba(8,16,24,0.98)] shadow-[0_18px_40px_rgba(2,8,12,0.5)] transition-all duration-300 ${
+                    isSelectorOpen ? 'max-h-[320px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                  }`}
+                >
+                  <div className="max-h-[320px] overflow-y-auto py-2">
+                    {selectableSpheres.map((sphere) => {
+                      const isActive = sphere.key === activeKey;
+                      return (
+                        <button
+                          key={sphere.key}
+                          type="button"
+                          role="option"
+                          aria-selected={isActive}
+                          onClick={() => {
+                            setActiveKey(sphere.key);
+                            setIsSelectorOpen(false);
+                          }}
+                          className={`flex w-full items-center gap-3 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.25em] transition ${
+                            isActive
+                              ? 'bg-[rgba(32,215,181,0.12)] text-[var(--color-text-primary)]'
+                              : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+                          }`}
+                        >
+                          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)]">
+                            <Image src={sphere.logo} alt={sphere.label} width={22} height={22} className="object-contain" />
+                          </span>
+                          <span>{sphere.label}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="mt-6 rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
