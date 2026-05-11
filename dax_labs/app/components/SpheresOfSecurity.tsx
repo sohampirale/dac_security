@@ -147,7 +147,7 @@ export default function SpheresOfSecurity() {
   const [activeKey, setActiveKey] = useState<SphereKey>('land');
   const activeSphere = useMemo(() => spheres.find((sphere) => sphere.key === activeKey)!, [activeKey]);
   const selectableSpheres = useMemo(() => spheres.filter((sphere) => sphere.key !== 'core'), []);
-  const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+  const [mobileOpenKey, setMobileOpenKey] = useState<SphereKey | null>('land');
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -243,7 +243,7 @@ export default function SpheresOfSecurity() {
           <div className="sm:hidden">
             <div className="space-y-4">
               {selectableSpheres.map((sphere) => {
-                const isActive = sphere.key === activeKey;
+                const isActive = sphere.key === mobileOpenKey;
                 return (
                   <div
                     key={sphere.key}
@@ -255,7 +255,10 @@ export default function SpheresOfSecurity() {
                   >
                     <button
                       type="button"
-                      onClick={() => setActiveKey(sphere.key)}
+                      onClick={() => {
+                        setMobileOpenKey((current) => (current === sphere.key ? null : sphere.key));
+                        setActiveKey(sphere.key);
+                      }}
                       className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left"
                     >
                       <span className="flex items-center gap-4">
