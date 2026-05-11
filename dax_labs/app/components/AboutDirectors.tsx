@@ -15,7 +15,7 @@ const directors = [
     statement:
       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
     image: '/director-1.jpeg',
-    imagePosition: 'center',
+    imagePosition: 'center 20%',
     animation: 'animate-slide-in-left',
   },
 ];
@@ -70,9 +70,8 @@ export default function AboutDirectors() {
                 “{director.statement}”
               </p>
               <div className="mt-8">
-                <p className="text-xl font-semibold text-[var(--color-text-primary)]">{director.name}</p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.2em] text-[var(--color-accent)] whitespace-nowrap sm:text-sm sm:tracking-[0.24em] sm:whitespace-normal">
-                  {director.designation}
+                <p className="text-lg font-semibold uppercase tracking-[0.18em] text-[var(--color-text-primary)] sm:text-xl sm:tracking-[0.2em]">
+                  {director.name} — {director.designation}
                 </p>
               </div>
             </div>
