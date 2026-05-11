@@ -71,7 +71,7 @@ export default function AboutDirectors() {
               </p>
               <div className="mt-8">
                 <p className="text-lg font-semibold uppercase tracking-[0.18em] text-[var(--color-text-primary)] sm:text-xl sm:tracking-[0.2em]">
-                  {director.name} — {director.designation}
+                  {director.name} — <span className="text-[var(--color-accent)]">{director.designation}</span>
                 </p>
               </div>
             </div>
