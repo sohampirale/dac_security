@@ -1,20 +1,22 @@
 const directors = [
   {
-    name: 'Aditya Mahindrakar',
-    designation: 'Director — Business Operations',
-    statement:
-      'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
-    image: '/director-1.jpeg',
-    animation: 'animate-slide-in-left',
-  },
-  {
-    name: 'Vijaykumar Dhar',
-    designation: 'Director — Finance & Operations',
+    name: 'VIJAYKUMAR',
+    designation: 'Finance & Operations',
     statement:
       'Strong systems are built through discipline, clarity, and long-term accountability. We approach that responsibility with the same seriousness expected for systems that support institutions, operations, and national continuity.',
     image: '/director-2.jpeg',
+    imagePosition: 'center',
     animation: 'animate-slide-in-right',
     reverse: true,
+  },
+  {
+    name: 'ADITYA',
+    designation: 'Business Operations',
+    statement:
+      'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
+    image: '/director-1.jpeg',
+    imagePosition: 'center',
+    animation: 'animate-slide-in-left',
   },
 ];
 
@@ -52,8 +54,11 @@ export default function AboutDirectors() {
               className={`relative min-h-[240px] sm:min-h-[300px] ${director.reverse ? 'lg:order-2' : ''}`}
             >
               <div
-                className="absolute inset-0 bg-contain bg-top bg-no-repeat sm:bg-cover sm:bg-center"
-                style={{ backgroundImage: `url(${director.image})` }}
+                className="absolute inset-0 bg-contain bg-no-repeat sm:bg-cover"
+                style={{
+                  backgroundImage: `url(${director.image})`,
+                  backgroundPosition: director.imagePosition ?? 'center',
+                }}
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,12,18,0.05),rgba(7,12,18,0.4))]" />
             </div>

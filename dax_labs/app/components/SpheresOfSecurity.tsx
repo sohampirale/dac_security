@@ -241,129 +241,108 @@ export default function SpheresOfSecurity() {
           </div>
 
           <div className="sm:hidden">
-            <div className="rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">
-                Select Sphere
-              </p>
-              <div className="relative mt-3">
-                <button
-                  type="button"
-                  onClick={() => setIsSelectorOpen((open) => !open)}
-                  aria-haspopup="listbox"
-                  aria-expanded={isSelectorOpen}
-                  className="flex w-full items-center justify-between gap-3 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(6,12,18,0.72)] px-4 py-3 text-left text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
-                >
-                  <span className="flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
-                      <Image src={activeSphere.logo} alt={activeSphere.label} width={32} height={32} className="object-contain" />
-                    </span>
-                    <span>{activeSphere.label}</span>
-                  </span>
-                  <span
-                    className={`flex h-8 w-8 items-center justify-center rounded-full border border-[rgba(255,255,255,0.2)] transition-transform ${
-                      isSelectorOpen ? 'rotate-180' : ''
+            <div className="space-y-4">
+              {selectableSpheres.map((sphere) => {
+                const isActive = sphere.key === activeKey;
+                return (
+                  <div
+                    key={sphere.key}
+                    className={`overflow-hidden rounded-[24px] border bg-[rgba(6,12,18,0.78)] transition ${
+                      isActive
+                        ? 'border-[rgba(32,215,181,0.35)] bg-[rgba(10,18,28,0.92)] shadow-[0_24px_50px_rgba(2,8,12,0.55)]'
+                        : 'border-[rgba(255,255,255,0.08)]'
                     }`}
                   >
-                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </span>
-                </button>
-                <div
-                  role="listbox"
-                  aria-label="Security spheres"
-                  className={`absolute left-0 right-0 z-20 mt-3 overflow-hidden rounded-2xl border border-[rgba(32,215,181,0.25)] bg-[rgba(8,16,24,0.98)] shadow-[0_18px_40px_rgba(2,8,12,0.5)] transition-all duration-300 ${
-                    isSelectorOpen ? 'max-h-[320px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
-                  }`}
-                >
-                  <div className="max-h-[320px] overflow-y-auto py-2">
-                    {selectableSpheres.map((sphere) => {
-                      const isActive = sphere.key === activeKey;
-                      return (
-                        <button
-                          key={sphere.key}
-                          type="button"
-                          role="option"
-                          aria-selected={isActive}
-                          onClick={() => {
-                            setActiveKey(sphere.key);
-                            setIsSelectorOpen(false);
-                          }}
-                          className={`flex w-full items-center gap-3 px-4 py-3 text-left text-xs font-semibold uppercase tracking-[0.25em] transition ${
-                            isActive
-                              ? 'bg-[rgba(32,215,181,0.12)] text-[var(--color-text-primary)]'
-                              : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
-                          }`}
-                        >
-                          <span className="flex h-9 w-9 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)]">
-                            <Image src={sphere.logo} alt={sphere.label} width={22} height={22} className="object-contain" />
+                    <button
+                      type="button"
+                      onClick={() => setActiveKey(sphere.key)}
+                      className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left"
+                    >
+                      <span className="flex items-center gap-4">
+                        <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)]">
+                          <span className={`absolute -inset-2 rounded-2xl bg-gradient-to-br ${sphere.accent} opacity-30 blur-lg`} />
+                          <span className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-[rgba(255,255,255,0.1)] bg-[rgba(8,16,24,0.9)]">
+                            <Image src={sphere.logo} alt={sphere.label} width={26} height={26} className="object-contain" />
                           </span>
-                          <span>{sphere.label}</span>
-                        </button>
-                      );
-                    })}
+                        </span>
+                        <span>
+                          <span className="block text-lg font-semibold uppercase tracking-[0.2em] text-[var(--color-text-primary)]">
+                            {sphere.label}
+                          </span>
+                          <span className="mt-1 block text-xs text-[var(--color-text-muted)]">
+                            {sphere.title}
+                          </span>
+                        </span>
+                      </span>
+                      <span
+                        className={`flex h-9 w-9 items-center justify-center rounded-full border border-[rgba(255,255,255,0.14)] transition ${
+                          isActive ? 'rotate-180 bg-[rgba(255,255,255,0.06)]' : ''
+                        }`}
+                      >
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div
+                      className={`px-4 pb-5 transition-all duration-300 ${
+                        isActive ? 'max-h-[1200px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
+                      }`}
+                    >
+                      <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                        {sphere.philosophy}
+                      </p>
+                      <div className="mt-4 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Services</p>
+                        <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
+                          {sphere.services?.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mt-4 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Products</p>
+                        <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
+                          {sphere.products?.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mt-4 rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Training</p>
+                        <ul className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)]">
+                          {sphere.training?.map((item) => (
+                            <li key={item} className="flex items-start gap-2">
+                              <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mt-4 flex gap-3">
+                        <a
+                          href="/services"
+                          className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(9,17,26,0.9)] px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-text-primary)] transition hover:border-[rgba(32,215,181,0.35)]"
+                        >
+                          View Services
+                        </a>
+                        <a
+                          href="/products"
+                          className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(9,17,26,0.9)] px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-text-primary)] transition hover:border-[rgba(32,215,181,0.35)]"
+                        >
+                          View Products
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 rounded-[24px] border border-[rgba(32,215,181,0.2)] bg-[rgba(8,16,24,0.85)] p-5">
-              <div className="flex flex-wrap items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(255,255,255,0.12)] bg-[rgba(8,16,24,0.9)] shadow-[0_16px_35px_rgba(3,8,14,0.4)]">
-                  <Image src={activeSphere.logo} alt={activeSphere.label} width={36} height={36} className="object-contain" />
-                </div>
-                <div>
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-[var(--color-text-muted)]">
-                    {activeSphere.title}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold text-[var(--color-text-primary)]">
-                    {activeSphere.label}
-                  </h3>
-                </div>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                {activeSphere.philosophy}
-              </p>
-              <div className="mt-5 grid gap-4">
-                <a
-                  href="/services"
-                  className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4 transition duration-300 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Services</p>
-                  <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
-                    {activeSphere.services?.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </a>
-                <a
-                  href="/products"
-                  className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4 transition duration-300 hover:border-[rgba(32,215,181,0.35)] hover:bg-[rgba(10,18,28,0.82)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-                >
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Products</p>
-                  <ul className="mt-3 space-y-2 text-sm text-[var(--color-text-secondary)]">
-                    {activeSphere.products?.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </a>
-                <div className="rounded-2xl border border-[rgba(255,255,255,0.08)] bg-[rgba(6,12,18,0.72)] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-text-muted)]">Training</p>
-                  <ul className="mt-3 grid gap-2 text-sm text-[var(--color-text-secondary)]">
-                    {activeSphere.training?.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </div>
 
