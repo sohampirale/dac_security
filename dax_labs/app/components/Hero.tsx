@@ -64,13 +64,13 @@ export default function Hero() {
             style={{ animationDelay: '0.3s' }}
           >
             <a
-              href="#our-methodology"
+              href="/methodology"
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.45)] bg-[linear-gradient(135deg,rgba(46,208,196,0.95),rgba(20,160,150,0.95))] px-7 py-3 text-sm font-semibold text-[var(--color-text-light)] shadow-[0_14px_30px_rgba(10,20,30,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(10,20,30,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
               Explore Our Methodology
             </a>
             <a
-              href="#spheres-of-security"
+              href="/spheres"
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[rgba(8,20,30,0.85)] px-7 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-[0_12px_26px_rgba(5,12,20,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_16px_32px_rgba(5,12,20,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
               Explore Spheres of Security
