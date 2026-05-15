@@ -328,20 +328,6 @@ export default function SpheresOfSecurity() {
                           ))}
                         </ul>
                       </div>
-                      <div className="mt-4 flex gap-3">
-                        <a
-                          href="/services"
-                          className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(9,17,26,0.9)] px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-text-primary)] transition hover:border-[rgba(32,215,181,0.35)]"
-                        >
-                          View Services
-                        </a>
-                        <a
-                          href="/products"
-                          className="flex-1 rounded-xl border border-[rgba(255,255,255,0.12)] bg-[rgba(9,17,26,0.9)] px-4 py-2 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-text-primary)] transition hover:border-[rgba(32,215,181,0.35)]"
-                        >
-                          View Products
-                        </a>
-                      </div>
                     </div>
                   </div>
                 );
