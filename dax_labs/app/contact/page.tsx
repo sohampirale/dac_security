@@ -96,9 +96,18 @@ export default function ContactPage() {
                 <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Email</p>
                 <a href="mailto:info@daksecurity.com" className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
                 <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Phone</p>
-                <a href="tel:+919604551338" className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
-                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Address</p>
-                <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">20, H-1/A, Sector 63<br />Noida - 201301<br />Uttar Pradesh, India</address>
+                <div className="mt-2 space-y-1 text-lg text-[var(--color-text-primary)]">
+                  <a href="tel:+918668354806" className="block transition-colors hover:text-[var(--color-accent)]">+91 8668354806</a>
+                  <a href="tel:+919604551338" className="block transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
+                </div>
+                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Registered Address</p>
+                <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
+                  <span className="block">20, H-1/A, Sector 63</span>
+                  <span className="block">Noida - 201301</span>
+                  <span className="block">Uttar Pradesh, India</span>
+                  <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Branch offices</span>
+                  <span className="mt-2 block">Noida, Mumbai, Bengaluru</span>
+                </address>
               </aside>
 
               <div>
