@@ -19,10 +19,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Address</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Registered Address</h3>
             <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
-              <span className="block text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Registered address</span>
-              <span className="mt-2 block">20, H-1/A, Sector 63</span>
+              <span className="block">20, H-1/A, Sector 63</span>
               <span className="block">Noida - 201301</span>
               <span className="block">Uttar Pradesh, India</span>
               <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Branch office</span>
