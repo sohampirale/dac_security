@@ -1,6 +1,6 @@
 const directors = [
   {
-    name: 'VIJAYKUMAR',
+    name: 'Vijay Kumar',
     designation: 'Founder DAK SECURITY',
     statement:
       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
