@@ -3,22 +3,23 @@ const directors = [
     name: 'VIJAYKUMAR',
     designation: 'Finance & Operations',
     statement:
-      'Strong systems are built through discipline, clarity, and long-term accountability. We approach that responsibility with the same seriousness expected for systems that support institutions, operations, and national continuity.',
+      'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
     image: '/director-2.jpeg',
     imagePosition: 'center',
     animation: 'animate-slide-in-right',
     reverse: true,
-  },
-  {
-    name: 'ADITYA',
-    designation: 'Business Operations',
-    statement:
-      'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
-    image: '/director-1.jpeg',
-    imagePosition: 'center 20%',
-    animation: 'animate-slide-in-left',
-  },
+  }
 ];
+// ,
+//   {
+//     name: 'ADITYA',
+//     designation: 'Business Operations',
+//     statement:
+//       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
+//     image: '/director-1.jpeg',
+//     imagePosition: 'center 20%',
+//     animation: 'animate-slide-in-left',
+//   },
 
 export default function AboutDirectors() {
   return (
