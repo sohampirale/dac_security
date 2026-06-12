@@ -1,8 +1,11 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: Request) {
+  if (!resend) {
+    return Response.json({ error: 'Contact form not configured' }, { status: 500 });
+  }
   try {
     const formData = await request.formData();
     const name = String(formData.get('name') || '');
