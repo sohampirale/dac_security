@@ -100,13 +100,17 @@ export default function ContactPage() {
                   <a href="tel:+918668354806" className="block transition-colors hover:text-[var(--color-accent)]">+91 8668354806</a>
                   <a href="tel:+919604551338" className="block transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
                 </div>
-                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Registered Address</p>
+                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Head Office</p>
                 <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
                   <span className="block">20, H-1/A, Sector 63</span>
                   <span className="block">Noida - 201301</span>
                   <span className="block">Uttar Pradesh, India</span>
-                  <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Branch offices</span>
-                  <span className="mt-2 block">Noida, Mumbai, Bengaluru</span>
+                </address>
+                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Branch Office</p>
+                <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
+                  <span className="block">L & T Business Park</span>
+                  <span className="block">Powai, Mumbai</span>
+                  <span className="block">Maharashtra - 400076</span>
                 </address>
               </aside>
 

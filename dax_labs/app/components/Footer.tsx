@@ -20,13 +20,17 @@ export default function Footer() {
 
           <div>
             <span className="mb-2 block h-0.5 w-8 bg-[var(--color-accent)]" />
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Registered Address</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Head Office</h3>
             <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
               <span className="block">20, H-1/A, Sector 63</span>
               <span className="block">Noida - 201301</span>
               <span className="block">Uttar Pradesh, India</span>
-              <span className="mt-4 block text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-accent)]">Branch offices</span>
-              <span className="mt-2 block">Noida, Mumbai, Bengaluru</span>
+            </address>
+            <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Branch Office</h3>
+            <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
+              <span className="block">L & T Business Park</span>
+              <span className="block">Powai, Mumbai</span>
+              <span className="block">Maharashtra - 400076</span>
             </address>
           </div>
         </div>
