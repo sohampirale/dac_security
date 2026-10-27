@@ -108,6 +108,32 @@ const SECTIONS = [
 export default function AdminDashboard() {
   const router = useRouter();
   const [downloading, setDownloading] = useState(false);
+  const [navigatingHref, setNavigatingHref] = useState<string | null>(null);
+  const [showSettings, setShowSettings] = useState(false);
+  const [githubPat, setGithubPat] = useState('');
+  const [savedPat, setSavedPat] = useState(false);
+
+  // Load stored GitHub PAT
+  if (typeof window !== 'undefined' && !githubPat) {
+    const stored = localStorage.getItem('dak_github_pat');
+    if (stored) setGithubPat(stored);
+  }
+
+  function handleSavePat(e: React.FormEvent) {
+    e.preventDefault();
+    if (typeof window !== 'undefined') {
+      if (githubPat.trim()) {
+        localStorage.setItem('dak_github_pat', githubPat.trim());
+      } else {
+        localStorage.removeItem('dak_github_pat');
+      }
+      setSavedPat(true);
+      setTimeout(() => {
+        setSavedPat(false);
+        setShowSettings(false);
+      }, 1200);
+    }
+  }
 
   async function handleLogout() {
     await fetch('/api/admin/auth', { method: 'DELETE' });
@@ -154,7 +180,19 @@ export default function AdminDashboard() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            <button
+              onClick={() => setShowSettings(true)}
+              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-xs font-medium transition-colors flex items-center gap-1.5"
+              title="Configure GitHub sync for Vercel auto-deployment"
+            >
+              <svg className="w-3.5 h-3.5 text-[#20d7b5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>{githubPat ? 'GitHub: Linked' : 'Sync Settings'}</span>
+            </button>
+
             <button
               onClick={handleExportBackup}
               disabled={downloading}
@@ -209,36 +247,69 @@ export default function AdminDashboard() {
 
         {/* Section Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {SECTIONS.map((section) => (
-            <Link
-              key={section.href}
-              href={section.href}
-              className={`group flex flex-col justify-between p-6 bg-[rgba(12,22,34,0.85)] border ${section.accent} rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)] backdrop-blur`}
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${section.iconColor}`}>
-                    {section.icon}
+          {SECTIONS.map((section) => {
+            const isLoading = navigatingHref === section.href;
+
+            return (
+              <Link
+                key={section.href}
+                href={section.href}
+                prefetch={true}
+                onClick={() => setNavigatingHref(section.href)}
+                className={`group flex flex-col justify-between p-6 bg-[rgba(12,22,34,0.85)] border ${
+                  isLoading
+                    ? 'border-[#20d7b5] ring-1 ring-[#20d7b5] shadow-[0_0_20px_rgba(32,215,181,0.2)]'
+                    : section.accent
+                } rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)] backdrop-blur relative overflow-hidden`}
+              >
+                {isLoading && (
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-[#20d7b5] animate-pulse" />
+                )}
+
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${section.iconColor}`}>
+                      {isLoading ? (
+                        <svg className="w-6 h-6 animate-spin text-[#20d7b5]" viewBox="0 0 24 24" fill="none">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                        </svg>
+                      ) : (
+                        section.icon
+                      )}
+                    </div>
+                    <span className="px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider bg-white/5 text-gray-400 border border-white/10 group-hover:border-white/20 transition-colors">
+                      {section.badge}
+                    </span>
                   </div>
-                  <span className="px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider bg-white/5 text-gray-400 border border-white/10 group-hover:border-white/20 transition-colors">
-                    {section.badge}
-                  </span>
+
+                  <h3 className="text-base font-bold text-white group-hover:text-[#20d7b5] transition-colors">
+                    {section.title}
+                  </h3>
+                  <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                    {section.description}
+                  </p>
                 </div>
 
-                <h3 className="text-base font-bold text-white group-hover:text-[#20d7b5] transition-colors">
-                  {section.title}
-                </h3>
-                <p className="text-xs text-gray-400 mt-2 leading-relaxed">
-                  {section.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-gray-400 group-hover:text-[#20d7b5] transition-colors">
-                <span>Edit Section</span>
-                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
-              </div>
-            </Link>
-          ))}
+                <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-gray-400 group-hover:text-[#20d7b5] transition-colors">
+                  {isLoading ? (
+                    <span className="flex items-center gap-2 text-[#20d7b5]">
+                      <svg className="animate-spin h-3.5 w-3.5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+                      </svg>
+                      Opening {section.title}...
+                    </span>
+                  ) : (
+                    <>
+                      <span>Edit Section</span>
+                      <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                    </>
+                  )}
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         {/* Operational Runbook Card */}
@@ -262,6 +333,74 @@ export default function AdminDashboard() {
           </div>
         </div>
       </main>
+
+      {/* GitHub Sync Settings Modal */}
+      {showSettings && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-[#0b141e] border border-white/20 rounded-2xl p-6 shadow-2xl text-white max-w-md w-full">
+            <div className="flex items-center justify-between pb-3 border-b border-white/10">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#20d7b5]" />
+                <h3 className="text-base font-bold text-white">Vercel Auto-Deploy Settings</h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSettings(false)}
+                className="text-gray-400 hover:text-white text-sm"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleSavePat} className="mt-4 space-y-4">
+              <p className="text-xs text-gray-300 leading-relaxed">
+                By default, content changes save immediately to this demonstration session. To trigger an automatic permanent redeploy on Vercel, enter a GitHub Personal Access Token (PAT).
+              </p>
+
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5">
+                  GitHub Personal Access Token (Optional)
+                </label>
+                <input
+                  type="password"
+                  value={githubPat}
+                  onChange={(e) => setGithubPat(e.target.value)}
+                  placeholder="github_pat_..."
+                  className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-white font-mono placeholder-gray-500 focus:outline-none focus:border-[#20d7b5] text-xs"
+                />
+                <p className="text-[11px] text-gray-500 mt-1">
+                  Stored securely in this browser&apos;s local storage.
+                </p>
+              </div>
+
+              {savedPat && (
+                <div className="p-2.5 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Settings updated!
+                </div>
+              )}
+
+              <div className="flex justify-end gap-2.5 pt-3 border-t border-white/10">
+                <button
+                  type="button"
+                  onClick={() => setShowSettings(false)}
+                  className="px-4 py-2 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-lg bg-[#20d7b5] text-[#070d14] hover:bg-[#17b89b] text-xs font-semibold"
+                >
+                  Save Settings
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

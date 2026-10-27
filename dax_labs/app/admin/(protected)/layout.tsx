@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getExpectedSessionToken } from '@/app/api/admin/auth/route';
+import NavigationProgressBar from '@/app/admin/components/NavigationProgressBar';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,5 +14,10 @@ export default async function ProtectedLayout({ children }: { children: React.Re
     redirect('/admin/login');
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <NavigationProgressBar />
+      {children}
+    </>
+  );
 }

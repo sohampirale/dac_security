@@ -47,15 +47,22 @@ export default function EditSiteMetadata() {
 
     try {
       const content = JSON.stringify(data, null, 2);
+      const githubToken =
+        typeof window !== 'undefined' ? localStorage.getItem('dak_github_pat') || undefined : undefined;
+
       const res = await fetch('/api/admin/content', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ filePath: FILE_PATH, content }),
+        body: JSON.stringify({ filePath: FILE_PATH, content, githubToken }),
       });
 
       const resData = await res.json();
       if (!res.ok) {
         throw new Error(resData.error || 'Failed to save changes');
+      }
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
       }
 
       setInitialJson(JSON.stringify(data));
