@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { siteMetadata } from '../data/site-metadata';
+import type { SiteMetadata } from '../data/site-metadata';
+import { useContentData } from '../data/useContentData';
 
-const trustBadges = siteMetadata.certifications || [
+const defaultTrustBadges = siteMetadata.certifications || [
   {
     title: 'CERT-In Empanelled',
     description: 'Certified by Indian Computer Emergency Response Team',
@@ -30,14 +32,14 @@ const trustBadges = siteMetadata.certifications || [
   },
 ];
 
-const expertise = siteMetadata.expertise || [
+const defaultExpertise = siteMetadata.expertise || [
   'CISSP, CISM, CISA, ISO 27001 and related security standards',
   'Defence-oriented cyber intelligence practices',
   'Digital forensics and incident investigation',
   'Security operations and risk assessment',
 ];
 
-const sectors = siteMetadata.sectors || [
+const defaultSectors = siteMetadata.sectors || [
   'Defence, law enforcement, and intelligence environments',
   'Financial systems, fintech, and banking infrastructure',
   'Government, public sector, and regulatory systems',
@@ -47,6 +49,10 @@ const sectors = siteMetadata.sectors || [
 
 export default function Certifications() {
   const [isVisible, setIsVisible] = useState(false);
+  const metadata = useContentData<SiteMetadata>('site-metadata.json', siteMetadata);
+  const trustBadges = metadata?.certifications || defaultTrustBadges;
+  const expertise = metadata?.expertise || defaultExpertise;
+  const sectors = metadata?.sectors || defaultSectors;
 
   useEffect(() => {
     const observer = new IntersectionObserver(

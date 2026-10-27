@@ -1,9 +1,12 @@
 'use client';
 
 import { homeContent } from '../data/home-content';
+import type { HomeContent } from '../data/home-content';
+import { useContentData } from '../data/useContentData';
 
 export default function Hero() {
-  const { hero } = homeContent;
+  const content = useContentData<HomeContent>('home-content.json', homeContent);
+  const hero = content?.hero || homeContent.hero;
 
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-16 sm:min-h-screen sm:pt-20 lg:pt-24">

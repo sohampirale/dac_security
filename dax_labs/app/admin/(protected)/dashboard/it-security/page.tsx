@@ -11,6 +11,7 @@ import KeyValueEditor from '@/app/admin/components/KeyValueEditor';
 import PairListEditor from '@/app/admin/components/PairListEditor';
 import ConfirmModal from '@/app/admin/components/ConfirmModal';
 import AddProductModal from '@/app/admin/components/AddProductModal';
+import { broadcastContentUpdate } from '@/app/data/useContentData';
 
 const FILE_PATH = 'dax_labs/app/data/content/it-security-products.json';
 
@@ -92,9 +93,7 @@ export default function EditITSecurity() {
         throw new Error(data.error || 'Failed to save changes');
       }
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
-      }
+      broadcastContentUpdate(FILE_PATH.split('/').pop() || 'it-security-products.json', content);
 
       setInitialJson(JSON.stringify(items));
       setStatus('saved');

@@ -6,6 +6,7 @@ import type { CompanyInfo } from '@/app/data/company-info';
 import AdminHeader from '@/app/admin/components/AdminHeader';
 import SaveBar from '@/app/admin/components/SaveBar';
 import ArrayEditor from '@/app/admin/components/ArrayEditor';
+import { broadcastContentUpdate } from '@/app/data/useContentData';
 
 const FILE_PATH = 'dax_labs/app/data/content/company-info.json';
 
@@ -61,9 +62,7 @@ export default function EditCompanyInfo() {
         throw new Error(resData.error || 'Failed to save changes');
       }
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
-      }
+      broadcastContentUpdate(FILE_PATH.split('/').pop() || 'company-info.json', content);
 
       setInitialJson(JSON.stringify(data));
       setStatus('saved');

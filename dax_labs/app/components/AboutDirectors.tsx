@@ -1,7 +1,12 @@
+'use client';
+
 import { homeContent } from '../data/home-content';
+import type { HomeContent } from '../data/home-content';
+import { useContentData } from '../data/useContentData';
 
 export default function AboutDirectors() {
-  const activeDirectors = homeContent.directors.filter((d) => d.active !== false);
+  const content = useContentData<HomeContent>('home-content.json', homeContent);
+  const activeDirectors = (content?.directors || []).filter((d) => d.active !== false);
 
   if (activeDirectors.length === 0) return null;
 

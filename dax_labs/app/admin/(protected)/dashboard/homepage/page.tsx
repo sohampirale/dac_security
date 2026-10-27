@@ -5,6 +5,7 @@ import { homeContent } from '@/app/data/home-content';
 import type { HomeContent, Director } from '@/app/data/home-content';
 import AdminHeader from '@/app/admin/components/AdminHeader';
 import SaveBar from '@/app/admin/components/SaveBar';
+import { broadcastContentUpdate } from '@/app/data/useContentData';
 
 const FILE_PATH = 'dax_labs/app/data/content/home-content.json';
 
@@ -60,9 +61,7 @@ export default function EditHomepage() {
         throw new Error(resData.error || 'Failed to save changes');
       }
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
-      }
+      broadcastContentUpdate(FILE_PATH.split('/').pop() || 'home-content.json', content);
 
       setInitialJson(JSON.stringify(data));
       setStatus('saved');

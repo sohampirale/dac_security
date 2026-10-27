@@ -6,6 +6,7 @@ import type { SiteMetadata, StatItem, CertItem } from '@/app/data/site-metadata'
 import AdminHeader from '@/app/admin/components/AdminHeader';
 import SaveBar from '@/app/admin/components/SaveBar';
 import ArrayEditor from '@/app/admin/components/ArrayEditor';
+import { broadcastContentUpdate } from '@/app/data/useContentData';
 
 const FILE_PATH = 'dax_labs/app/data/content/site-metadata.json';
 
@@ -61,9 +62,7 @@ export default function EditSiteMetadata() {
         throw new Error(resData.error || 'Failed to save changes');
       }
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
-      }
+      broadcastContentUpdate(FILE_PATH.split('/').pop() || 'site-metadata.json', content);
 
       setInitialJson(JSON.stringify(data));
       setStatus('saved');

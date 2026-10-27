@@ -7,6 +7,7 @@ import AdminHeader from '@/app/admin/components/AdminHeader';
 import SaveBar from '@/app/admin/components/SaveBar';
 import ArrayEditor from '@/app/admin/components/ArrayEditor';
 import PairListEditor from '@/app/admin/components/PairListEditor';
+import { broadcastContentUpdate } from '@/app/data/useContentData';
 
 const FILE_PATH = 'dax_labs/app/data/content/services-content.json';
 
@@ -62,9 +63,7 @@ export default function EditServices() {
         throw new Error(resData.error || 'Failed to save changes');
       }
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem(`dak_content_override_${FILE_PATH.split('/').pop()}`, content);
-      }
+      broadcastContentUpdate(FILE_PATH.split('/').pop() || 'services-content.json', content);
 
       setInitialJson(JSON.stringify(data));
       setStatus('saved');

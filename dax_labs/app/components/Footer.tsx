@@ -1,7 +1,12 @@
+'use client';
+
 import { companyInfo } from '../data/company-info';
+import type { CompanyInfo } from '../data/company-info';
+import { useContentData } from '../data/useContentData';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const info = useContentData<CompanyInfo>('company-info.json', companyInfo);
 
   return (
     <footer className="border-t border-[var(--color-border)] bg-[rgba(8,17,26,0.94)] transition-colors duration-300">
@@ -10,17 +15,17 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Email</h3>
             <a
-              href={`mailto:${companyInfo.email}`}
+              href={`mailto:${info.email}`}
               className="mt-2 inline-block text-sm sm:text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]"
             >
-              {companyInfo.email}
+              {info.email}
             </a>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Phone</h3>
             <div className="mt-2 space-y-1 text-sm sm:text-lg text-[var(--color-text-primary)]">
-              {companyInfo.phoneNumbers.map((phone, idx) => (
+              {info.phoneNumbers.map((phone, idx) => (
                 <a
                   key={idx}
                   href={`tel:${phone.replace(/\s+/g, '')}`}
@@ -34,7 +39,7 @@ export default function Footer() {
 
           <div>
             <span className="mb-2 block h-0.5 w-8 bg-[var(--color-accent)]" />
-            {companyInfo.offices.map((office, idx) => (
+            {info.offices.map((office, idx) => (
               <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
                   {office.type}
@@ -51,7 +56,7 @@ export default function Footer() {
 
         <div className="mt-8 border-t border-[var(--color-border)] pt-6">
           <p className="text-sm text-[var(--color-text-muted)]">
-            {companyInfo.copyright.replace('2026', currentYear.toString())}
+            {(info.copyright || companyInfo.copyright).replace('2026', currentYear.toString())}
           </p>
         </div>
       </div>

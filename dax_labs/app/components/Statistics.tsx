@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { siteMetadata } from '../data/site-metadata';
+import type { SiteMetadata } from '../data/site-metadata';
+import { useContentData } from '../data/useContentData';
 
-const stats = siteMetadata.statistics || [
+const defaultStats = siteMetadata.statistics || [
   { value: 10, suffix: '+', label: 'Years of Excellence' },
   { value: 8500, suffix: '+', label: 'Applications Secured' },
   { value: 2500, suffix: '+', label: 'Clients Protected' },
@@ -39,6 +41,8 @@ function AnimatedCounter({ value, isVisible }: { value: number; isVisible: boole
 
 export default function Statistics() {
   const [isVisible, setIsVisible] = useState(false);
+  const metadata = useContentData<SiteMetadata>('site-metadata.json', siteMetadata);
+  const stats = metadata?.statistics || defaultStats;
 
   useEffect(() => {
     const observer = new IntersectionObserver(

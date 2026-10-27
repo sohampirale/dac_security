@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Header from '../components/Header';
 import { companyInfo } from '../data/company-info';
+import type { CompanyInfo } from '../data/company-info';
+import { useContentData } from '../data/useContentData';
 
 const domainOptions = [
   'Government / Public Sector',
@@ -23,6 +25,7 @@ const interestOptions = [
 ];
 
 export default function ContactPage() {
+  const info = useContentData<CompanyInfo>('company-info.json', companyInfo);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -95,14 +98,14 @@ export default function ContactPage() {
               <aside className="rounded-2xl border border-[var(--color-border)] bg-[rgba(8,17,26,0.65)] p-5 sm:p-8">
                 <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-text-primary)]">Let&apos;s Discuss</h2>
                 <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Email</p>
-                <a href={`mailto:${companyInfo.email}`} className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">{companyInfo.email}</a>
+                <a href={`mailto:${info.email}`} className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">{info.email}</a>
                 <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Phone</p>
                 <div className="mt-2 space-y-1 text-lg text-[var(--color-text-primary)]">
-                  {companyInfo.phoneNumbers.map((phone, idx) => (
+                  {(info.phoneNumbers || []).map((phone, idx) => (
                     <a key={idx} href={`tel:${phone.replace(/\s+/g, '')}`} className="block transition-colors hover:text-[var(--color-accent)]">{phone}</a>
                   ))}
                 </div>
-                {companyInfo.offices.map((office, idx) => (
+                {(info.offices || []).map((office, idx) => (
                   <div key={idx}>
                     <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">{office.type}</p>
                     <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
