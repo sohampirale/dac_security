@@ -1,0 +1,107 @@
+{
+  "title": "Services",
+  "openingLine": "We work on your systems to identify risks, test security, fix issues, and keep everything protected over time.",
+  "framework": [
+    {
+      "key": "detect",
+      "name": "DETECT",
+      "heading": "Understand where your system is exposed",
+      "description": "We identify risks across your systems, infrastructure, and processes to uncover hidden exposures before attackers can exploit them.",
+      "items": [
+        "Applications (web, mobile, APIs)",
+        "Network and infrastructure",
+        "System configurations",
+        "Known vulnerabilities and weak points",
+        "External attack surface",
+        "Open ports and running services",
+        "Internet-facing assets",
+        "Misconfigured exposures"
+      ]
+    },
+    {
+      "key": "analyze",
+      "name": "ANALYZE",
+      "heading": "Test your system and understand what can go wrong",
+      "description": "We test your security through adversarial simulations and deep forensic analysis to gauge true resilience.",
+      "items": [
+        "VAPT (Vulnerability Assessment & Penetration Testing)",
+        "Internal and external testing",
+        "Application and network testing",
+        "Red team exercises",
+        "Incident investigation",
+        "Log and activity analysis",
+        "Root cause identification",
+        "Disk and system forensics",
+        "Mobile forensics",
+        "Data recovery",
+        "Evidence handling"
+      ]
+    },
+    {
+      "key": "kinetic",
+      "name": "KINETIC",
+      "heading": "Fix issues. Strengthen your system. Keep it secure",
+      "description": "We take disciplined action to secure, harden, and monitor your entire operating environment.",
+      "items": [
+        "System hardening & secure configurations",
+        "Security control implementation",
+        "SOC setup and 24/7 support",
+        "Continuous monitoring and threat detection",
+        "Rapid incident response & containment",
+        "ISO 27001, RBI, & DPDP compliance readiness",
+        "IoT and connected devices security",
+        "OT / SCADA industrial systems protection",
+        "Team security awareness & phishing drills"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "application-security",
+      "title": "Application Security Assessment",
+      "description": "Our VAPT services identify security weaknesses in your applications before malicious actors can exploit them.",
+      "subServices": [
+        { "title": "Web Application VAPT", "description": "In-depth security testing for web apps to identify SQL injection, XSS, CSRF, and OWASP Top 10 vulnerabilities." },
+        { "title": "Mobile App Security", "description": "Comprehensive security assessment for iOS and Android applications through static and dynamic analysis." },
+        { "title": "API & Web Services", "description": "Thorough evaluation of API endpoints for security flaws, authentication weaknesses, and data exposure risks." },
+        { "title": "Thick Client Testing", "description": "Detailed security evaluation of desktop applications and thick clients for hidden vulnerabilities." },
+        { "title": "Source Code Review", "description": "Manual and automated code review to identify architectural and implementation security flaws." }
+      ],
+      "benefits": [
+        "Discover hidden application vulnerabilities",
+        "Meet regulatory compliance requirements",
+        "Safeguard sensitive customer data",
+        "Prevent costly data breaches"
+      ]
+    },
+    {
+      "id": "network-security",
+      "title": "Network Security Assessment",
+      "description": "We identify vulnerabilities and misconfigurations in your network infrastructure before attackers can exploit them.",
+      "subServices": [
+        { "title": "Internal Network Assessment", "description": "Evaluating internal network switches, routers, and Active Directory environments." },
+        { "title": "External Penetration Testing", "description": "Testing internet-facing firewalls, routers, and external assets." },
+        { "title": "Wireless Security Review", "description": "Assessing Wi-Fi networks, access points, and cryptographic handshakes." }
+      ],
+      "benefits": [
+        "Eliminate unauthorized access points",
+        "Harden network perimeter",
+        "Ensure network segmentation"
+      ]
+    },
+    {
+      "id": "cloud-security",
+      "title": "Cloud Security Assessment",
+      "description": "Complete security architecture and posture review for AWS, Azure, and Google Cloud environments.",
+      "subServices": [
+        { "title": "Cloud Configuration Audit", "description": "Auditing IAM policies, S3/blob bucket permissions, and security group rules." },
+        { "title": "Kubernetes & Containers", "description": "Container image scanning, cluster hardening, and runtime security." }
+      ],
+      "benefits": [
+        "Prevent cloud data leaks",
+        "Enforce principle of least privilege",
+        "Comply with CIS benchmarks"
+      ]
+    }
+  ]
+}

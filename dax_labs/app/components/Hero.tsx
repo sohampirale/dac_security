@@ -1,6 +1,10 @@
 'use client';
 
+import { homeContent } from '../data/home-content';
+
 export default function Hero() {
+  const { hero } = homeContent;
+
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden pt-16 sm:min-h-screen sm:pt-20 lg:pt-24">
       <div
@@ -35,19 +39,20 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid max-w-7xl items-end gap-12 px-4 py-14 sm:gap-14 sm:px-6 sm:py-16 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10 lg:px-8 lg:py-24">
         <div className="max-w-6xl text-center lg:text-left">
           <p
-            className="mb-6 flex w-fit items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[linear-gradient(120deg,rgba(10,28,40,0.92),rgba(6,18,28,0.85))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-accent)] shadow-[0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm animate-fade-in-up mx-auto"
+            className="mb-6 flex w-fit items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[linear-gradient(120deg,rgba(10,28,40,0.92),rgba(6,18,28,0.85))] px-5 py-2 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--color-accent)] shadow-[0_12px_30px_rgba(0,0,0,0.35)] backdrop-blur-sm animate-fade-in-up mx-auto lg:mx-0"
             style={{ animationDelay: '0.05s' }}
           >
-            DAK Security Labs
+            {hero.badge}
           </p>
 
           <h1
             className="max-w-none animate-fade-in-up text-3xl font-bold leading-[1.08] tracking-tight text-[var(--color-text-primary)] sm:text-5xl lg:text-6xl xl:text-7xl"
             style={{ animationDelay: '0.1s' }}
           >
-            <span className="block sm:whitespace-nowrap">Your Systems. Your Data.</span>
+            <span className="block sm:whitespace-nowrap">{hero.headingLine1}</span>
             <span className="block">
-              <span className="text-[var(--color-accent)]">Our</span> Responsibility.
+              <span className="text-[var(--color-accent)]">{hero.headingAccent}</span>{' '}
+              {hero.headingLine2}
             </span>
           </h1>
 
@@ -55,8 +60,7 @@ export default function Hero() {
             className="mt-6 max-w-3xl animate-fade-in-up text-base leading-relaxed text-[var(--color-text-secondary)] sm:mt-8 sm:text-xl"
             style={{ animationDelay: '0.2s' }}
           >
-            Secured with discipline, integrity, and military-grade cybersecurity practices that you can
-            trust.
+            {hero.subtitle}
           </p>
 
           <div
@@ -64,20 +68,19 @@ export default function Hero() {
             style={{ animationDelay: '0.3s' }}
           >
             <a
-              href="/methodology"
+              href={hero.primaryCta.href}
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.45)] bg-[linear-gradient(135deg,rgba(46,208,196,0.95),rgba(20,160,150,0.95))] px-7 py-3 text-sm font-semibold text-[var(--color-text-light)] shadow-[0_14px_30px_rgba(10,20,30,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(10,20,30,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
-              Explore Our Methodology
+              {hero.primaryCta.text}
             </a>
             <a
-              href="/spheres"
+              href={hero.secondaryCta.href}
               className="inline-flex items-center justify-center rounded-full border border-[rgba(46,208,196,0.35)] bg-[rgba(8,20,30,0.85)] px-7 py-3 text-sm font-semibold text-[var(--color-text-primary)] shadow-[0_12px_26px_rgba(5,12,20,0.35)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-[0_16px_32px_rgba(5,12,20,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg-dark)]"
             >
-              Explore Spheres of Security
+              {hero.secondaryCta.text}
             </a>
           </div>
         </div>
-
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2">

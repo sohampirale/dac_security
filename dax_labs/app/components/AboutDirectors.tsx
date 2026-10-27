@@ -1,27 +1,10 @@
-const directors = [
-  {
-    name: 'Vijay Kumar',
-    designation: 'Founder DAK SECURITY',
-    statement:
-      'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
-    image: '/director-2.jpeg',
-    imagePosition: 'center',
-    animation: 'animate-slide-in-right',
-    reverse: true,
-  }
-];
-// ,
-//   {
-//     name: 'ADITYA',
-//     designation: 'Business Operations',
-//     statement:
-//       'We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.',
-//     image: '/director-1.jpeg',
-//     imagePosition: 'center 20%',
-//     animation: 'animate-slide-in-left',
-//   },
+import { homeContent } from '../data/home-content';
 
 export default function AboutDirectors() {
+  const activeDirectors = homeContent.directors.filter((d) => d.active !== false);
+
+  if (activeDirectors.length === 0) return null;
+
   return (
     <section className="relative min-h-[90vh] overflow-hidden bg-[var(--color-bg-primary)] sm:min-h-screen">
       <div
@@ -44,9 +27,9 @@ export default function AboutDirectors() {
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[80vh] max-w-6xl flex-col justify-center gap-10 px-4 pb-14 pt-20 sm:min-h-screen sm:gap-14 sm:pb-16 sm:pt-24 sm:px-6 lg:px-8">
-        {directors.map((director) => (
+        {activeDirectors.map((director, idx) => (
           <div
-            key={director.designation}
+            key={idx}
             className={`grid grid-cols-1 overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[linear-gradient(180deg,rgba(12,24,36,0.96),rgba(9,19,30,0.96))] lg:grid-cols-[280px_minmax(0,1fr)] ${
               director.reverse ? 'lg:grid-cols-[minmax(0,1fr)_280px]' : ''
             }`}
@@ -57,7 +40,7 @@ export default function AboutDirectors() {
               <div
                 className="absolute inset-0 bg-contain bg-no-repeat sm:bg-cover"
                 style={{
-                  backgroundImage: `url(${director.image})`,
+                  backgroundImage: `url(${director.image || '/director-2.jpeg'})`,
                   backgroundPosition: director.imagePosition ?? 'center',
                 }}
               />
@@ -67,7 +50,7 @@ export default function AboutDirectors() {
             <div
               className={`relative z-10 flex flex-col justify-center px-6 py-10 sm:px-10 ${director.reverse ? 'lg:order-1' : ''}`}
             >
-              <p className={`${director.animation} text-lg font-medium leading-relaxed text-[var(--color-text-primary)]`}>
+              <p className="text-lg font-medium leading-relaxed text-[var(--color-text-primary)]">
                 “{director.statement}”
               </p>
               <div className="mt-8">

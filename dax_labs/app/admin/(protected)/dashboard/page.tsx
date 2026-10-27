@@ -1,85 +1,267 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
-const sections = [
+const SECTIONS = [
   {
     title: 'IT Security Products',
-    description: '16 products — WAF, DDoS, VPN, SIEM, DLP, EDR, and more',
+    badge: '16+ Products',
+    description: 'Cloud defense, SIEM, WAF, DDoS mitigation, EDR, and enterprise infrastructure solutions.',
     href: '/admin/dashboard/it-security',
-    color: 'border-blue-500',
+    tag: 'Catalog',
+    accent: 'border-cyan-500/50 hover:border-cyan-400',
+    iconColor: 'text-cyan-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+      </svg>
+    ),
   },
   {
-    title: 'Digital Forensic Products',
-    description: '3 products — Forensic Workstation, Password Cracking, RF Shielding',
+    title: 'Digital Forensic Hardware',
+    badge: '3+ Systems',
+    description: 'Forensic workstations, password cracking machines, RF shielding bags, and tactical lab equipment.',
     href: '/admin/dashboard/digital-forensic',
-    color: 'border-green-500',
+    tag: 'Hardware',
+    accent: 'border-emerald-500/50 hover:border-emerald-400',
+    iconColor: 'text-emerald-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
   },
   {
     title: 'Forensic Software Tools',
-    description: '15 tools — Mobile Forensics, OSINT, Malware Analysis, and more',
+    badge: '15+ Tools',
+    description: 'Mobile forensics, OSINT intelligence, memory analysis, CDR analysis, and disk inspection tools.',
     href: '/admin/dashboard/forensic-software',
-    color: 'border-purple-500',
+    tag: 'Software',
+    accent: 'border-purple-500/50 hover:border-purple-400',
+    iconColor: 'text-purple-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Company & Contact Details',
+    badge: 'Live Data',
+    description: 'Noida Head Office, Mumbai Branch Office, contact phone numbers (+91 8668354806), email, and copyright.',
+    href: '/admin/dashboard/company-info',
+    tag: 'Global',
+    accent: 'border-amber-500/50 hover:border-amber-400',
+    iconColor: 'text-amber-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Homepage & Leadership',
+    badge: 'Hero & Team',
+    description: 'Hero heading, accent text, subtitle, CTA links, and executive leadership profiles & statements.',
+    href: '/admin/dashboard/homepage',
+    tag: 'Home',
+    accent: 'border-rose-500/50 hover:border-rose-400',
+    iconColor: 'text-rose-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Services & Methodology',
+    badge: '3 Pillars',
+    description: 'Detect, Analyze, Kinetic framework, comprehensive VAPT services, and technical deliverables.',
+    href: '/admin/dashboard/services',
+    tag: 'Framework',
+    accent: 'border-teal-500/50 hover:border-teal-400',
+    iconColor: 'text-teal-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Trust Indicators & Statistics',
+    badge: 'Audited Proof',
+    description: 'Animated counter metrics (8500+ apps, 2500+ clients), empanelments (CERT-In, ISO 27001), and capability lists.',
+    href: '/admin/dashboard/site-metadata',
+    tag: 'Proof',
+    accent: 'border-indigo-500/50 hover:border-indigo-400',
+    iconColor: 'text-indigo-400',
+    icon: (
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+      </svg>
+    ),
   },
 ];
 
 export default function AdminDashboard() {
+  const router = useRouter();
+  const [downloading, setDownloading] = useState(false);
+
+  async function handleLogout() {
+    await fetch('/api/admin/auth', { method: 'DELETE' });
+    router.push('/admin/login');
+    router.refresh();
+  }
+
+  async function handleExportBackup() {
+    setDownloading(true);
+    try {
+      const res = await fetch('/api/admin/content?action=export_all');
+      if (!res.ok) throw new Error('Failed to generate export');
+      const data = await res.json();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `dak_security_backup_${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch {
+      alert('Failed to download backup.');
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-black text-white">
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="flex items-center justify-between mb-12">
-          <div>
-            <h1 className="text-3xl font-bold">Content Admin</h1>
-            <p className="text-gray-400 mt-2 text-sm">
-              Select a section to edit its content. Changes are committed to GitHub and auto-deploy to Vercel.
+    <div className="min-h-screen bg-[#070e17] text-white">
+      {/* Top Navbar */}
+      <header className="border-b border-white/10 bg-[#08101a]/80 backdrop-blur sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#20d7b5] animate-pulse" />
+            <div>
+              <h1 className="text-lg font-bold text-white tracking-tight">
+                DAK Security Management Console
+              </h1>
+              <p className="text-[11px] text-gray-400">
+                Active Session • Authenticated as <span className="text-[#20d7b5] font-mono">admin</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleExportBackup}
+              disabled={downloading}
+              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-xs font-medium transition-colors flex items-center gap-1.5"
+              title="Download JSON backup of all website content"
+            >
+              <svg className="w-3.5 h-3.5 text-[#20d7b5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>{downloading ? 'Exporting...' : 'Backup JSON'}</span>
+            </button>
+
+            <Link
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 text-xs font-medium transition-colors flex items-center gap-1.5"
+            >
+              <span>View Site</span>
+              <svg className="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </Link>
+
+            <button
+              onClick={handleLogout}
+              className="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 hover:bg-red-500/20 text-xs font-medium transition-colors"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="max-w-6xl mx-auto px-6 py-10">
+        {/* Banner */}
+        <div className="mb-10 p-6 rounded-2xl bg-gradient-to-r from-[rgba(16,30,46,0.9)] to-[rgba(10,20,32,0.9)] border border-[rgba(32,215,181,0.2)] shadow-xl relative overflow-hidden">
+          <div className="absolute right-0 top-0 w-80 h-80 bg-[rgba(32,215,181,0.05)] rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 max-w-2xl">
+            <span className="text-xs font-semibold tracking-wider uppercase text-[#20d7b5] px-2.5 py-1 rounded-full bg-[#20d7b5]/10 border border-[#20d7b5]/20 inline-block mb-3">
+              Meeting & Demo Customization Center
+            </span>
+            <h2 className="text-2xl font-bold text-white tracking-tight">
+              Direct Content & Product Control
+            </h2>
+            <p className="text-sm text-gray-300 mt-2 leading-relaxed">
+              Add new product offerings, adjust corporate contact lines, or tailor client-specific messaging right before critical demonstration meetings. Changes update the site safely without touching layout or styling.
             </p>
           </div>
-          <LogoutButton />
         </div>
 
-        <div className="grid gap-6">
-          {sections.map((section) => (
+        {/* Section Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SECTIONS.map((section) => (
             <Link
               key={section.href}
               href={section.href}
-              className={`block p-6 bg-white/5 border-l-4 ${section.color} rounded-r-lg hover:bg-white/10 transition-colors`}
+              className={`group flex flex-col justify-between p-6 bg-[rgba(12,22,34,0.85)] border ${section.accent} rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.5)] backdrop-blur`}
             >
-              <h2 className="text-xl font-semibold">{section.title}</h2>
-              <p className="text-gray-400 text-sm mt-1">{section.description}</p>
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`p-2.5 rounded-xl bg-white/5 border border-white/10 ${section.iconColor}`}>
+                    {section.icon}
+                  </div>
+                  <span className="px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider bg-white/5 text-gray-400 border border-white/10 group-hover:border-white/20 transition-colors">
+                    {section.badge}
+                  </span>
+                </div>
+
+                <h3 className="text-base font-bold text-white group-hover:text-[#20d7b5] transition-colors">
+                  {section.title}
+                </h3>
+                <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+                  {section.description}
+                </p>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-semibold text-gray-400 group-hover:text-[#20d7b5] transition-colors">
+                <span>Edit Section</span>
+                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+              </div>
             </Link>
           ))}
         </div>
 
-        <div className="mt-12 p-4 bg-white/5 rounded-lg">
-          <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">How it works</h3>
-          <ol className="mt-3 space-y-2 text-sm text-gray-400">
-            <li>1. Click a section above to view its content</li>
-            <li>2. Make your changes in the form</li>
-            <li>3. Click &quot;Save Changes&quot; to commit to GitHub</li>
-            <li>4. Vercel automatically redeploys with your changes</li>
-          </ol>
+        {/* Operational Runbook Card */}
+        <div className="mt-12 p-6 rounded-2xl bg-white/5 border border-white/10">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3">
+            Quick Operational Guide for Sales & Presentations
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-gray-400 leading-relaxed">
+            <div className="p-3 bg-black/30 rounded-lg border border-white/5">
+              <span className="text-white font-semibold block mb-1">1. Add or Clone Products</span>
+              Use the &quot;+ Add Product&quot; or &quot;Duplicate&quot; button to quickly produce custom product offerings for specific industry meetings.
+            </div>
+            <div className="p-3 bg-black/30 rounded-lg border border-white/5">
+              <span className="text-white font-semibold block mb-1">2. Safe Text-Only Scope</span>
+              All form fields edit text, bullet points, and key-value specs only. CSS layout, responsive breakpoints, and styling are completely protected.
+            </div>
+            <div className="p-3 bg-black/30 rounded-lg border border-white/5">
+              <span className="text-white font-semibold block mb-1">3. Automated Persistence</span>
+              Click &quot;Save All Changes&quot; to write to storage. In cloud deployments with GitHub configured, Vercel automatically deploys within 1-2 minutes.
+            </div>
+          </div>
         </div>
-
-        <div className="mt-8 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-          <p className="text-sm text-yellow-400">
-            Only the content JSON files are editable. CSS, JS, and page structure are protected.
-          </p>
-        </div>
-      </div>
+      </main>
     </div>
-  );
-}
-
-function LogoutButton() {
-  return (
-    <button
-      onClick={async () => {
-        await fetch('/api/admin/auth', { method: 'DELETE' });
-        window.location.href = '/admin/login';
-      }}
-      className="text-sm text-gray-400 hover:text-white transition-colors"
-    >
-      Logout
-    </button>
   );
 }

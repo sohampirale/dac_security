@@ -1,3 +1,5 @@
+import { companyInfo } from '../data/company-info';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -7,36 +9,50 @@ export default function Footer() {
         <div className="grid gap-6 md:grid-cols-3">
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Email</h3>
-            <a href="mailto:info@daksecurity.com" className="mt-2 inline-block text-sm sm:text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
+            <a
+              href={`mailto:${companyInfo.email}`}
+              className="mt-2 inline-block text-sm sm:text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]"
+            >
+              {companyInfo.email}
+            </a>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Phone</h3>
             <div className="mt-2 space-y-1 text-sm sm:text-lg text-[var(--color-text-primary)]">
-              <a href="tel:+918668354806" className="block transition-colors hover:text-[var(--color-accent)]">+91 8668354806</a>
-              <a href="tel:+919604551338" className="block transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
+              {companyInfo.phoneNumbers.map((phone, idx) => (
+                <a
+                  key={idx}
+                  href={`tel:${phone.replace(/\s+/g, '')}`}
+                  className="block transition-colors hover:text-[var(--color-accent)]"
+                >
+                  {phone}
+                </a>
+              ))}
             </div>
           </div>
 
           <div>
             <span className="mb-2 block h-0.5 w-8 bg-[var(--color-accent)]" />
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Head Office</h3>
-            <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
-              <span className="block">20, H-1/A, Sector 63</span>
-              <span className="block">Noida - 201301</span>
-              <span className="block">Uttar Pradesh, India</span>
-            </address>
-            <h3 className="mt-4 text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">Branch Office</h3>
-            <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
-              <span className="block">L & T Business Park</span>
-              <span className="block">Powai, Mumbai</span>
-              <span className="block">Maharashtra - 400076</span>
-            </address>
+            {companyInfo.offices.map((office, idx) => (
+              <div key={idx} className={idx > 0 ? 'mt-4' : ''}>
+                <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-accent)]">
+                  {office.type}
+                </h3>
+                <address className="mt-2 not-italic text-sm sm:text-lg leading-snug text-[var(--color-text-primary)]">
+                  {office.addressLines.map((line, lIdx) => (
+                    <span key={lIdx} className="block">{line}</span>
+                  ))}
+                </address>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="mt-8 border-t border-[var(--color-border)] pt-6">
-          <p className="text-sm text-[var(--color-text-muted)]">Copyright {currentYear} &copy; DAK SECURITY LABS. All rights reserved.</p>
+          <p className="text-sm text-[var(--color-text-muted)]">
+            {companyInfo.copyright.replace('2026', currentYear.toString())}
+          </p>
         </div>
       </div>
     </footer>

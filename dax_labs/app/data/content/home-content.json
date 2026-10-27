@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "badge": "DAK Security Labs",
+    "headingLine1": "Your Systems. Your Data.",
+    "headingAccent": "Our",
+    "headingLine2": "Responsibility.",
+    "subtitle": "Secured with discipline, integrity, and military-grade cybersecurity practices that you can trust.",
+    "primaryCta": {
+      "text": "Explore Our Methodology",
+      "href": "/methodology"
+    },
+    "secondaryCta": {
+      "text": "Explore Spheres of Security",
+      "href": "/spheres"
+    }
+  },
+  "directors": [
+    {
+      "name": "Vijay Kumar",
+      "designation": "Founder DAK SECURITY",
+      "statement": "We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.",
+      "image": "/director-2.jpeg",
+      "imagePosition": "center",
+      "reverse": true,
+      "active": true
+    },
+    {
+      "name": "Aditya",
+      "designation": "Business Operations",
+      "statement": "We understand what it means to trust someone with your systems. At DAK Security Labs, protecting them is a responsibility we take personally.",
+      "image": "/director-1.jpeg",
+      "imagePosition": "center 20%",
+      "reverse": false,
+      "active": false
+    }
+  ]
+}

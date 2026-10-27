@@ -1,67 +1,86 @@
-# Admin Panel Setup Guide
+# DAK Security — Content Admin Panel
 
-The admin panel lets you edit website content directly through a web interface. Changes are committed to GitHub, and Vercel automatically redeploys.
+The Admin Panel allows business, marketing, and sales leadership to update website content directly through a secure web interface without modifying code or styling.
 
-## Admin URL: `/admin`
+## Accessing the Admin Panel
+- **URL**: `/admin` (or `/admin/login`)
+- **Username**: `admin`
+- **Password**: `CyberDAK@2026` *(also accepts `CyberDAC@2026`)*
+
+> [!NOTE]
+> Authentication is strictly validated on the Next.js server runtime using HTTP-only, secure cookies. Credentials are never verified on or leaked to the client bundle.
 
 ---
 
-## What You Need to Do
+## What Can Be Managed
 
-### 1. Create a GitHub Personal Access Token (PAT)
+1. **IT Security Products** (`/admin/dashboard/it-security`)
+   - Add new security products with auto-generated slugs
+   - Delete products (with confirmation safeguards)
+   - Clone / duplicate products (ideal for tailoring offerings before client meetings)
+   - Reorder product catalog
+   - Edit names, full/short descriptions, icon keys, categories, features, specs, use cases, and benefits
 
-1. Go to https://github.com/settings/tokens
-2. Click **Generate new token** → **Fine-grained token**
-3. Set:
-   - **Repository access**: `Only select repositories` → select `sohampirale/dac_security`
-   - **Permissions** → **Contents**: `Read and write`
-4. Click **Generate token** and **copy the token** (it starts with `github_pat_...`)
+2. **Digital Forensic Hardware** (`/admin/dashboard/digital-forensic`)
+   - Add, delete, duplicate, and reorder hardware systems (Workstations, Password Recovery Rigs, RF Shielding)
+   - Edit tactical applications, law enforcement use cases, and hardware specs
 
-### 2. Add Environment Variables in Vercel
+3. **Forensic Software Tools** (`/admin/dashboard/forensic-software`)
+   - Add, delete, duplicate, and reorder software tools (Mobile forensics, OSINT, memory analysis, CDR)
+   - Edit technical specs, investigative benefits, and features
 
-1. Go to your Vercel project dashboard
-2. Navigate to **Settings** → **Environment Variables**
-3. Add these three variables:
+4. **Company & Contact Info** (`/admin/dashboard/company-info`)
+   - Manage primary contact email (`info@daksecurity.com`)
+   - Add, remove, and edit phone numbers (`+91 8668354806`, `+91 9604551338`)
+   - Update Head Office (Noida) and Branch Office (Mumbai) address lines
+   - Update official copyright notice
 
-| Variable | Value | Notes |
+5. **Homepage & Leadership** (`/admin/dashboard/homepage`)
+   - Customize hero banner badge, headline, teal accent word, and subtitle
+   - Update primary and secondary call-to-action buttons
+   - Add, edit, toggle visibility, and reorder executive leadership profiles (Vijay Kumar, etc.)
+
+6. **Services & Methodology** (`/admin/dashboard/services`)
+   - Customize the Detect, Analyze, Kinetic 3-pillar framework text
+   - Add and update specialized security service categories and sub-services
+
+7. **Trust Indicators & Statistics** (`/admin/dashboard/site-metadata`)
+   - Adjust animated impact metrics (years of excellence, applications secured, clients protected)
+   - Update capability bullet points and critical industry sectors
+   - Manage compliance empanelments and trust badges (CERT-In, ISO 27001, etc.)
+
+---
+
+## Persistence Architecture (No External Database Required)
+
+```
+Admin Form  ──>  POST /api/admin/content
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+ Local Disk / VPS            GitHub REST API
+(Instant Update via fs)   (Triggers Vercel auto-deploy)
+```
+
+1. **Local Development & Standard Servers**:
+   Changes write directly to the local JSON content files on disk (`app/data/content/*.json`), updating the site immediately.
+
+2. **Vercel / Cloud Deployments**:
+   If `GITHUB_TOKEN` and `GITHUB_REPO` environment variables are configured in Vercel:
+   - Saving from the admin commits the updated content directly to the `main` branch of GitHub.
+   - Vercel automatically detects the commit and redeploys the site within 1-2 minutes.
+
+3. **One-Click Backup**:
+   The admin header includes a **Backup JSON** button that exports a full snapshot of all 7 content sections in a single download.
+
+---
+
+## Cloud Deployment Configuration (Optional for GitHub Auto-Sync)
+
+To enable GitHub commits from Vercel:
+
+| Variable | Value | Description |
 |---|---|---|
-| `ADMIN_PASSWORD` | `choose-a-strong-password` | Used to log in at `/admin/login` |
-| `GITHUB_TOKEN` | `github_pat_...` | The token from step 1 |
-| `GITHUB_REPO` | `sohampirale/dac_security` | Your GitHub repo (owner/name) |
-
-4. After adding, go to **Deployments** and trigger a **redeploy** (or push a commit)
-
-### 3. Access the Admin Panel
-
-1. Go to `https://yourdomain.com/admin`
-2. Log in with the password you set as `ADMIN_PASSWORD`
-3. Click a section to edit its content
-4. Make changes and click **Save All Changes**
-5. Vercel deploys automatically within a few minutes
-
----
-
-## What Can Be Edited
-
-- **IT Security Products** — all product details (name, description, features, specs, etc.)
-- **Digital Forensic Products** — all product details
-- **Forensic Software Tools** — all tool details
-
-Only content JSON files are editable. CSS, JavaScript, and page structure cannot be changed from the admin panel.
-
-## How It Works
-
-```
-Admin Form → GitHub API → Commit to main branch → Vercel auto-deploy
-```
-
-No SSH keys, no manual deployment. Everything flows through the GitHub API.
-
-## Troubleshooting
-
-| Issue | Fix |
-|---|---|
-| Login page shows "Setup Required" | `ADMIN_PASSWORD` env var is missing in Vercel |
-| Save fails with auth error | `GITHUB_TOKEN` is missing or has wrong permissions |
-| Save fails with "Not Found" | `GITHUB_REPO` is wrong, or the file path doesn't exist on GitHub |
-| Changes not showing on site | Vercel deploy takes 1-3 minutes after commit |
+| `ADMIN_PASSWORD` | *(Optional)* | Custom override password (defaults to `CyberDAK@2026`) |
+| `GITHUB_TOKEN` | `github_pat_...` | Fine-grained PAT with Contents Read & Write permission |
+| `GITHUB_REPO` | `sohampirale/dac_security` | GitHub repository owner/name |

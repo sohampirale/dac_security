@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { siteMetadata } from '../data/site-metadata';
 
-const stats = [
+const stats = siteMetadata.statistics || [
   { value: 10, suffix: '+', label: 'Years of Excellence' },
   { value: 8500, suffix: '+', label: 'Applications Secured' },
   { value: 2500, suffix: '+', label: 'Clients Protected' },

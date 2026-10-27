@@ -1,0 +1,29 @@
+{
+  "companyName": "DAK SECURITY LABS",
+  "shortName": "DAK Security",
+  "tagline": "Secured with discipline, integrity, and military-grade cybersecurity practices that you can trust.",
+  "email": "info@daksecurity.com",
+  "phoneNumbers": [
+    "+91 8668354806",
+    "+91 9604551338"
+  ],
+  "offices": [
+    {
+      "type": "Head Office",
+      "addressLines": [
+        "20, H-1/A, Sector 63",
+        "Noida - 201301",
+        "Uttar Pradesh, India"
+      ]
+    },
+    {
+      "type": "Branch Office",
+      "addressLines": [
+        "L & T Business Park",
+        "Powai, Mumbai",
+        "Maharashtra - 400076"
+      ]
+    }
+  ],
+  "copyright": "Copyright 2026 © DAK SECURITY LABS. All rights reserved."
+}

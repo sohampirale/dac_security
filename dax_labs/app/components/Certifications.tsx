@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { siteMetadata } from '../data/site-metadata';
 
-const trustBadges = [
+const trustBadges = siteMetadata.certifications || [
   {
     title: 'CERT-In Empanelled',
     description: 'Certified by Indian Computer Emergency Response Team',
@@ -29,14 +30,14 @@ const trustBadges = [
   },
 ];
 
-const expertise = [
+const expertise = siteMetadata.expertise || [
   'CISSP, CISM, CISA, ISO 27001 and related security standards',
   'Defence-oriented cyber intelligence practices',
   'Digital forensics and incident investigation',
   'Security operations and risk assessment',
 ];
 
-const sectors = [
+const sectors = siteMetadata.sectors || [
   'Defence, law enforcement, and intelligence environments',
   'Financial systems, fintech, and banking infrastructure',
   'Government, public sector, and regulatory systems',

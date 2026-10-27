@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Header from '../components/Header';
+import { companyInfo } from '../data/company-info';
 
 const domainOptions = [
   'Government / Public Sector',
@@ -94,24 +95,23 @@ export default function ContactPage() {
               <aside className="rounded-2xl border border-[var(--color-border)] bg-[rgba(8,17,26,0.65)] p-5 sm:p-8">
                 <h2 className="text-2xl sm:text-4xl font-bold text-[var(--color-text-primary)]">Let&apos;s Discuss</h2>
                 <p className="mt-4 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Email</p>
-                <a href="mailto:info@daksecurity.com" className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">info@daksecurity.com</a>
+                <a href={`mailto:${companyInfo.email}`} className="mt-2 block text-lg text-[var(--color-text-primary)] transition-colors hover:text-[var(--color-accent)]">{companyInfo.email}</a>
                 <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Phone</p>
                 <div className="mt-2 space-y-1 text-lg text-[var(--color-text-primary)]">
-                  <a href="tel:+918668354806" className="block transition-colors hover:text-[var(--color-accent)]">+91 8668354806</a>
-                  <a href="tel:+919604551338" className="block transition-colors hover:text-[var(--color-accent)]">+91 9604551338</a>
+                  {companyInfo.phoneNumbers.map((phone, idx) => (
+                    <a key={idx} href={`tel:${phone.replace(/\s+/g, '')}`} className="block transition-colors hover:text-[var(--color-accent)]">{phone}</a>
+                  ))}
                 </div>
-                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Head Office</p>
-                <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
-                  <span className="block">20, H-1/A, Sector 63</span>
-                  <span className="block">Noida - 201301</span>
-                  <span className="block">Uttar Pradesh, India</span>
-                </address>
-                <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">Branch Office</p>
-                <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
-                  <span className="block">L & T Business Park</span>
-                  <span className="block">Powai, Mumbai</span>
-                  <span className="block">Maharashtra - 400076</span>
-                </address>
+                {companyInfo.offices.map((office, idx) => (
+                  <div key={idx}>
+                    <p className="mt-6 text-sm uppercase tracking-[0.2em] text-[var(--color-accent)]">{office.type}</p>
+                    <address className="mt-2 not-italic text-lg leading-snug text-[var(--color-text-primary)]">
+                      {office.addressLines.map((line, lIdx) => (
+                        <span key={lIdx} className="block">{line}</span>
+                      ))}
+                    </address>
+                  </div>
+                ))}
               </aside>
 
               <div>

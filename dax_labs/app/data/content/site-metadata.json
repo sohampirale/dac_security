@@ -1,0 +1,29 @@
+{
+  "statistics": [
+    { "value": 10, "suffix": "+", "label": "Years of Excellence" },
+    { "value": 8500, "suffix": "+", "label": "Applications Secured" },
+    { "value": 2500, "suffix": "+", "label": "Clients Protected" },
+    { "value": 125, "suffix": "+", "label": "Security Experts" }
+  ],
+  "expertise": [
+    "CISSP, CISM, CISA, ISO 27001 and related security standards",
+    "Defence-oriented cyber intelligence practices",
+    "Digital forensics and incident investigation",
+    "Security operations and risk assessment"
+  ],
+  "sectors": [
+    "Defence, law enforcement, and intelligence environments",
+    "Financial systems, fintech, and banking infrastructure",
+    "Government, public sector, and regulatory systems",
+    "Healthcare, legal, and sensitive data ecosystems",
+    "Enterprise, industrial, and operational technology environments"
+  ],
+  "certifications": [
+    { "title": "CERT-In Empanelled", "description": "Certified by Indian Computer Emergency Response Team" },
+    { "title": "ISO 27001", "description": "Information Security Management Certified" },
+    { "title": "ISO 9001", "description": "Quality Management Certified" },
+    { "title": "CMMI Level 3", "description": "Capability Maturity Model Integration" },
+    { "title": "GDPR Compliant", "description": "Data Protection Regulation Compliant" },
+    { "title": "SOC 2 Type II", "description": "Service Organization Control Certified" }
+  ]
+}
